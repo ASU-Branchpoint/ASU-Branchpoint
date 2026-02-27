@@ -1,0 +1,6 @@
+images/b_happy.png
+image 250,323
+images/bg room.jpg
+image 444,250
+images/g_mad.jpg
+image 1200,1200
