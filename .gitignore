@@ -1,0 +1,12 @@
+# Ren'Py Compiled files
+*.rpyc
+*.rpymc
+
+# Ren'Py Save data and logs
+saves/
+log.txt
+traceback.txt
+image_cache/
+
+# Web Build output (we don't want the raw build in the repo)
+web-build/
