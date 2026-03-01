@@ -12,7 +12,7 @@
 ##
 ## The _() surrounding the string marks it as eligible for translation.
 
-define config.name = _("ProjectBranchpoint")
+define config.name = _("Project Branchpoint")
 
 
 ## Determines if the title given above is shown on the main menu screen. Set
@@ -45,7 +45,7 @@ define build.name = "ProjectBranchpoint"
 ## These three variables control, among other things, which mixers are shown
 ## to the player by default. Setting one of these to False will hide the
 ## appropriate mixer.
-
+define config.developer = True
 define config.has_sound = True
 define config.has_music = True
 define config.has_voice = False
