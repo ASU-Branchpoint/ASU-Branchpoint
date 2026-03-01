@@ -291,8 +291,9 @@ screen navigation():
     vbox:
         style_prefix "navigation"
 
-        xpos gui.navigation_xpos
+        xalign 0.5
         yalign 0.5
+        yoffset 60
 
         spacing gui.navigation_spacing
 
@@ -343,7 +344,7 @@ style navigation_button:
 
 style navigation_button_text:
     properties gui.text_properties("navigation_button")
-
+    xalign 0.5
 
 ## Main Menu screen ############################################################
 ##
@@ -388,7 +389,7 @@ style main_menu_frame:
     xsize 280
     yfill True
 
-    background "gui/overlay/main_menu.png"
+    #background "gui/overlay/main_menu.png"
 
 style main_menu_vbox:
     xalign 1.0
@@ -1686,7 +1687,7 @@ screen eventViewer():
             textbutton "[response1]" action [SetVariable("talkBack", reply1), Jump("eventConclusion")]
             textbutton "[response2]" action [SetVariable("talkBack", reply2), Jump("eventConclusion")]
             textbutton "[response3]" action [SetVariable("talkBack", reply3), Jump("eventConclusion")]
-            textbutton "I'll have to think about it." action [Show("mainGameplayLoop"), Hide("eventViewer")]
+            textbutton "ave toI'll h think about it." action [Show("mainGameplayLoop"), Hide("eventViewer")]
 
 
 

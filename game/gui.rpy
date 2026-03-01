@@ -28,7 +28,8 @@ define config.check_conflicting_properties = True
 define gui.accent_color = '#99ccff'
 
 ## The color used for a text button when it is neither selected nor hovered.
-define gui.idle_color = '#888888'
+## IMPORTANT! - main menu button colors
+define gui.idle_color = "#0F0F0F"
 
 ## The small color is used for small text, which needs to be brighter/darker to
 ## achieve the same effect.
@@ -63,7 +64,7 @@ define gui.text_font = "DejaVuSans.ttf"
 define gui.name_text_font = "DejaVuSans.ttf"
 
 ## The font used for out-of-game text.
-define gui.interface_text_font = "DejaVuSans.ttf"
+define gui.interface_text_font = "fonts/ROCKBI.ttf"
 
 ## The size of normal dialogue text.
 define gui.text_size = 22
@@ -72,7 +73,7 @@ define gui.text_size = 22
 define gui.name_text_size = 30
 
 ## The size of text in the game's user interface.
-define gui.interface_text_size = 22
+define gui.interface_text_size = 30
 
 ## The size of labels in the game's user interface.
 define gui.label_text_size = 24
