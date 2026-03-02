@@ -1747,6 +1747,10 @@ screen mainGameplayLoop():
         add "eventmark.png":
             xpos 1222
             ypos 50
+    if cisoEventTrigger:
+        add "eventmark.png":
+            xpos 1222
+            ypos 50
     if rdEventToView:
         add "eventmark.png":
             xpos 1222

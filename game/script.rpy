@@ -9,12 +9,9 @@ default gameScript = "Level1"
 default gameScriptInit = ""
 default tutorialMode = False
 default currentEvents = []
-default departmentsViewed = []
 default event = ""
-default tutorialOfficeBypass = False
 default eventText = ""
 default eventResponses = 5
-default cisoEventTrigger = False
 
 default choice = "1"
 default talkBack = ""
@@ -55,9 +52,11 @@ label start:
 
     show bg cityscape
 
-    "The Almighty CEO" "Whoa now, we haven't even finished the infrastructure yet."
+    "The Almighty CEO" "Whoa now, I thought we told you that you didn't start for another few weeks."
 
-    "The Almighty CEO" "I get that you're eager... but at least let the construction crew finish before you come waltzing in."
+    "The Almighty CEO" "I get that you're eager to get started... but we've got a fiscal quarter to round out and we don't have the wiggle room to take chances."
+
+    "The Almighty CEO" "It's nothing personal. Just hang tight for a little bit and we'll welcome you to your new role with open arms."
 
     #scene bg room
     
