@@ -3,15 +3,16 @@
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
 
-#RESERVED CHARACTERS: C/Charlie as CISO for lower roles,
-#define j = Character("John") #CEO
-#define m = Character("Matt") #Storage head
-#define e = Character("Eleanor") #Cubicle head
+#RESERVED CHARACTERS: C/Charlie as CISO for lower roles, G/Giovanni for CISO and general.
+define j = Character("John") #CEO
+define c = Character("Charlie") #CISO
+define m = Character("Matt") #Storage head
+define e = Character("Eleanor") #Cubicle head
 define b = Character("Brendan") #Helpdesk head
 define g = Character("Giovanni") #Cybersec head
-#define p = Character("Peter") #R&D head
-#define a = Character("Abigail") #Server head
-#define n = Character("Norman") #Copier head
+define p = Character("Peter") #R&D head
+define a = Character("Abigail") #Server head
+define n = Character("Norman") #Copier head
 
 
 
@@ -21,7 +22,7 @@ default tutorialMode = False
 default currentEvents = []
 default event = ""
 default eventText = ""
-default eventResponses = 5
+default eventResponses = 1
 
 default choice = "1"
 default talkBack = ""
@@ -35,6 +36,9 @@ default response4 = ""
 default reply4 = ""
 default response5 = ""
 default reply5 = ""
+
+default score = 0
+default weight = 1
 
 default mainOfficeHovered = False
 default researchDevHovered = False
@@ -93,57 +97,93 @@ label eventConclusion:
     call screen mainGameplayLoop
 
 
-#label checkback:
-#    jump eventUpdater
-#    call screen mainGameplayLoop       
+#000 is access code, 100 is Level 1 access, 10 is Level 2 access, 1 is CISO access.
+#Makes gameplay less complicated on lower difficulties by gating accessible departments.
 
+#001
+#1
 label mainOfficeSwitch:
     if tutorialMode:
         jump tutorialOfficeGeneral
+    elif gameScript == "Level1" or gameScript == "Level2":
+        #jump mainOfficeGeneral
+        #REMOVE THIS LATER: THIS EXISTS SOLELY TO COMPILE
+        jump mainOfficeGeneral
     else:
+        #jump mainOfficeThree
         jump mainOfficeGeneral
 
+#011
+#2
 label researchDevSwitch:
     if tutorialMode:
         jump tutorialResDevGeneral
+    elif gameScript == "Level1":
+        #jump resDevOne
+        #REMOVE THIS LATER: THIS EXISTS SOLELY TO COMPILE
+        jump resDevGeneral
     else:
-        jump researchDevGeneral
+        jump resDevGeneral
 
-label helpDeskSwitch:
-    if tutorialMode:
-        jump tutorialHelpDeskGeneral
-    else:
-        jump helpDeskGeneral
-
+#011
+#3
 label cyberSecSwitch:
     if tutorialMode:
         jump tutorialCyberSecGeneral
+    elif gameScript == "Level1":
+        #jump cyberSecOne
+        #REMOVE THIS LATER: THIS EXISTS SOLELY TO COMPILE
+        jump cyberSecGeneral
     else:
         jump cyberSecGeneral
 
+#011
+#4
 label serverRoomSwitch:
     if tutorialMode:
         jump tutorialServersGeneral
+    elif gameScript == "Level1":
+        #jump serverRoomOne
+        #REMOVE THIS LATER: THIS EXISTS SOLELY TO COMPILE
+        jump serverRoomGeneral
     else:
         jump serverRoomGeneral
 
-label cubicleSwitch:
+#011
+#5
+label helpDeskSwitch:
     if tutorialMode:
-        jump tutorialCubicleGeneral
+        jump tutorialHelpDeskGeneral
+    elif gameScript == "Level1":
+        #jump helpDeskOne
+        #REMOVE THIS LATER: THIS EXISTS SOLELY TO COMPILE
+        jump helpDeskGeneral
     else:
-        jump cubicleGeneral
+        jump helpDeskGeneral
 
+#111
+#6
 label deviceStorageSwitch:
     if tutorialMode:
         jump tutorialStorageGeneral
     else:
         jump deviceStorageGeneral
 
+#111
+#7
 label copyRoomSwitch:
     if tutorialMode:
         jump tutorialCopierGeneral
     else:
         jump copyRoomGeneral
+
+#111
+#8
+label cubicleSwitch:
+    if tutorialMode:
+        jump tutorialCubicleGeneral
+    else:
+        jump cubicleGeneral
 
 
 #Label to handle event trees for CISO Office.
@@ -158,7 +198,7 @@ label mainOfficeGeneral:
                 call screen mainGameplayLoop
 
 #Label to handle event trees for R&D Department.
-label researchDevGeneral:
+label resDevGeneral:
     menu:
         "[event]" if copyEventToView:
             call eventLookup

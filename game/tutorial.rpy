@@ -19,34 +19,57 @@ label tutorial:
 
     scene bg main_hq_hall
 
-    ""
-
     "It's your first day on the job..."
 
     "Despite the fact the keycard in your hand is clearly labeled 'Intern', you're determined to do the job right."
+
+    "You walk in the front door at 1:00 PM sharp, as instructed, and with the direction of some helpful receptionists, make your way to the IT department."
 
     "The main door to the wing opens, and a somewhat friendly face greets you as you enter."
 
     scene bg helpdesk_1
 
-    show b_happy
+    #show b_happy
 
     b "Welcome in! What is it this time, laptop trouble? Authenticator on the fritz? Access permission issues?"
 
-    b "Ohh, a green keycard? So you're the intern they were telling me about."
+    b "Actually... I don't think I recognize you."
 
-    b "Well, we're glad to have you! I know this place ain't much, but we hope you'll excel while you're here!"
+    b "Ohh, the green keycard? So you're the intern they were telling me about!"
 
-    b "Personally, I'm about to head to lunch, but I'll hand it off to our main-man Gary and he'll show you the ropes."
+    b "Well, we're glad to have you! I know this place ain't much, but we hope you'll excel and learn some tricks of the trade while you're here!"
 
-    hide b_happy
-    show g_mad
+    b "Actually, I'm a bit tied down behind the desk right now. Someone got locked out of their entire company account! Now it's my job to fix it... I suppose."
 
-    g "I'm the head of the Cybersecurity department. Doesn't mean a lot since there's only three of us Cybersecurity folks here, but still."
+    "Brendan picks up a hard-line phone behind the desk and pushes a button."
+    
+    b "Hey, Giovanni? Yeah. The intern's here. No... No, it's YOUR intern. Who else?"
 
-    g "If you have any questions about what each department is, or what it does for us, just ask."
+    b "Great. Thanks."
 
-    g "Now then. We have a tour to attend to."
+    b "Just sit down over there for a couple minutes."
+    
+    b "Hardly the warm welcome we had planned, but things have a funny way of going wrong precisely when you need them to behave."
+    
+    b "There he is."
+
+    "A man in a surprisingly casual outfit opens the door, calmly walking in."
+
+    g "Pleasure to meet you face-to-face. My apologies for everything that's happened so far."
+
+    #hide b_happy
+    #show g_mad
+
+    g "I'm Giovanni, the head of the Cybersecurity department. Doesn't mean a lot since there's only three of us in the department, but still."
+
+    g "I suppose that makes it easier for you to get to know everyone and how to do the job."
+
+    g "With that said, talking about things only gets you so far."
+
+    g "I'll be accompanying you on your first-day-tour, so you can get the lay of the land and know who your colleagues are."
+
+    g "Let's get moving. Just tell me where you want to go first."
+
 
     hide g_mad
 
@@ -61,9 +84,11 @@ label tutorial:
     return
 label tutorialConclusion:
     g "[talkBack]"
+    g "Seems like you're a natural at this."
     g "Well, looks like you're getting the hang of things. I think we'd do well to keep you around even after your time here is up."
-    g "That said... I've still got work to do. Come swing by my department if you need a hand."
-    g "Otherwise, I think you're on your own for now."
+    g "That said... I've still got work to do, and this little \"tour\" of yours has gone on a bit too long for my schedule."
+    g "Come swing by my department if you need a hand."
+    g "Otherwise, I think you're on your own. You'll start actually working tomorrow. Show up at 9 on the dot."
     "You have now completed the tutorial. When you wish to play the full game, return to the title screen."
     $ tutorialComplete = True
     $ cisoEventTrigger = False
@@ -73,7 +98,18 @@ label tutorialConclusion:
 #Tutorial label to handle event trees for CISO Office.
 label tutorialOfficeGeneral:
     if "CISO" not in departmentsViewed:
-        g "This is the CISO's office. Maybe you'll end up here one day. This is where a large number of managerial decisions happen, obviously."
+        g "I believe I'll leave you on your own for this. It'd be rude for me to sit in with you."
+        c "This is my office, the CISO's office."
+        c "Easy now... We're a small department. You don't have to be afraid of me."
+        c "People know each other on a first-name basis around here, after all."
+        c "Maybe you'll end up here one day, when my 30 years is up."
+        c "... Assuming no one else steps up to take my place."
+        g "Afternoon, Charlie."
+        c "Ah, perfect. We just finished our introductions."
+        g "We'll be leaving, now."
+        "This is where a large number of managerial decisions happen."
+        "Events in this location are high-priority with high risk to high reward."
+        "Additionally, events in this location tend to be rarer, and persist for longer."
         $ officeEventToView = False
         $ departmentsViewed.append("CISO")
     menu:
@@ -83,16 +119,24 @@ label tutorialOfficeGeneral:
             call eventLookup
             call screen eventViewer
         "Could you repeat the department's function?":
-            $ departmentsViewed.remove("CISO")
+            "This is where a large number of managerial decisions happen."
+            "Events in this location are high-priority with high risk to high reward."
+            "Additionally, events in this location tend to be rarer, and persist for longer."
             jump tutorialOfficeGeneral
         "... An \"event\"\?" if len(departmentsViewed) > 7:
             if tutorialComplete:
                 "Events will be marked by an exclamation mark next to their respective department."
                 "The bottom option will always take you back to the department list, no strings attached."
+                "However, to reach new events and progress the game, decisions will have to be made."
             else:
                 g "There's always something to do around here."
-                g "Whether or not it's immediately obvious... Well, it usually is."
-                g "Speak of the devil, looks like something's going on in the cubicles. Let's go have a look."
+                g "As much as I know ol' Charlie isn't a fan of the system, it makes my job a lot easier."
+                g "Seeing as I'm head of Cybersecurity, I get notifications from R&D, the Servers, the Helpdesk, Storage, the Copy Room, and the Cubicles."
+                g "Our system works by popping up a little mark next to the Department's directory when there's something to do."
+                "There are multiple types of events in this simulator, each represented by an exclamation mark."
+                "Yellow marks are basic, standard events. Orange marks means there's more than one yellow event to view."
+                "Red marks are extreme events. Only one can appear at a time, have a cooldown before another can appear, and put all other event timers on pause when they appear."
+                g "On the topic of the Cubicles, looks like something's going on down there for us to resolve. Let's go have a look."
                 $ officeWarning = False
                 $ cisoEventTrigger = False
                 $ event = "Stolen cake"
@@ -104,7 +148,15 @@ label tutorialOfficeGeneral:
 #Tutorial label to handle event trees for R&D Department.
 label tutorialResDevGeneral:
     if "R&D" not in departmentsViewed:
-        g "This is the R&D department. A lot of the future-facing projects are handled here, so treat them with respect. Our future banks on them doing their jobs."
+        p "Welcome to the R&D department."
+        p "We handle a lot of our company's future-facing projects..."
+        p "..."
+        p "Uh... I forgot the rest of my spiel."
+        p "Well, just stick around a while and watch us work. I prefer action over words, anyway."
+        g "He's not good with words, but he's a great boss."
+        g "Notably, I don't think any of his employees hate working under him."
+        "The R&D department hosts events that will have less short-term impacts and more long-term impacts."
+        "However, they should not necessarily be passed up for other departments when time is low."
         $ rdEventToView = False
         $ departmentsViewed.append("R&D")
     if len(departmentsViewed) > 7 and officeWarning and cisoEventTrigger == False:
@@ -115,7 +167,8 @@ label tutorialResDevGeneral:
             call eventLookup
             call screen eventViewer
         "Could you repeat the department's function?":
-            $ departmentsViewed.remove("R&D")
+            "The R&D department hosts events that will have less short-term impacts and more long-term impacts."
+            "However, they should not necessarily be passed up for other departments when time is low."
             jump tutorialResDevGeneral
         "Never mind.":
                 call screen mainGameplayLoop
@@ -123,7 +176,17 @@ label tutorialResDevGeneral:
 #Tutorial label to handle event trees for Helpdesk.
 label tutorialHelpDeskGeneral:
     if "Helpdesk" not in departmentsViewed:
-        g "Welcome to the Help Desk. Were you a regular employee at our company, you'd come here to get your things fixed. Since you're on the other side of the glass, you're gonna be doing the fixing."
+        b "Welcome back!"
+        b "Guess they've got you walking around like we're animals in a zoo, eh?"
+        b "Well, this is the Help Desk. You've got a problem, we're the first people you turn to."
+        b "Like, for instance... This! Big hunk of crap here. And..."
+        "..."
+        g "He's someone with a lot to say. Don't mind him, he does his job and does it well."
+        g "Let's get a move on."
+        "The Help Desk will be critical in keeping day-to-day functions in tip-top shape."
+        "This serves as a middle ground between the Cubicles, the Device Storage, and the Cybersecurity departments."
+        "Events here can often be handled easily, but may be overwhelming in comparison to other departments."
+        "If neglected, problems here can escalate to other departments, and bring more pressuring decisions with them."
         $ deskEventToView = False
         $ departmentsViewed.append("Helpdesk")
     if len(departmentsViewed) > 7 and officeWarning and cisoEventTrigger == False:
@@ -134,7 +197,10 @@ label tutorialHelpDeskGeneral:
             call eventLookup
             call screen eventViewer
         "Could you repeat the department's function?":
-            $ departmentsViewed.remove("Helpdesk")
+            "The Help Desk will be critical in keeping day-to-day functions in tip-top shape."
+            "This serves as a middle ground between the Cubicles, the Device Storage, and the Cybersecurity departments."
+            "Events here can often be handled easily, but may be overwhelming in comparison to other departments."
+            "If neglected, problems here can escalate to other departments, and bring more pressuring decisions with them."
             jump tutorialHelpDeskGeneral
         "Never mind.":
                 call screen mainGameplayLoop
@@ -142,7 +208,15 @@ label tutorialHelpDeskGeneral:
 #Tutorial label to handle event trees for Cybersecurity.
 label tutorialCyberSecGeneral:
     if "Cybersecurity" not in departmentsViewed:
-        g "I'm sure the Cybersecurity department needs no introduction. They're the people responsible for making sure everything here stays safe and secure."
+        g "Here's my department. I know it ain't all that pretty..."
+        g "But, we keep things safe and secure and that's what counts."
+        g "Also, don't touch the light switch."
+        g "No, you don't want to find out what happens if you do. Trust me."
+        g "Ahem... Regardless, do what we say and there won't be problems between you, me, or the company as a whole."
+        "The Cybersecurity Department tends to be extremely self-sufficient, and won't raise issues all that often."
+        "When they happen, Cybersecurity events often are high caliber threats."
+        "These events can critically affect everything, both short and long-term."
+        g "Let's keep moving."
         $ cyberEventToView = False
         $ departmentsViewed.append("Cybersecurity")
     if len(departmentsViewed) > 7 and officeWarning and cisoEventTrigger == False:
@@ -153,7 +227,9 @@ label tutorialCyberSecGeneral:
             call eventLookup
             call screen eventViewer
         "Could you repeat the department's function?":
-            $ departmentsViewed.remove("Cybersecurity")
+            "The Cybersecurity Department tends to be extremely self-sufficient, and won't raise issues all that often."
+            "When they happen, Cybersecurity events often are high caliber threats."
+            "These events can critically affect everything, both short and long-term."
             jump tutorialCyberSecGeneral
         "Never mind.":
                 call screen mainGameplayLoop
@@ -161,7 +237,16 @@ label tutorialCyberSecGeneral:
 #Tutorial label to handle event trees for Server Room.
 label tutorialServersGeneral:
     if "Servers" not in departmentsViewed:
-        g "This is the Server room. As you might expect, it holds all of our servers. If something goes wrong in here, it might be lights-out for a while."
+        a "Who are you? I don't recall opening access..."
+        a "Oh, hey, Giovanni. I assume the intern is with you."
+        g "Didn't mean to surprise you."
+        a "It's just not often that I get visitors while I'm tinkering around back here."
+        a "This is the Server Room, obviously. It's a room, full of servers. What more do I need to say."
+        a "Oh, yeah. It also holds everything we need to function, documents, employee information, customer data, the whole nine yards."
+        a "I tend to forget that, with how much these things give me headaches and throw fits."
+        "The Server Room is a mission-critical department with a wide breadth of event severity."
+        "While minor events can sometimes be resolved on their own, high-tier events can bring every other department to a screeching halt if left unchecked."
+        g "I'll let you get back to it, then. We'll be taking our leave."
         $ serverEventToView = False
         $ departmentsViewed.append("Servers")
     if len(departmentsViewed) > 7 and officeWarning and cisoEventTrigger == False:
@@ -172,7 +257,8 @@ label tutorialServersGeneral:
             call eventLookup
             call screen eventViewer
         "Could you repeat the department's function?":
-            $ departmentsViewed.remove("Servers")
+            "The Server Room is a mission-critical department with a wide breadth of event severity."
+            "While minor events can sometimes be resolved on their own, high-tier events can bring every other department to a screeching halt if left unchecked."
             jump tutorialServersGeneral
         "Never mind.":
                 call screen mainGameplayLoop
@@ -180,8 +266,19 @@ label tutorialServersGeneral:
 #Tutorial label to handle event trees for Cubicles.
 label tutorialCubicleGeneral:
     if "Cubicles" not in departmentsViewed:
-        g "These are the Cubicles. Our main work force for the department is in here."
-        g "While you might write this off initially, workplace politics here can get pretty heated. I'd try to avoid that if you can."
+        g "Sounds like they're on their best behavior for the intern."
+        g "That's rare."
+        e "You look a little lost. I'm assuming you're new here?"
+        e "Green card... It's been a few weeks since we last had an intern."
+        e "Welcome to our lovely little office area. This is where the bulk of our workforce is, and they all report back to me."
+        e "I'm always one to welcome new ideas, and letting those ideas flourish and make our department better is always so lovely to watch."
+        g "More of an \"if\" than a \"when\". Remember when someone found out a way to circumvent the BYOD ban?"
+        e "We don't talk about that."
+        "Cubicle events are very often low-grade, common threats with easy answers."
+        "They accumulate quickly and can be an easy way to raise your score if nothing else is plausible."
+        "If neglected, they can find their own way to resolve their issues, for better or for worse."
+        g "Best not get involved in the political environment down here."
+        g "Eleanor props it up to be real nice, but it's a warzone when things get going."
         $ cubicleEventToView = False
         $ departmentsViewed.append("Cubicles")
     if len(departmentsViewed) > 7 and officeWarning and cisoEventTrigger == False:
@@ -195,7 +292,9 @@ label tutorialCubicleGeneral:
             call eventLookup
             call screen eventViewer
         "Could you repeat the department's function?" if cubicleEventToView == False:
-            $ departmentsViewed.remove("Cubicles")
+            "Cubicle events are very often low-grade, common threats with easy answers."
+            "They accumulate quickly and can be an easy way to raise your score if nothing else is plausible."
+            "If neglected, they can find their own way to resolve their issues, for better or for worse."
             jump tutorialCubicleGeneral
         "Repeat how the events play out." if cubicleEventToView == False and event == "Stolen cake":
             "When handling an event, a list of 2 to 5 options will appear. What response you choose can and will affect your score at the end of the game, and may even end your game early."
@@ -208,8 +307,18 @@ label tutorialCubicleGeneral:
 #Tutorial label to handle event trees for Device Storage.
 label tutorialStorageGeneral:
     if "Storage" not in departmentsViewed:
-        g "Welcome to the Storage closet. Our backup devices, authenticator cards, loaner laptops, and everything in between stays in here."
-        g "Well... Now that I think about it, we should probably get you some stuff out of here while we're here."
+        m "Look, I've told you already... you lot have run me out of Authenticator Cards, I can't activate more until..."
+        m "Ah. You're not one of the Cubicle employees."
+        m "I apologize for my outburst, those idiots lose those cards like their pockets have holes in them."
+        g "And I'm the one who has to keep track of them all once they leave your hands."
+        m "Yep. Thanks again, by the way."
+        m "Welcome to our humble Device Storage locker. Loaner laptops, dummy ID lanyards, company phones, and once the week rolls over, Authenticator Cards."
+        m "And some other, less common things in that closet there."
+        m "Now that BYOD is done and gone, if you need something given to you for company use, you're going through us."
+        "The Device Storage department is typically extremely self-sufficient, given how few devices need to be handed out in a stable staff."
+        "If an event here occurs, it typically means that something is running short."
+        "This can drastically drive down the effectiveness and self-sufficiency of other departments as a result."
+        g "Unfortunately, I don't think we'll be any help here."
         $ storageEventToView = False
         $ departmentsViewed.append("Storage")
     if len(departmentsViewed) > 7 and officeWarning and cisoEventTrigger == False:
@@ -220,7 +329,9 @@ label tutorialStorageGeneral:
             call eventLookup
             call screen eventViewer
         "Could you repeat the department's function?":
-            $ departmentsViewed.remove("Storage")
+            "The Device Storage department is typically extremely self-sufficient, given how few devices need to be handed out in a stable staff."
+            "If an event here occurs, it typically means that something is running short."
+            "This can drastically drive down the effectiveness and self-sufficiency of other departments as a result."
             jump tutorialStorageGeneral
         "Never mind.":
                 call screen mainGameplayLoop
@@ -228,8 +339,19 @@ label tutorialStorageGeneral:
 #Tutorial label to handle event trees for Copy Room.
 label tutorialCopierGeneral:
     if "Copier" not in departmentsViewed:
-        g "This is the copy room. Between you and me, these printers are colossal headaches... Not to mention they're a nightmare to keep secure."
-        g "You didn't hear that from me though."
+        n "The one time the print queue isn't clogged to high heaven..."
+        n "Sorry, I've just been monitoring and fixing these things all day."
+        n "You'd be astounded how often these things clog up and need things unblocked."
+        n "Welcome to the Copy Room. All our paperwork originates here, is duplicated here, and often ultimately meets its end here."
+        n "We've got black and white printers, color printers, copiers, shredders, everything in between."
+        g "And a cybersecurity black box that even I struggle to wrap my head around."
+        n "Yep. For both our sakes, I wish we could have this place run simpler."
+        "The Copy Room functions quite simply. The more the other departments operate, the harder it has to work."
+        "Events from this department focus primarily on security, and between cybersecurity loopholes that can't be closed..."
+        "And paperwork finding its way into trash cans without being properly shredded and disposed of..."
+        "Its importance should not be understated when it comes to keeping the company as a whole afloat."
+        g "Alright, Norm. I'll be back in a couple days to get that new photocopier set up."
+        g "With or without my trusty intern here."
         $ copyEventToView = False
         $ departmentsViewed.append("Copier")
     if len(departmentsViewed) > 7 and officeWarning and cisoEventTrigger == False:
@@ -240,8 +362,10 @@ label tutorialCopierGeneral:
             call eventLookup
             call screen eventViewer
         "Could you repeat the department's function?":
-            $ departmentsViewed.remove("Copier")
+            "The Copy Room functions quite simply. The more the other departments operate, the harder it has to work."
+            "Events from this department focus primarily on security, and between cybersecurity loopholes that can't be closed..."
+            "And paperwork finding its way into trash cans without being properly shredded and disposed of..."
+            "Its importance should not be understated when it comes to keeping the company as a whole afloat."
             jump tutorialCopierGeneral
         "Never mind.":
-
                 call screen mainGameplayLoop
