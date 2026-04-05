@@ -291,9 +291,8 @@ screen navigation():
     vbox:
         style_prefix "navigation"
 
-        xalign 0.5
+        xpos gui.navigation_xpos
         yalign 0.5
-        yoffset 48
 
         spacing gui.navigation_spacing
 
@@ -344,7 +343,7 @@ style navigation_button:
 
 style navigation_button_text:
     properties gui.text_properties("navigation_button")
-    xalign 0.5
+
 
 ## Main Menu screen ############################################################
 ##
@@ -389,7 +388,7 @@ style main_menu_frame:
     xsize 280
     yfill True
 
-    # background "gui/overlay/main_menu.png"
+    background "gui/overlay/main_menu.png"
 
 style main_menu_vbox:
     xalign 1.0
@@ -400,7 +399,6 @@ style main_menu_vbox:
 
 style main_menu_text:
     properties gui.text_properties("main_menu", accent=True)
-    color "#4f6884"
 
 style main_menu_title:
     properties gui.text_properties("title")
@@ -1721,7 +1719,7 @@ screen mainGameplayLoop():
         ypos 690
         hovered SetVariable("titleScreenHovered", True)
         unhovered SetVariable("titleScreenHovered", False)
-        action [SetVariable("titleScreenHovered", False), MainMenu(), Hide("mainGameplayLoop")]
+        action [SetVariable("titleScreenHovered", False), MainMenu(),]
 
     #This entire block basically adds the floor-by-floor glow when a button is hovered over. Also adds fun effects for "return to title".
     if titleScreenHovered == False:
@@ -1783,26 +1781,11 @@ screen mainGameplayLoop():
             ypos 456
 
 #Pulls up the event window, dynamically adds buttons according to the number of pre-programmed responses. God I wish renpy had for-loops.
-screen eventViewer():
+screen eventViewer(event):
     frame:
         xalign 0.5 yalign 0.5
         vbox:
-            text "[eventText]"
-            if eventResponses > 4:
-                textbutton "[response5]" action [SetVariable("talkBack", reply5), Jump("eventConclusion")]
-            if eventResponses > 3:
-                textbutton "[response4]" action [SetVariable("talkBack", reply4), Jump("eventConclusion")]
-            if eventResponses > 2:
-                textbutton "[response3]" action [SetVariable("talkBack", reply3), Jump("eventConclusion")]
-            if eventResponses > 1:
-                textbutton "[response2]" action [SetVariable("talkBack", reply2), Jump("eventConclusion")]
-            textbutton "[response1]" action [SetVariable("talkBack", reply1), Jump("eventConclusion")]
-            #Get-out-of-event button, does nothing but return you to the main "hub" screen.
-            textbutton "I'll have to think about it." action [ShowMenu("mainGameplayLoop"), Hide("eventViewer")]
-                
-
-
-
-#event response length 4
-#add 4 buttons
-
+            text "[event.get('question')]"
+            for option in event['choices']:
+                textbutton "[option['answerText']]" action SetVariable("dynamScore", option['score']), Jump("eventUpdate")
+            textbutton "Let me get back to you with my response." action [ShowMenu("mainGameplayLoop"), Hide("eventViewer")]
