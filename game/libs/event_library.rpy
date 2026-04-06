@@ -1,4 +1,6 @@
-event_library = [
+init python:
+
+    event_library = [
 
     {
         "id": "easy_net_001",
@@ -737,7 +739,7 @@ event_library = [
         "allowed_days": [],
         "followup_event": {"allowed": False, "event_id": ""},
         "repeatable": False
-    }
+    },
 
     {
         "id": "medium_dns_001",
@@ -1512,9 +1514,9 @@ event_library = [
         "allowed_days": [],
         "followup_event": {"allowed": False, "event_id": ""},
         "repeatable": False
-    }
+    },
 
-        {
+    {
         "id": "hard_auth_001",
         "question_difficulty": "hard",
         "spawn_rules": {
