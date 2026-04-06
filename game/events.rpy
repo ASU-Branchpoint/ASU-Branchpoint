@@ -4,11 +4,38 @@
 
 # Event Name, Diff 1, Diff 2, Diff 3, Dept., [Responses], [Score], Persistence, Copies in "Event Deck" (manipulates rarity)
 
+label defineTutorial:
+    init python:
+        tutorial = {
+            "id": "tutorial",
+            "location": "cubicles",
+            "points": 10,
+            "question": "Someone's lunch got stolen out of the break room fridge! As the resident problem-solver, what's your plan of action?",
+            "choices": [
+                {
+                    "answerText": "Let bygones be bygones, the employees will figure it out between themselves.",
+                    "score": 3
+                },
+                {
+                    "answerText": "Go through the camera footage from the hallway and see who was acting strangely, and confront them.",
+                    "score": 6
+                },
+                {
+                    "answerText": "Reimburse them for their troubles and hope it never happens again.",
+                    "score": 1
+                }
+            ],
+            "feedback": "Hmm... Well, I suppose none of those were a perfect answer after all.",
+            }
+    $ fullArrayOfEvents.append(tutorial)
+    return
+
+
 label defineArray:        
     init python: 
         event1 = {
         "id": "example_001",
-        "difficulty": "easy",
+        "difficulty": "medium",
         "spawn_rules": {
         "easy": {"allow": True, "weight": 2},
         "medium": {"allow": False, "weight": 0},
@@ -39,9 +66,10 @@ label defineArray:
         },
         "repeatable": False
         }
+
         event2 = {
         "id": "example_002",
-        "difficulty": "easy",
+        "difficulty": "medium",
         "spawn_rules": {
         "easy": {"allow": True, "weight": 2},
         "medium": {"allow": False, "weight": 0},
@@ -72,8 +100,9 @@ label defineArray:
         },
         "repeatable": False
         }
-    $ currentEvents.append(event1)
+    
     $ currentEvents.append(event2)
+    $ currentEvents.append(event1)
     $ gameScript = "medium"
 
     #call eventUpdate
