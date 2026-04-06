@@ -23,9 +23,7 @@ default gameScript = "Level1"
 default gameScriptInit = ""
 default tutorialMode = False
 default currentEvents = []
-default event = ""
-default eventText = ""
-default eventResponses = 1
+default eventid = ""
 default dynamScore = 0
 default shortMenu = []
 default dynamicRoomArray = []
@@ -192,14 +190,15 @@ label helpDeskGeneral:
         global dynamicRoomArray
         for option in currentEvents:
             if option.get('location') == "helpdesk":
-                dynamicRoomArray.append((option.get('id'), option))
+                variable = option
+                dynamicRoomArray.append((option.get('id'), variable))
         dynamicRoomArray.append(("Never mind...", "home"))
         shortMenu = renpy.display_menu(dynamicRoomArray)
         
         if shortMenu == "home":
             renpy.call_screen("mainGameplayLoop")
         else:
-            renpy.call_screen("eventViewer", event=option)
+            renpy.call_screen("eventViewer", event=variable)
 
 #Label to handle event trees for Cybersecurity.
 label cyberSecGeneral:
@@ -248,11 +247,12 @@ label copyRoomGeneral:
         global dynamicRoomArray
         for option in currentEvents:
             if option.get('location') == "copier":
-                dynamicRoomArray.append((option.get('id'), option))
+                variable = option
+                dynamicRoomArray.append((option.get('id'), variable))
         dynamicRoomArray.append(("Never mind...", "home"))
         shortMenu = renpy.display_menu(dynamicRoomArray)
         
         if shortMenu == "home":
             renpy.call_screen("mainGameplayLoop")
         else:
-            renpy.call_screen("eventViewer", event=option)
+            renpy.call_screen("eventViewer", event=variable)

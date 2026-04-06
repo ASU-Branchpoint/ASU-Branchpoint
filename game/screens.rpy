@@ -1780,8 +1780,10 @@ screen mainGameplayLoop():
             xpos 1222
             ypos 456
 
-#Pulls up the event window, dynamically adds buttons according to the number of pre-programmed responses. God I wish renpy had for-loops.
+#WHY FOR THE LOVE OF GOD DOES THIS ONLY LOAD THE CHOICES FOR FINAL EVENT IN CURRENTEVNETS!!!!
 screen eventViewer(event):
+    python:
+        print(event.get('id'))
     frame:
         xalign 0.5 yalign 0.5
         vbox:

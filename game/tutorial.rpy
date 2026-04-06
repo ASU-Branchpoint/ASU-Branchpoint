@@ -70,22 +70,19 @@ label tutorial:
 
     g "Let's get moving. Just tell me where you want to go first."
 
+    call defineTutorial
 
     hide g_mad
 
     scene bg eventfocus
 
-    # This ends the game.
-
-    #jump start
-
     call screen mainGameplayLoop
 
     return
 label tutorialConclusion:
-    g "[talkBack]"
+    g "Hmm... I suppose that's not a half bad option. Certainly worse ways to go about it."
     g "Seems like you're a natural at this."
-    g "Well, looks like you're getting the hang of things. I think we'd do well to keep you around even after your time here is up."
+    g "Well, looks like you're getting the hang of things. I think we'd do well to keep you around even after your time as an intern here is up."
     g "That said... I've still got work to do, and this little \"tour\" of yours has gone on a bit too long for my schedule."
     g "Come swing by my department if you need a hand."
     g "Otherwise, I think you're on your own. You'll start actually working tomorrow. Show up at 9 on the dot."
@@ -115,7 +112,7 @@ label tutorialOfficeGeneral:
     menu:
         #If event to view, use the name of the event and display it as a button. Does not support multiple events for the same department YET. Ditto for all other departments.
         #TODO: Abstract number of events per department to allow multiple at once. REPEAT THIS TO-DO AD INFINITUM FOR ALL DEPARTMENTS.
-        "[event]" if officeEventToView and len(event)>0 and event != "Stolen cake":
+        "Event" if officeEventToView and len(event)>0 and event != "Stolen cake":
             call eventLookup
             call screen eventViewer
         "Could you repeat the department's function?":
@@ -139,7 +136,7 @@ label tutorialOfficeGeneral:
                 g "On the topic of the Cubicles, looks like something's going on down there for us to resolve. Let's go have a look."
                 $ officeWarning = False
                 $ cisoEventTrigger = False
-                $ event = "Stolen cake"
+                $ currentEvents.append(tutorial)
                 $ cubicleEventToView = True
             jump tutorialOfficeGeneral
         "Never mind.":
@@ -284,6 +281,37 @@ label tutorialCubicleGeneral:
     if len(departmentsViewed) > 7 and officeWarning and cisoEventTrigger == False:
         g "We should go to the CISO's office. I've been told there might be an \"event\" there worth looking at."
         $ cisoEventTrigger = True
+    $ dynamicRoomArray.clear()
+    python:
+        global currentEvents
+        global dynamicRoomArray
+        global cubicleEventToView
+        for option in currentEvents:
+            if option.get('location') == "cubicles":
+                dynamicRoomArray.append((option.get('id'), option))
+        if not cubicleEventToView:
+            dynamicRoomArray.append(("Could you repeat the department's function", "redefine"))
+        if not cubicleEventToView and len(currentEvents) > 1:
+            dynamicRoomArray.append(("Repeat how the events play out.", "repeat"))
+        dynamicRoomArray.append(("Never mind...", "home"))
+        shortMenu = renpy.display_menu(dynamicRoomArray)
+        
+        if shortMenu == "home":
+            renpy.call_screen("mainGameplayLoop")
+        elif shortMenu == "redefine":
+            renpy.say(None, "Cubicle events are very often low-grade, common threats with easy answers.")
+            renpy.say(None, "They accumulate quickly and can be an easy way to raise your score if nothing else is plausible.")
+            renpy.say(None, "If neglected, they can find their own way to resolve their issues, for better or for worse.")
+            renpy.jump("tutorialCubicleGeneral")
+        elif shortMenu == "repeat":
+            renpy.say(None, "When handling an event, a list of 2 to 5 options will appear. What response you choose can and will affect your score at the end of the game, and may even end your game early.")
+            renpy.say(None, "Much like the real world, there is, more often than not, no truly correct or incorrect answer.")
+            renpy.say(None, "Most importantly, these events are chosen randomly from a pool. You may see the same event four times, not at all, or face nearly impossible tasks. How you handle it is, once again, up to you.")
+            renpy.jump("tutorialCubicleGeneral")
+        else:
+            renpy.call_screen("eventViewer", event=option)
+
+
     menu:
         "[event]" if cubicleEventToView and len(event) > 0:
             "When handling an event, a list of 2 to 5 options will appear. What response you choose can and will affect your score at the end of the game, and may even end your game early."
