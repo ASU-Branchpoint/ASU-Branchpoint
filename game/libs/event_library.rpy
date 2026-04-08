@@ -1,4 +1,4 @@
-label defineFull 
+label defineFull:
     init python:
 
         event_library = [
