@@ -287,7 +287,7 @@ label tutorialCubicleGeneral:
         #Even though the only event that can possibly spawn in tutorial is in cubicles and is tutorial, better safe than sorry.
         #I'd rather have the game not function properly than break in half when something unexpected happens.
         for option in currentEvents:
-            if option.get('location') == "cubicles":
+            if option.get('location') == defineCubicle:
                 dynamicRoomArray.append((option.get('id'), option))
         #If there is no event to resolve, allow display and function of button allowing repeats of the department explanation.
         if not cubicleEventToView:
