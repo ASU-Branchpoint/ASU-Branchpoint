@@ -1627,24 +1627,17 @@ style slider_slider:
 screen role_select():
     # Makes it so user cannot click outside this screen
     modal True
-
     frame:
         xalign 0.5 yalign 0.5
         vbox:
             text "Select the difficulty"
+            #Set difficulty of game
             textbutton "Easy" action [SetVariable("gameScript", "Level1"), Notify("Helpdesk Role")]
             textbutton "Medium" action [SetVariable("gameScript", "Level2"), Notify("Cybersecurity Role")]
             textbutton "Hard" action [SetVariable("gameScript", "Level3"), Notify("CISO Role")]
-            textbutton "Confirm" action [Show("role_confirm"), Hide("role_select")]
-
-screen role_confirm():
-    modal True
-    frame:
-        xalign 0.5 yalign 0.5
-        vbox:
-            text "Are you sure?"
-            textbutton "Yes" action [Return(), Hide("role_confirm")]
-            textbutton "Actually..." action [Show("role_select"), Hide("role_confirm")]
+            #Catch to prevent entering the game without selecting a difficulty
+            if gameScript:
+                textbutton "Confirm" action [Return(), Hide("role_select")]
 
 #Main hub screen. All departments are handled here as imagebuttons.
 #TODO organize the buttons by importance; add a better office building and text background to make these buttons better.
@@ -1783,14 +1776,23 @@ screen mainGameplayLoop():
             xpos 1222
             ypos 456
 
-#WHY FOR THE LOVE OF GOD DOES THIS ONLY LOAD THE CHOICES FOR FINAL EVENT IN CURRENTEVNETS!!!!
+#Procedural menu generator that loads options and associated scores when given a valid event.
 screen eventViewer(event):
-    python:
-        print(event.get('id'))
+    modal True
     frame:
         xalign 0.5 yalign 0.5
         vbox:
+            #Gets and prints question text at the top of the box
             text "[event.get('question')]"
+            #For every choice available, get its text, and associate each response with a unique button for score tracking.
+            #Will only ever put as many buttons as there are choices, plus one hard-coded "bail-out" button to leave the event.
+            #Sets a temp variable equal to the current event for later processing.
+            #No matter what button is clicked, record the score associated and jump to the update cycle.
             for option in event['choices']:
-                textbutton "[option['answerText']]" action SetVariable("dynamScore", option['score']), Jump("eventUpdate")
-            textbutton "Let me get back to you with my response." action [ShowMenu("mainGameplayLoop"), Hide("eventViewer")]
+                textbutton "[option['answerText']]" action [
+                    SetVariable("dynamScore", option['score']), 
+                    SetVariable("responseSelected", option)
+                    ] selected responseSelected == option
+            if responseSelected:
+                textbutton "Confirm selection" action SetVariable("tempEvent", event), Jump("eventUpdate")
+            textbutton "Let me get back to you with my response." action [Jump("departmentGeneral"), Hide("eventViewer")]
