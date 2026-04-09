@@ -1625,16 +1625,15 @@ style slider_slider:
     xsize 600
 
 screen role_select():
-    # Makes it so user cannot click outside this screen
     modal True
     frame:
         xalign 0.5 yalign 0.5
         vbox:
             text "Select the difficulty"
             #Set difficulty of game
-            textbutton "Easy" action [SetVariable("gameScript", "Level1"), Notify("Helpdesk Role")]
-            textbutton "Medium" action [SetVariable("gameScript", "Level2"), Notify("Cybersecurity Role")]
-            textbutton "Hard" action [SetVariable("gameScript", "Level3"), Notify("CISO Role")]
+            textbutton "Easy" action [SetVariable("gameScript", "easy"), Notify("Helpdesk Role")]
+            textbutton "Medium" action [SetVariable("gameScript", "medium"), Notify("Cybersecurity Role")]
+            textbutton "Hard" action [SetVariable("gameScript", "hard"), Notify("CISO Role")]
             #Catch to prevent entering the game without selecting a difficulty
             if gameScript:
                 textbutton "Confirm" action [Return(), Hide("role_select")]
@@ -1780,19 +1779,34 @@ screen mainGameplayLoop():
 screen eventViewer(event):
     modal True
     frame:
+        #Centers the event box
+        #TODO: Make this look better, these long winded events make this box way bigger than it needs to be and it looks horrible.
         xalign 0.5 yalign 0.5
         vbox:
             #Gets and prints question text at the top of the box
             text "[event.get('question')]"
             #For every choice available, get its text, and associate each response with a unique button for score tracking.
-            #Will only ever put as many buttons as there are choices, plus one hard-coded "bail-out" button to leave the event.
-            #Sets a temp variable equal to the current event for later processing.
-            #No matter what button is clicked, record the score associated and jump to the update cycle.
             for option in event['choices']:
+                #Button sets score to add to the response's score, and a dummy variable to the response to allow highlighting.
+                #The default highlighting does not work on menus generated through for loops.
                 textbutton "[option['answerText']]" action [
                     SetVariable("dynamScore", option['score']), 
                     SetVariable("responseSelected", option)
                     ] selected responseSelected == option
-            if responseSelected:
+
+            #Hardcoded bailout button to allow user to return to previous screen.
+            #Added if block to catch an edge case where tutorial event was unviewable after backing out.
+            textbutton "Let me get back to you with my response." action [
+                SetVariable("dynamScore", 0),
+                SetVariable("responseSelected", None),
+                Function (renpy.restart_interaction),
+                If(tutorialMode, Jump("tutorialCubicleGeneral"), Jump("departmentGeneral"))]
+            
+            #Blank line to split confirm button from the rest of the text.
+            textbutton "-------------------------" action None
+
+            #Checks if a response was clicked, then allows the user to proceed to score evaluation. [V]
+            #   See "eventUpdate" in events.
+            #If responseSelected threw too many false positives and allowed answer submission without clicking an answer.
+            if not responseSelected == None:
                 textbutton "Confirm selection" action SetVariable("tempEvent", event), Jump("eventUpdate")
-            textbutton "Let me get back to you with my response." action [Jump("departmentGeneral"), Hide("eventViewer")]
