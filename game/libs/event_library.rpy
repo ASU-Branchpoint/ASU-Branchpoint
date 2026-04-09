@@ -1,30 +1,37 @@
+#Full definition of all events in the game. Clunky, and only temporarily held in memory.
+#TODO: -Multiple copies of events divided by department, assign departments to events.
+#      -Fix extremely arbitrary weighting and point assigning for better random insertion.
+#TO LIBRARY WRITER: Question difficulty should be capitalized unless secondary shorthand includes capitalized difficulty.
+#                   Add a "secondary shorthand" that's longer than existing shorthand to make menus more understandable.
+#                       Existing shorthand should remain for the notifications.
+#           Thanks!
 label defineFull:
-    init python:
+    python:
 
         event_library = [
 
         {
             "id": "easy_net_001",
-            "question_difficulty": "easy",
+            "question_difficulty": "Easy",
             "spawn_rules": {
                 "easy": {"allowed": True, "weight": 10},
                 "medium": {"allowed": True, "weight": 5},
                 "hard": {"allowed": False, "weight": 0}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 6,
             "question": "A user says websites are not loading, but shared drives and other internal resources still work. What should you check first?",
             "choices": [
                 {
-                    "text": "Test DNS resolution for external domains and compare it to internal name resolution",
+                    "answerText": "Test DNS resolution for external domains and compare it to internal name resolution",
                     "score": 6
                 },
                 {
-                    "text": "Restart the workstation and retest whether external browsing returns after a clean boot",
+                    "answerText": "Restart the workstation and retest whether external browsing returns after a clean boot",
                     "score": 4
                 },
                 {
-                    "text": "Reinstall the browser and verify whether the pages load correctly afterward",
+                    "answerText": "Reinstall the browser and verify whether the pages load correctly afterward",
                     "score": 1
                 }
             ],
@@ -36,26 +43,26 @@ label defineFull:
 
         {
             "id": "easy_auth_002",
-            "question_difficulty": "easy",
+            "question_difficulty": "Easy",
             "spawn_rules": {
                 "easy": {"allowed": True, "weight": 10},
                 "medium": {"allowed": True, "weight": 5},
                 "hard": {"allowed": False, "weight": 0}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 7,
             "question": "A user cannot sign in and gets a wrong password message. What is the best first response?",
             "choices": [
                 {
-                    "text": "Verify keyboard input details such as caps lock, layout, and possible typing mistakes before changing the account",
+                    "answerText": "Verify keyboard input details such as caps lock, layout, and possible typing mistakes before changing the account",
                     "score": 7
                 },
                 {
-                    "text": "Reset the password right away and confirm whether the account accepts the new credential",
+                    "answerText": "Reset the password right away and confirm whether the account accepts the new credential",
                     "score": 5
                 },
                 {
-                    "text": "Disable the account temporarily and wait for the user to try again later",
+                    "answerText": "Disable the account temporarily and wait for the user to try again later",
                     "score": 1
                 }
             ],
@@ -67,26 +74,26 @@ label defineFull:
 
         {
             "id": "easy_print_003",
-            "question_difficulty": "easy",
+            "question_difficulty": "Easy",
             "spawn_rules": {
                 "easy": {"allowed": True, "weight": 9},
                 "medium": {"allowed": True, "weight": 4},
                 "hard": {"allowed": False, "weight": 0}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 6,
             "question": "One user cannot print, but everyone else can. What should you check first?",
             "choices": [
                 {
-                    "text": "Confirm that the correct printer is selected and still available on that specific user's device",
+                    "answerText": "Confirm that the correct printer is selected and still available on that specific user's device",
                     "score": 6
                 },
                 {
-                    "text": "Restart the shared printer and test whether the user's next print job leaves the queue",
+                    "answerText": "Restart the shared printer and test whether the user's next print job leaves the queue",
                     "score": 3
                 },
                 {
-                    "text": "Replace the print driver on the server and redeploy the printer connection to users",
+                    "answerText": "Replace the print driver on the server and redeploy the printer connection to users",
                     "score": 1
                 }
             ],
@@ -98,22 +105,22 @@ label defineFull:
 
         {
             "id": "easy_dns_004",
-            "question_difficulty": "easy",
+            "question_difficulty": "Easy",
             "spawn_rules": {
                 "easy": {"allowed": True, "weight": 10},
                 "medium": {"allowed": True, "weight": 5},
                 "hard": {"allowed": False, "weight": 0}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 8,
             "question": "A user can reach a server by IP address but not by hostname. What is the most likely issue?",
             "choices": [
                 {
-                    "text": "The hostname is failing to resolve correctly through DNS or related name services",
+                    "answerText": "The hostname is failing to resolve correctly through DNS or related name services",
                     "score": 8
                 },
                 {
-                    "text": "The server is unavailable even though direct network access still appears to work",
+                    "answerText": "The server is unavailable even though direct network access still appears to work",
                     "score": 2
                 }
             ],
@@ -125,26 +132,26 @@ label defineFull:
 
         {
             "id": "easy_perf_005",
-            "question_difficulty": "easy",
+            "question_difficulty": "Easy",
             "spawn_rules": {
                 "easy": {"allowed": True, "weight": 9},
                 "medium": {"allowed": True, "weight": 4},
                 "hard": {"allowed": False, "weight": 0}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 7,
             "question": "A user reports their PC is very slow, and Task Manager shows one process using 95% CPU. What should you do first?",
             "choices": [
                 {
-                    "text": "Identify the process and determine whether it is expected, misbehaving, or suspicious before stopping it",
+                    "answerText": "Identify the process and determine whether it is expected, misbehaving, or suspicious before stopping it",
                     "score": 7
                 },
                 {
-                    "text": "End the process immediately and watch whether overall responsiveness improves afterward",
+                    "answerText": "End the process immediately and watch whether overall responsiveness improves afterward",
                     "score": 5
                 },
                 {
-                    "text": "Leave the process alone and continue only if the system becomes completely unusable",
+                    "answerText": "Leave the process alone and continue only if the system becomes completely unusable",
                     "score": 0
                 }
             ],
@@ -156,26 +163,26 @@ label defineFull:
 
         {
             "id": "easy_time_006",
-            "question_difficulty": "easy",
+            "question_difficulty": "Easy",
             "spawn_rules": {
                 "easy": {"allowed": True, "weight": 8},
                 "medium": {"allowed": True, "weight": 4},
                 "hard": {"allowed": False, "weight": 0}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 6,
             "question": "A domain user cannot log in, and the workstation clock is several minutes off. What should you do first?",
             "choices": [
                 {
-                    "text": "Synchronize the workstation time with the domain source and retry domain authentication",
+                    "answerText": "Synchronize the workstation time with the domain source and retry domain authentication",
                     "score": 6
                 },
                 {
-                    "text": "Reset the user's password and test whether a fresh credential resolves the sign-in failure",
+                    "answerText": "Reset the user's password and test whether a fresh credential resolves the sign-in failure",
                     "score": 3
                 },
                 {
-                    "text": "Remove the PC from the domain and join it again to rebuild the machine relationship",
+                    "answerText": "Remove the PC from the domain and join it again to rebuild the machine relationship",
                     "score": 1
                 }
             ],
@@ -187,22 +194,22 @@ label defineFull:
 
         {
             "id": "easy_wifi_007",
-            "question_difficulty": "easy",
+            "question_difficulty": "Easy",
             "spawn_rules": {
                 "easy": {"allowed": True, "weight": 10},
                 "medium": {"allowed": True, "weight": 5},
                 "hard": {"allowed": False, "weight": 0}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 5,
             "question": "A laptop user says they cannot connect to Wi-Fi. What is the best first check?",
             "choices": [
                 {
-                    "text": "Confirm that wireless networking is enabled on the device and that airplane mode is not active",
+                    "answerText": "Confirm that wireless networking is enabled on the device and that airplane mode is not active",
                     "score": 5
                 },
                 {
-                    "text": "Replace the wireless router and test whether the user's connection returns afterward",
+                    "answerText": "Replace the wireless router and test whether the user's connection returns afterward",
                     "score": 1
                 }
             ],
@@ -214,26 +221,26 @@ label defineFull:
 
         {
             "id": "easy_drive_008",
-            "question_difficulty": "easy",
+            "question_difficulty": "Easy",
             "spawn_rules": {
                 "easy": {"allowed": True, "weight": 9},
                 "medium": {"allowed": True, "weight": 4},
                 "hard": {"allowed": False, "weight": 0}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 7,
             "question": "A user cannot access a mapped drive they normally use. What should you check first?",
             "choices": [
                 {
-                    "text": "Verify that the path is reachable and that the user still has the permissions required for that share",
+                    "answerText": "Verify that the path is reachable and that the user still has the permissions required for that share",
                     "score": 7
                 },
                 {
-                    "text": "Restart the file server and test whether the mapped drive reconnects on the next attempt",
+                    "answerText": "Restart the file server and test whether the mapped drive reconnects on the next attempt",
                     "score": 3
                 },
                 {
-                    "text": "Create a replacement shared folder with the same name so the user has something to reconnect to",
+                    "answerText": "Create a replacement shared folder with the same name so the user has something to reconnect to",
                     "score": 0
                 }
             ],
@@ -245,26 +252,26 @@ label defineFull:
 
         {
             "id": "easy_mail_009",
-            "question_difficulty": "easy",
+            "question_difficulty": "Easy",
             "spawn_rules": {
                 "easy": {"allowed": True, "weight": 8},
                 "medium": {"allowed": True, "weight": 4},
                 "hard": {"allowed": False, "weight": 0}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 6,
             "question": "A user's emails are stuck in the Outbox. What should you check first?",
             "choices": [
                 {
-                    "text": "Check for a large attachment or a connectivity problem that is preventing the message from leaving",
+                    "answerText": "Check for a large attachment or a connectivity problem that is preventing the message from leaving",
                     "score": 6
                 },
                 {
-                    "text": "Reinstall the email client and confirm whether the queue clears after the reinstall finishes",
+                    "answerText": "Reinstall the email client and confirm whether the queue clears after the reinstall finishes",
                     "score": 2
                 },
                 {
-                    "text": "Delete the user's mail profile immediately and rebuild it before doing any other testing",
+                    "answerText": "Delete the user's mail profile immediately and rebuild it before doing any other testing",
                     "score": 1
                 }
             ],
@@ -276,26 +283,26 @@ label defineFull:
 
         {
             "id": "easy_lockout_010",
-            "question_difficulty": "easy",
+            "question_difficulty": "Easy",
             "spawn_rules": {
                 "easy": {"allowed": True, "weight": 10},
                 "medium": {"allowed": True, "weight": 5},
                 "hard": {"allowed": False, "weight": 0}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 8,
             "question": "A user's account keeps locking again shortly after being unlocked. What is the best thing to investigate?",
             "choices": [
                 {
-                    "text": "Look for saved credentials, mobile devices, or background services still trying the old password",
+                    "answerText": "Look for saved credentials, mobile devices, or background services still trying the old password",
                     "score": 8
                 },
                 {
-                    "text": "Continue unlocking the account each time it locks so the user can keep working between lockouts",
+                    "answerText": "Continue unlocking the account each time it locks so the user can keep working between lockouts",
                     "score": 4
                 },
                 {
-                    "text": "Delete the account and build a replacement user object with the same access permissions",
+                    "answerText": "Delete the account and build a replacement user object with the same access permissions",
                     "score": 1
                 }
             ],
@@ -307,22 +314,22 @@ label defineFull:
 
         {
             "id": "easy_browser_011",
-            "question_difficulty": "easy",
+            "question_difficulty": "Easy",
             "spawn_rules": {
                 "easy": {"allowed": True, "weight": 8},
                 "medium": {"allowed": True, "weight": 4},
                 "hard": {"allowed": False, "weight": 0}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 5,
             "question": "A website displays incorrectly for one user, but works for others. What is a strong first step?",
             "choices": [
                 {
-                    "text": "Clear the browser cache and reload the site to see whether the incorrect local content is replaced",
+                    "answerText": "Clear the browser cache and reload the site to see whether the incorrect local content is replaced",
                     "score": 5
                 },
                 {
-                    "text": "Restart the web server and check whether the single-user display problem disappears afterward",
+                    "answerText": "Restart the web server and check whether the single-user display problem disappears afterward",
                     "score": 1
                 }
             ],
@@ -334,22 +341,22 @@ label defineFull:
 
         {
             "id": "easy_disk_012",
-            "question_difficulty": "easy",
+            "question_difficulty": "Easy",
             "spawn_rules": {
                 "easy": {"allowed": True, "weight": 8},
                 "medium": {"allowed": True, "weight": 4},
                 "hard": {"allowed": False, "weight": 0}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 6,
             "question": "A workstation is sluggish and Task Manager shows disk usage near 100%. What should you do first?",
             "choices": [
                 {
-                    "text": "Identify which processes are driving disk activity and compare whether the load looks expected or abnormal",
+                    "answerText": "Identify which processes are driving disk activity and compare whether the load looks expected or abnormal",
                     "score": 6
                 },
                 {
-                    "text": "Leave the system alone for now and only act if the workstation becomes completely unusable",
+                    "answerText": "Leave the system alone for now and only act if the workstation becomes completely unusable",
                     "score": 0
                 }
             ],
@@ -361,22 +368,22 @@ label defineFull:
 
         {
             "id": "easy_usb_013",
-            "question_difficulty": "easy",
+            "question_difficulty": "Easy",
             "spawn_rules": {
                 "easy": {"allowed": True, "weight": 7},
                 "medium": {"allowed": True, "weight": 3},
                 "hard": {"allowed": False, "weight": 0}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 5,
             "question": "A USB device is not recognized when plugged in. What is the best first step?",
             "choices": [
                 {
-                    "text": "Try another USB port and verify whether the device connection changes at the hardware level",
+                    "answerText": "Try another USB port and verify whether the device connection changes at the hardware level",
                     "score": 5
                 },
                 {
-                    "text": "Replace the motherboard and test whether the device is detected after the hardware swap",
+                    "answerText": "Replace the motherboard and test whether the device is detected after the hardware swap",
                     "score": 0
                 }
             ],
@@ -388,26 +395,26 @@ label defineFull:
 
         {
             "id": "easy_audio_014",
-            "question_difficulty": "easy",
+            "question_difficulty": "Easy",
             "spawn_rules": {
                 "easy": {"allowed": True, "weight": 7},
                 "medium": {"allowed": True, "weight": 3},
                 "hard": {"allowed": False, "weight": 0}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 5,
             "question": "A user reports no sound from their computer. What should you check first?",
             "choices": [
                 {
-                    "text": "Check the active output device and volume state to confirm audio is routed where the user expects",
+                    "answerText": "Check the active output device and volume state to confirm audio is routed where the user expects",
                     "score": 5
                 },
                 {
-                    "text": "Replace the speakers and test whether new hardware restores the missing sound path",
+                    "answerText": "Replace the speakers and test whether new hardware restores the missing sound path",
                     "score": 2
                 },
                 {
-                    "text": "Reinstall the operating system and verify whether the rebuilt environment restores audio playback",
+                    "answerText": "Reinstall the operating system and verify whether the rebuilt environment restores audio playback",
                     "score": 0
                 }
             ],
@@ -419,26 +426,26 @@ label defineFull:
 
         {
             "id": "easy_update_015",
-            "question_difficulty": "easy",
+            "question_difficulty": "Easy",
             "spawn_rules": {
                 "easy": {"allowed": True, "weight": 8},
                 "medium": {"allowed": True, "weight": 4},
                 "hard": {"allowed": False, "weight": 0}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 6,
             "question": "A system update failed to install. What is the best next step?",
             "choices": [
                 {
-                    "text": "Retry the update and review the error details or logs so the failure can be narrowed down",
+                    "answerText": "Retry the update and review the error details or logs so the failure can be narrowed down",
                     "score": 6
                 },
                 {
-                    "text": "Ignore the update for now and revisit it only if users begin reporting visible issues",
+                    "answerText": "Ignore the update for now and revisit it only if users begin reporting visible issues",
                     "score": 0
                 },
                 {
-                    "text": "Wipe the system and rebuild it immediately so the update path starts from a clean image",
+                    "answerText": "Wipe the system and rebuild it immediately so the update path starts from a clean image",
                     "score": 1
                 }
             ],
@@ -450,26 +457,26 @@ label defineFull:
 
         {
             "id": "easy_local_016",
-            "question_difficulty": "easy",
+            "question_difficulty": "Easy",
             "spawn_rules": {
                 "easy": {"allowed": True, "weight": 8},
                 "medium": {"allowed": False, "weight": 0},
                 "hard": {"allowed": True, "weight": 3}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 7,
             "question": "A user can sign in with cached credentials while offline, but cannot authenticate to the domain when connected. What should you check first?",
             "choices": [
                 {
-                    "text": "Check whether the workstation can reach and resolve the domain resources needed for authentication",
+                    "answerText": "Check whether the workstation can reach and resolve the domain resources needed for authentication",
                     "score": 7
                 },
                 {
-                    "text": "Replace the keyboard and confirm whether the new hardware changes the connected sign-in result",
+                    "answerText": "Replace the keyboard and confirm whether the new hardware changes the connected sign-in result",
                     "score": 1
                 },
                 {
-                    "text": "Create a second account for the user and test whether a new identity reaches the domain correctly",
+                    "answerText": "Create a second account for the user and test whether a new identity reaches the domain correctly",
                     "score": 2
                 }
             ],
@@ -481,26 +488,26 @@ label defineFull:
 
         {
             "id": "easy_memory_017",
-            "question_difficulty": "easy",
+            "question_difficulty": "Easy",
             "spawn_rules": {
                 "easy": {"allowed": True, "weight": 7},
                 "medium": {"allowed": False, "weight": 0},
                 "hard": {"allowed": True, "weight": 3}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 6,
             "question": "A system is slowing down and available memory is almost gone. What is the best first step?",
             "choices": [
                 {
-                    "text": "Check which processes are consuming memory so you can tell whether usage is expected or abnormal",
+                    "answerText": "Check which processes are consuming memory so you can tell whether usage is expected or abnormal",
                     "score": 6
                 },
                 {
-                    "text": "Restart the PC immediately and see whether memory usage resets to a stable baseline afterward",
+                    "answerText": "Restart the PC immediately and see whether memory usage resets to a stable baseline afterward",
                     "score": 3
                 },
                 {
-                    "text": "Replace the monitor so the user can continue working while the slowdown is reassessed later",
+                    "answerText": "Replace the monitor so the user can continue working while the slowdown is reassessed later",
                     "score": 0
                 }
             ],
@@ -512,26 +519,26 @@ label defineFull:
 
         {
             "id": "easy_dhcp_018",
-            "question_difficulty": "easy",
+            "question_difficulty": "Easy",
             "spawn_rules": {
                 "easy": {"allowed": True, "weight": 9},
                 "medium": {"allowed": False, "weight": 0},
                 "hard": {"allowed": True, "weight": 3}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 7,
             "question": "A workstation has no usable IP address. What should you investigate first?",
             "choices": [
                 {
-                    "text": "Check DHCP assignment and verify whether the adapter is receiving or failing to receive a valid lease",
+                    "answerText": "Check DHCP assignment and verify whether the adapter is receiving or failing to receive a valid lease",
                     "score": 7
                 },
                 {
-                    "text": "Replace the workstation and test whether new hardware receives an address normally",
+                    "answerText": "Replace the workstation and test whether new hardware receives an address normally",
                     "score": 0
                 },
                 {
-                    "text": "Map a network drive to see whether the machine can still reach shared resources indirectly",
+                    "answerText": "Map a network drive to see whether the machine can still reach shared resources indirectly",
                     "score": 1
                 }
             ],
@@ -543,22 +550,22 @@ label defineFull:
 
         {
             "id": "easy_keyboard_019",
-            "question_difficulty": "easy",
+            "question_difficulty": "Easy",
             "spawn_rules": {
                 "easy": {"allowed": True, "weight": 7},
                 "medium": {"allowed": False, "weight": 0},
                 "hard": {"allowed": True, "weight": 2}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 5,
             "question": "A user says the keyboard is typing the wrong characters. What is the best first check?",
             "choices": [
                 {
-                    "text": "Verify the keyboard language and layout settings to confirm the device is using the expected input map",
+                    "answerText": "Verify the keyboard language and layout settings to confirm the device is using the expected input map",
                     "score": 5
                 },
                 {
-                    "text": "Reinstall the operating system so all keyboard settings return to a default state",
+                    "answerText": "Reinstall the operating system so all keyboard settings return to a default state",
                     "score": 0
                 }
             ],
@@ -570,22 +577,22 @@ label defineFull:
 
         {
             "id": "easy_display_020",
-            "question_difficulty": "easy",
+            "question_difficulty": "Easy",
             "spawn_rules": {
                 "easy": {"allowed": True, "weight": 7},
                 "medium": {"allowed": False, "weight": 0},
                 "hard": {"allowed": True, "weight": 2}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 5,
             "question": "A second monitor is not being detected. What should you do first?",
             "choices": [
                 {
-                    "text": "Check the display cable and monitor settings to confirm the second screen is physically and logically connected",
+                    "answerText": "Check the display cable and monitor settings to confirm the second screen is physically and logically connected",
                     "score": 5
                 },
                 {
-                    "text": "Replace the graphics card and see whether the new hardware recognizes both displays correctly",
+                    "answerText": "Replace the graphics card and see whether the new hardware recognizes both displays correctly",
                     "score": 1
                 }
             ],
@@ -597,26 +604,26 @@ label defineFull:
 
         {
             "id": "easy_app_021",
-            "question_difficulty": "easy",
+            "question_difficulty": "Easy",
             "spawn_rules": {
                 "easy": {"allowed": True, "weight": 8},
                 "medium": {"allowed": False, "weight": 0},
                 "hard": {"allowed": True, "weight": 3}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 6,
             "question": "An application will not launch on a user's PC. What is the most useful first step?",
             "choices": [
                 {
-                    "text": "Check for errors, logs, or a hung process so you can tell why the launch is failing",
+                    "answerText": "Check for errors, logs, or a hung process so you can tell why the launch is failing",
                     "score": 6
                 },
                 {
-                    "text": "Reinstall the full operating system and confirm whether the application launches in the rebuilt environment",
+                    "answerText": "Reinstall the full operating system and confirm whether the application launches in the rebuilt environment",
                     "score": 0
                 },
                 {
-                    "text": "Delete the application folder immediately and rebuild the app from a fresh install afterward",
+                    "answerText": "Delete the application folder immediately and rebuild the app from a fresh install afterward",
                     "score": 1
                 }
             ],
@@ -628,26 +635,26 @@ label defineFull:
 
         {
             "id": "easy_logon_022",
-            "question_difficulty": "easy",
+            "question_difficulty": "Easy",
             "spawn_rules": {
                 "easy": {"allowed": True, "weight": 8},
                 "medium": {"allowed": False, "weight": 0},
                 "hard": {"allowed": True, "weight": 3}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 7,
             "question": "A user says logging into Windows takes much longer than usual. What should you check first?",
             "choices": [
                 {
-                    "text": "Check startup items, mapped resources, and any network-dependent actions that run during sign-in",
+                    "answerText": "Check startup items, mapped resources, and any network-dependent actions that run during sign-in",
                     "score": 7
                 },
                 {
-                    "text": "Replace the PC so the user can try the same login workflow on fresh hardware",
+                    "answerText": "Replace the PC so the user can try the same login workflow on fresh hardware",
                     "score": 1
                 },
                 {
-                    "text": "Explain that long login times can happen and advise the user to keep waiting each morning",
+                    "answerText": "Explain that long login times can happen and advise the user to keep waiting each morning",
                     "score": 0
                 }
             ],
@@ -659,22 +666,22 @@ label defineFull:
 
         {
             "id": "easy_cache_023",
-            "question_difficulty": "easy",
+            "question_difficulty": "Easy",
             "spawn_rules": {
                 "easy": {"allowed": True, "weight": 7},
                 "medium": {"allowed": False, "weight": 0},
                 "hard": {"allowed": True, "weight": 2}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 6,
             "question": "A user sees old content on a webpage while others see the updated version. What should you try first?",
             "choices": [
                 {
-                    "text": "Clear browser cache or force-refresh the page so the browser requests fresh content from the site",
+                    "answerText": "Clear browser cache or force-refresh the page so the browser requests fresh content from the site",
                     "score": 6
                 },
                 {
-                    "text": "Restart the web server and check whether the user's browser begins showing the newer version afterward",
+                    "answerText": "Restart the web server and check whether the user's browser begins showing the newer version afterward",
                     "score": 2
                 }
             ],
@@ -686,22 +693,22 @@ label defineFull:
 
         {
             "id": "easy_link_024",
-            "question_difficulty": "easy",
+            "question_difficulty": "Easy",
             "spawn_rules": {
                 "easy": {"allowed": True, "weight": 7},
                 "medium": {"allowed": False, "weight": 0},
                 "hard": {"allowed": True, "weight": 2}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 5,
             "question": "A desktop cannot connect over Ethernet. What should you check first?",
             "choices": [
                 {
-                    "text": "Check the cable seating and link lights on both the NIC and switch side of the connection",
+                    "answerText": "Check the cable seating and link lights on both the NIC and switch side of the connection",
                     "score": 5
                 },
                 {
-                    "text": "Replace the network switch and retest the same workstation on the rebuilt connection path",
+                    "answerText": "Replace the network switch and retest the same workstation on the rebuilt connection path",
                     "score": 1
                 }
             ],
@@ -713,26 +720,26 @@ label defineFull:
 
         {
             "id": "easy_access_025",
-            "question_difficulty": "easy",
+            "question_difficulty": "Easy",
             "spawn_rules": {
                 "easy": {"allowed": True, "weight": 9},
                 "medium": {"allowed": False, "weight": 0},
                 "hard": {"allowed": True, "weight": 3}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 8,
             "question": "A user changed roles recently and now says they are missing access they should have. What should you check first?",
             "choices": [
                 {
-                    "text": "Check the user's current group memberships and compare them to the access expected for the new role",
+                    "answerText": "Check the user's current group memberships and compare them to the access expected for the new role",
                     "score": 8
                 },
                 {
-                    "text": "Grant the requested access manually so the user can work while the new role settles into place",
+                    "answerText": "Grant the requested access manually so the user can work while the new role settles into place",
                     "score": 4
                 },
                 {
-                    "text": "Tell the user to wait a few days before anyone checks the access model or role mapping",
+                    "answerText": "Tell the user to wait a few days before anyone checks the access model or role mapping",
                     "score": 1
                 }
             ],
@@ -744,26 +751,26 @@ label defineFull:
 
         {
             "id": "medium_dns_001",
-            "question_difficulty": "medium",
+            "question_difficulty": "Medium",
             "spawn_rules": {
                 "easy": {"allowed": True, "weight": 3},
                 "medium": {"allowed": True, "weight": 10},
                 "hard": {"allowed": False, "weight": 0}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 20,
             "question": "Users can reach internal servers by IP, but several internal hostnames fail intermittently. What should you check first?",
             "choices": [
                 {
-                    "text": "Review internal DNS records, client DNS settings, and whether stale entries or old cache data are involved",
+                    "answerText": "Review internal DNS records, client DNS settings, and whether stale entries or old cache data are involved",
                     "score": 20
                 },
                 {
-                    "text": "Flush DNS on the affected machines and test whether the issue follows specific systems or specific names",
+                    "answerText": "Flush DNS on the affected machines and test whether the issue follows specific systems or specific names",
                     "score": 15
                 },
                 {
-                    "text": "Restart the impacted servers to refresh services that may not have registered correctly",
+                    "answerText": "Restart the impacted servers to refresh services that may not have registered correctly",
                     "score": 7
                 }
             ],
@@ -775,26 +782,26 @@ label defineFull:
 
         {
             "id": "medium_gpo_002",
-            "question_difficulty": "medium",
+            "question_difficulty": "Medium",
             "spawn_rules": {
                 "easy": {"allowed": True, "weight": 3},
                 "medium": {"allowed": True, "weight": 10},
                 "hard": {"allowed": False, "weight": 0}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 24,
             "question": "A new Group Policy setting is applying to some users but not others in the same department. What is the best next step?",
             "choices": [
                 {
-                    "text": "Check OU placement, inheritance, and security filtering to confirm the affected users are actually in scope",
+                    "answerText": "Check OU placement, inheritance, and security filtering to confirm the affected users are actually in scope",
                     "score": 24
                 },
                 {
-                    "text": "Run gpupdate /force and compare gpresult output between a working user and a failing user",
+                    "answerText": "Run gpupdate /force and compare gpresult output between a working user and a failing user",
                     "score": 18
                 },
                 {
-                    "text": "Restart the domain controller that processed the most recent policy change to clear any stale state",
+                    "answerText": "Restart the domain controller that processed the most recent policy change to clear any stale state",
                     "score": 8
                 }
             ],
@@ -806,26 +813,26 @@ label defineFull:
 
         {
             "id": "medium_vpn_003",
-            "question_difficulty": "medium",
+            "question_difficulty": "Medium",
             "spawn_rules": {
                 "easy": {"allowed": True, "weight": 3},
                 "medium": {"allowed": True, "weight": 9},
                 "hard": {"allowed": False, "weight": 0}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 22,
             "question": "A remote user can connect to VPN, but cannot access internal resources once connected. What should you investigate first?",
             "choices": [
                 {
-                    "text": "Check route assignment, internal DNS resolution, and whether the VPN session received the expected network settings",
+                    "answerText": "Check route assignment, internal DNS resolution, and whether the VPN session received the expected network settings",
                     "score": 22
                 },
                 {
-                    "text": "Reinstall the VPN client and verify whether the same issue happens after a clean reconnect",
+                    "answerText": "Reinstall the VPN client and verify whether the same issue happens after a clean reconnect",
                     "score": 13
                 },
                 {
-                    "text": "Reset the user's password and force a new VPN login session with fresh credentials",
+                    "answerText": "Reset the user's password and force a new VPN login session with fresh credentials",
                     "score": 6
                 }
             ],
@@ -837,26 +844,26 @@ label defineFull:
 
         {
             "id": "medium_mail_004",
-            "question_difficulty": "medium",
+            "question_difficulty": "Medium",
             "spawn_rules": {
                 "easy": {"allowed": True, "weight": 2},
                 "medium": {"allowed": True, "weight": 9},
                 "hard": {"allowed": False, "weight": 0}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 21,
             "question": "Several users report Outlook repeatedly asking for credentials, but they can still sign into other services. What should you check first?",
             "choices": [
                 {
-                    "text": "Review cached credentials, authentication prompts, and whether the mail profile is pointing to the expected service endpoint",
+                    "answerText": "Review cached credentials, authentication prompts, and whether the mail profile is pointing to the expected service endpoint",
                     "score": 21
                 },
                 {
-                    "text": "Create a new Outlook profile for one affected user and compare behavior against the current profile",
+                    "answerText": "Create a new Outlook profile for one affected user and compare behavior against the current profile",
                     "score": 16
                 },
                 {
-                    "text": "Reset passwords for the affected users and monitor whether the prompts stop during the next login cycle",
+                    "answerText": "Reset passwords for the affected users and monitor whether the prompts stop during the next login cycle",
                     "score": 8
                 }
             ],
@@ -868,26 +875,26 @@ label defineFull:
 
         {
             "id": "medium_share_005",
-            "question_difficulty": "medium",
+            "question_difficulty": "Medium",
             "spawn_rules": {
                 "easy": {"allowed": True, "weight": 3},
                 "medium": {"allowed": True, "weight": 10},
                 "hard": {"allowed": False, "weight": 0}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 23,
             "question": "A shared folder is accessible to some users but returns access denied for others who should have the same access. What is the best next step?",
             "choices": [
                 {
-                    "text": "Compare share permissions, NTFS permissions, and group membership between a working user and a failing user",
+                    "answerText": "Compare share permissions, NTFS permissions, and group membership between a working user and a failing user",
                     "score": 23
                 },
                 {
-                    "text": "Grant temporary direct access to an affected user and use that test to narrow down whether the issue is permission-related",
+                    "answerText": "Grant temporary direct access to an affected user and use that test to narrow down whether the issue is permission-related",
                     "score": 15
                 },
                 {
-                    "text": "Restart the file server and verify whether the access denied behavior persists after services reload",
+                    "answerText": "Restart the file server and verify whether the access denied behavior persists after services reload",
                     "score": 6
                 }
             ],
@@ -899,26 +906,26 @@ label defineFull:
 
         {
             "id": "medium_dhcp_006",
-            "question_difficulty": "medium",
+            "question_difficulty": "Medium",
             "spawn_rules": {
                 "easy": {"allowed": True, "weight": 2},
                 "medium": {"allowed": True, "weight": 9},
                 "hard": {"allowed": False, "weight": 0}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 25,
             "question": "Newly connected devices are intermittently failing to receive valid IP addresses. What should you check first?",
             "choices": [
                 {
-                    "text": "Review DHCP scope utilization, lease availability, and whether the DHCP service is handing out addresses correctly",
+                    "answerText": "Review DHCP scope utilization, lease availability, and whether the DHCP service is handing out addresses correctly",
                     "score": 25
                 },
                 {
-                    "text": "Assign temporary static IP addresses to a few affected devices to see whether the issue is limited to lease assignment",
+                    "answerText": "Assign temporary static IP addresses to a few affected devices to see whether the issue is limited to lease assignment",
                     "score": 17
                 },
                 {
-                    "text": "Restart the affected workstations and test whether new leases are issued after a clean boot",
+                    "answerText": "Restart the affected workstations and test whether new leases are issued after a clean boot",
                     "score": 8
                 }
             ],
@@ -930,26 +937,26 @@ label defineFull:
 
         {
             "id": "medium_web_007",
-            "question_difficulty": "medium",
+            "question_difficulty": "Medium",
             "spawn_rules": {
                 "easy": {"allowed": True, "weight": 2},
                 "medium": {"allowed": True, "weight": 9},
                 "hard": {"allowed": False, "weight": 0}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 18,
             "question": "An internal web application loads fine on Wi-Fi but fails when the same laptop is docked on Ethernet. What should you compare first?",
             "choices": [
                 {
-                    "text": "Compare IP configuration, DNS, gateway, and VLAN behavior between the Wi-Fi and Ethernet connections",
+                    "answerText": "Compare IP configuration, DNS, gateway, and VLAN behavior between the Wi-Fi and Ethernet connections",
                     "score": 18
                 },
                 {
-                    "text": "Swap the docking adapter and verify whether the failure follows the hardware path or the network path",
+                    "answerText": "Swap the docking adapter and verify whether the failure follows the hardware path or the network path",
                     "score": 13
                 },
                 {
-                    "text": "Reinstall the application client and test whether the protocol stack re-registers correctly after reinstall",
+                    "answerText": "Reinstall the application client and test whether the protocol stack re-registers correctly after reinstall",
                     "score": 6
                 }
             ],
@@ -961,26 +968,26 @@ label defineFull:
 
         {
             "id": "medium_profile_008",
-            "question_difficulty": "medium",
+            "question_difficulty": "Medium",
             "spawn_rules": {
                 "easy": {"allowed": True, "weight": 2},
                 "medium": {"allowed": True, "weight": 8},
                 "hard": {"allowed": False, "weight": 0}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 19,
             "question": "A user signs into a domain PC and gets a temporary profile instead of their normal desktop. What is the best first step?",
             "choices": [
                 {
-                    "text": "Check event logs, profile path access, and whether the expected profile is loading or failing during sign-in",
+                    "answerText": "Check event logs, profile path access, and whether the expected profile is loading or failing during sign-in",
                     "score": 19
                 },
                 {
-                    "text": "Rename the local profile folder and test whether Windows can build a clean profile path on next login",
+                    "answerText": "Rename the local profile folder and test whether Windows can build a clean profile path on next login",
                     "score": 14
                 },
                 {
-                    "text": "Recreate the entire user account and migrate the user's data into a new identity",
+                    "answerText": "Recreate the entire user account and migrate the user's data into a new identity",
                     "score": 5
                 }
             ],
@@ -992,26 +999,26 @@ label defineFull:
 
         {
             "id": "medium_cert_009",
-            "question_difficulty": "medium",
+            "question_difficulty": "Medium",
             "spawn_rules": {
                 "easy": {"allowed": True, "weight": 2},
                 "medium": {"allowed": True, "weight": 8},
                 "hard": {"allowed": False, "weight": 0}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 20,
             "question": "Some users are getting certificate warnings on an internal site, while others are not. What should you check first?",
             "choices": [
                 {
-                    "text": "Compare trust stores, intermediate certificates, and trust-chain behavior between working and failing clients",
+                    "answerText": "Compare trust stores, intermediate certificates, and trust-chain behavior between working and failing clients",
                     "score": 20
                 },
                 {
-                    "text": "Rebind the current certificate on the web server and test whether client warnings stop after the service refreshes",
+                    "answerText": "Rebind the current certificate on the web server and test whether client warnings stop after the service refreshes",
                     "score": 14
                 },
                 {
-                    "text": "Instruct users to continue through the warning while you confirm whether it is only cosmetic",
+                    "answerText": "Instruct users to continue through the warning while you confirm whether it is only cosmetic",
                     "score": 2
                 }
             ],
@@ -1023,26 +1030,26 @@ label defineFull:
 
         {
             "id": "medium_script_010",
-            "question_difficulty": "medium",
+            "question_difficulty": "Medium",
             "spawn_rules": {
                 "easy": {"allowed": True, "weight": 3},
                 "medium": {"allowed": True, "weight": 10},
                 "hard": {"allowed": False, "weight": 0}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 22,
             "question": "A login script that maps department drives is not running for several users after a recent OU change. What is the best first step?",
             "choices": [
                 {
-                    "text": "Check GPO links, script path access, and whether the OU move changed inheritance or targeting",
+                    "answerText": "Check GPO links, script path access, and whether the OU move changed inheritance or targeting",
                     "score": 22
                 },
                 {
-                    "text": "Run the script manually for one affected user and compare the result with a user who still gets it automatically",
+                    "answerText": "Run the script manually for one affected user and compare the result with a user who still gets it automatically",
                     "score": 16
                 },
                 {
-                    "text": "Recreate the drive mappings as permanent manual mappings for the affected department",
+                    "answerText": "Recreate the drive mappings as permanent manual mappings for the affected department",
                     "score": 8
                 }
             ],
@@ -1054,26 +1061,26 @@ label defineFull:
 
         {
             "id": "medium_trust_011",
-            "question_difficulty": "medium",
+            "question_difficulty": "Medium",
             "spawn_rules": {
                 "easy": {"allowed": False, "weight": 0},
                 "medium": {"allowed": True, "weight": 10},
                 "hard": {"allowed": True, "weight": 6}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 28,
             "question": "A workstation suddenly shows a trust relationship error when a domain user tries to sign in. What is the best next step?",
             "choices": [
                 {
-                    "text": "Repair the workstation trust with the domain or rejoin the machine after confirming the trust issue",
+                    "answerText": "Repair the workstation trust with the domain or rejoin the machine after confirming the trust issue",
                     "score": 28
                 },
                 {
-                    "text": "Test domain reachability and secure channel behavior from the workstation before changing the machine account state",
+                    "answerText": "Test domain reachability and secure channel behavior from the workstation before changing the machine account state",
                     "score": 21
                 },
                 {
-                    "text": "Reset the user's password and retry sign-in using a fresh credential token",
+                    "answerText": "Reset the user's password and retry sign-in using a fresh credential token",
                     "score": 7
                 }
             ],
@@ -1085,26 +1092,26 @@ label defineFull:
 
         {
             "id": "medium_service_012",
-            "question_difficulty": "medium",
+            "question_difficulty": "Medium",
             "spawn_rules": {
                 "easy": {"allowed": False, "weight": 0},
                 "medium": {"allowed": True, "weight": 9},
                 "hard": {"allowed": True, "weight": 6}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 24,
             "question": "A Windows service starts successfully, then stops after a few seconds. What should you check first?",
             "choices": [
                 {
-                    "text": "Check dependency services, startup parameters, and event log entries tied to the service shutdown",
+                    "answerText": "Check dependency services, startup parameters, and event log entries tied to the service shutdown",
                     "score": 24
                 },
                 {
-                    "text": "Change the service account and retry the startup to test whether the failure is tied to credentials",
+                    "answerText": "Change the service account and retry the startup to test whether the failure is tied to credentials",
                     "score": 16
                 },
                 {
-                    "text": "Restart the server so the service has a clean startup environment and test whether it holds",
+                    "answerText": "Restart the server so the service has a clean startup environment and test whether it holds",
                     "score": 9
                 }
             ],
@@ -1116,26 +1123,26 @@ label defineFull:
 
         {
             "id": "medium_spooler_013",
-            "question_difficulty": "medium",
+            "question_difficulty": "Medium",
             "spawn_rules": {
                 "easy": {"allowed": False, "weight": 0},
                 "medium": {"allowed": True, "weight": 8},
                 "hard": {"allowed": True, "weight": 5}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 23,
             "question": "A printer deployed by policy appears on user machines, but jobs remain stuck in queue and never print. What should you check first?",
             "choices": [
                 {
-                    "text": "Check spooler health, printer queue status, and driver compatibility on the print path",
+                    "answerText": "Check spooler health, printer queue status, and driver compatibility on the print path",
                     "score": 23
                 },
                 {
-                    "text": "Remove and redeploy the printer to one affected machine to test whether the deployment artifact is corrupted",
+                    "answerText": "Remove and redeploy the printer to one affected machine to test whether the deployment artifact is corrupted",
                     "score": 15
                 },
                 {
-                    "text": "Change the printer to a generic driver immediately and see whether jobs begin moving afterward",
+                    "answerText": "Change the printer to a generic driver immediately and see whether jobs begin moving afterward",
                     "score": 11
                 }
             ],
@@ -1147,26 +1154,26 @@ label defineFull:
 
         {
             "id": "medium_delays_014",
-            "question_difficulty": "medium",
+            "question_difficulty": "Medium",
             "spawn_rules": {
                 "easy": {"allowed": False, "weight": 0},
                 "medium": {"allowed": True, "weight": 9},
                 "hard": {"allowed": True, "weight": 6}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 26,
             "question": "Email delivery is delayed for many users across the organization, but messages eventually arrive. What should you investigate first?",
             "choices": [
                 {
-                    "text": "Review the transport queue, delivery retry behavior, and any service or connector health alerts",
+                    "answerText": "Review the transport queue, delivery retry behavior, and any service or connector health alerts",
                     "score": 26
                 },
                 {
-                    "text": "Send controlled test messages between internal and external recipients to narrow down where the delay appears",
+                    "answerText": "Send controlled test messages between internal and external recipients to narrow down where the delay appears",
                     "score": 19
                 },
                 {
-                    "text": "Restart mail clients on affected user machines and compare whether new messages leave the Outbox faster",
+                    "answerText": "Restart mail clients on affected user machines and compare whether new messages leave the Outbox faster",
                     "score": 6
                 }
             ],
@@ -1178,26 +1185,26 @@ label defineFull:
 
         {
             "id": "medium_perf_015",
-            "question_difficulty": "medium",
+            "question_difficulty": "Medium",
             "spawn_rules": {
                 "easy": {"allowed": False, "weight": 0},
                 "medium": {"allowed": True, "weight": 8},
                 "hard": {"allowed": True, "weight": 5}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 21,
             "question": "An internal application became slow for everyone immediately after a version update. What is the best first step?",
             "choices": [
                 {
-                    "text": "Review the change introduced by the update and compare current logs or configuration with the pre-update state",
+                    "answerText": "Review the change introduced by the update and compare current logs or configuration with the pre-update state",
                     "score": 21
                 },
                 {
-                    "text": "Roll one server back to the previous version in a controlled test and compare performance behavior",
+                    "answerText": "Roll one server back to the previous version in a controlled test and compare performance behavior",
                     "score": 17
                 },
                 {
-                    "text": "Increase server resources and monitor whether the slowdown is reduced under the new version",
+                    "answerText": "Increase server resources and monitor whether the slowdown is reduced under the new version",
                     "score": 10
                 }
             ],
@@ -1209,26 +1216,26 @@ label defineFull:
 
         {
             "id": "medium_ports_016",
-            "question_difficulty": "medium",
+            "question_difficulty": "Medium",
             "spawn_rules": {
                 "easy": {"allowed": False, "weight": 0},
                 "medium": {"allowed": True, "weight": 8},
                 "hard": {"allowed": True, "weight": 5}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 22,
             "question": "A service shows as running on the server, but clients cannot connect to it. What should you check first?",
             "choices": [
                 {
-                    "text": "Verify the expected listening ports, network reachability, and any firewall rules between clients and the service",
+                    "answerText": "Verify the expected listening ports, network reachability, and any firewall rules between clients and the service",
                     "score": 22
                 },
                 {
-                    "text": "Restart the service and confirm whether it binds to the correct interface after a clean start",
+                    "answerText": "Restart the service and confirm whether it binds to the correct interface after a clean start",
                     "score": 15
                 },
                 {
-                    "text": "Reinstall the client on one affected machine to see whether the problem is application-side only",
+                    "answerText": "Reinstall the client on one affected machine to see whether the problem is application-side only",
                     "score": 7
                 }
             ],
@@ -1240,26 +1247,26 @@ label defineFull:
 
         {
             "id": "medium_dns_017",
-            "question_difficulty": "medium",
+            "question_difficulty": "Medium",
             "spawn_rules": {
                 "easy": {"allowed": False, "weight": 0},
                 "medium": {"allowed": True, "weight": 10},
                 "hard": {"allowed": True, "weight": 6}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 27,
             "question": "Internal users are being sent to the wrong internal site when using a hostname that should point elsewhere. What should you check first?",
             "choices": [
                 {
-                    "text": "Check internal DNS data, stale records, and cached resolution on both clients and relevant servers",
+                    "answerText": "Check internal DNS data, stale records, and cached resolution on both clients and relevant servers",
                     "score": 27
                 },
                 {
-                    "text": "Test the hostname from multiple subnets and compare whether the incorrect destination appears consistently or only in certain places",
+                    "answerText": "Test the hostname from multiple subnets and compare whether the incorrect destination appears consistently or only in certain places",
                     "score": 21
                 },
                 {
-                    "text": "Restart the site that should be receiving traffic so it can re-register itself in the environment",
+                    "answerText": "Restart the site that should be receiving traffic so it can re-register itself in the environment",
                     "score": 9
                 }
             ],
@@ -1271,26 +1278,26 @@ label defineFull:
 
         {
             "id": "medium_disk_018",
-            "question_difficulty": "medium",
+            "question_difficulty": "Medium",
             "spawn_rules": {
                 "easy": {"allowed": False, "weight": 0},
                 "medium": {"allowed": True, "weight": 8},
                 "hard": {"allowed": True, "weight": 5}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 24,
             "question": "A file server suddenly reports critically low disk space overnight. What is the best first step?",
             "choices": [
                 {
-                    "text": "Review recent growth, large file creation, logs, and scheduled jobs before deleting or expanding anything",
+                    "answerText": "Review recent growth, large file creation, logs, and scheduled jobs before deleting or expanding anything",
                     "score": 24
                 },
                 {
-                    "text": "Expand the volume temporarily and use the added space to gather data without immediate user impact",
+                    "answerText": "Expand the volume temporarily and use the added space to gather data without immediate user impact",
                     "score": 17
                 },
                 {
-                    "text": "Delete the newest large files to restore service quickly and investigate later",
+                    "answerText": "Delete the newest large files to restore service quickly and investigate later",
                     "score": 8
                 }
             ],
@@ -1302,26 +1309,26 @@ label defineFull:
 
         {
             "id": "medium_ad_019",
-            "question_difficulty": "medium",
+            "question_difficulty": "Medium",
             "spawn_rules": {
                 "easy": {"allowed": False, "weight": 0},
                 "medium": {"allowed": True, "weight": 9},
                 "hard": {"allowed": True, "weight": 6}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 26,
             "question": "A user's group membership was changed on one domain controller, but another system still does not reflect the change hours later. What should you check first?",
             "choices": [
                 {
-                    "text": "Check replication status and whether the relevant domain controllers are exchanging changes normally",
+                    "answerText": "Check replication status and whether the relevant domain controllers are exchanging changes normally",
                     "score": 26
                 },
                 {
-                    "text": "Sign the user out and back in to force a fresh token and test whether the issue is token-related rather than replication-related",
+                    "answerText": "Sign the user out and back in to force a fresh token and test whether the issue is token-related rather than replication-related",
                     "score": 17
                 },
                 {
-                    "text": "Recreate the user account and reapply the desired group memberships from scratch",
+                    "answerText": "Recreate the user account and reapply the desired group memberships from scratch",
                     "score": 5
                 }
             ],
@@ -1333,26 +1340,26 @@ label defineFull:
 
         {
             "id": "medium_vlan_020",
-            "question_difficulty": "medium",
+            "question_difficulty": "Medium",
             "spawn_rules": {
                 "easy": {"allowed": False, "weight": 0},
                 "medium": {"allowed": True, "weight": 8},
                 "hard": {"allowed": True, "weight": 5}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 23,
             "question": "A user moved desks and can reach the internet, but cannot access internal systems they used before. What is the best first check?",
             "choices": [
                 {
-                    "text": "Check whether the new switch port and subnet placement put the device on the expected VLAN and internal route path",
+                    "answerText": "Check whether the new switch port and subnet placement put the device on the expected VLAN and internal route path",
                     "score": 23
                 },
                 {
-                    "text": "Compare the moved user's IP details to a nearby workstation that still has normal internal access",
+                    "answerText": "Compare the moved user's IP details to a nearby workstation that still has normal internal access",
                     "score": 18
                 },
                 {
-                    "text": "Reinstall the user's machine on the assumption that the move corrupted the network profile",
+                    "answerText": "Reinstall the user's machine on the assumption that the move corrupted the network profile",
                     "score": 4
                 }
             ],
@@ -1364,26 +1371,26 @@ label defineFull:
 
         {
             "id": "medium_roaming_021",
-            "question_difficulty": "medium",
+            "question_difficulty": "Medium",
             "spawn_rules": {
                 "easy": {"allowed": False, "weight": 0},
                 "medium": {"allowed": True, "weight": 8},
                 "hard": {"allowed": True, "weight": 5}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 20,
             "question": "A user's desktop settings and documents are not following them between domain PCs as expected. What should you check first?",
             "choices": [
                 {
-                    "text": "Check whether roaming profile or folder redirection settings are applying and whether the profile path is reachable",
+                    "answerText": "Check whether roaming profile or folder redirection settings are applying and whether the profile path is reachable",
                     "score": 20
                 },
                 {
-                    "text": "Compare one working user and one failing user to confirm whether the issue is tied to policy application or path access",
+                    "answerText": "Compare one working user and one failing user to confirm whether the issue is tied to policy application or path access",
                     "score": 16
                 },
                 {
-                    "text": "Copy the user's data manually between systems until the normal profile behavior resumes",
+                    "answerText": "Copy the user's data manually between systems until the normal profile behavior resumes",
                     "score": 8
                 }
             ],
@@ -1395,26 +1402,26 @@ label defineFull:
 
         {
             "id": "medium_proxy_022",
-            "question_difficulty": "medium",
+            "question_difficulty": "Medium",
             "spawn_rules": {
                 "easy": {"allowed": False, "weight": 0},
                 "medium": {"allowed": True, "weight": 9},
                 "hard": {"allowed": True, "weight": 6}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 22,
             "question": "Several users can browse some websites but fail on others after a recent network configuration change. What should you investigate first?",
             "choices": [
                 {
-                    "text": "Review proxy settings, filtering rules, and the exact change that altered outbound web handling",
+                    "answerText": "Review proxy settings, filtering rules, and the exact change that altered outbound web handling",
                     "score": 22
                 },
                 {
-                    "text": "Run controlled tests from more than one client to compare which destinations fail and whether the issue follows user, site, or path",
+                    "answerText": "Run controlled tests from more than one client to compare which destinations fail and whether the issue follows user, site, or path",
                     "score": 17
                 },
                 {
-                    "text": "Reinstall the browsers used by the affected users to eliminate client-side corruption as a factor",
+                    "answerText": "Reinstall the browsers used by the affected users to eliminate client-side corruption as a factor",
                     "score": 6
                 }
             ],
@@ -1426,26 +1433,26 @@ label defineFull:
 
         {
             "id": "medium_backup_023",
-            "question_difficulty": "medium",
+            "question_difficulty": "Medium",
             "spawn_rules": {
                 "easy": {"allowed": False, "weight": 0},
                 "medium": {"allowed": True, "weight": 9},
                 "hard": {"allowed": True, "weight": 6}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 25,
             "question": "Backups have been completing successfully for weeks, but restore tests are failing. What is the best next step?",
             "choices": [
                 {
-                    "text": "Review backup job logs, restore settings, and whether the backups are complete and usable rather than only marked successful",
+                    "answerText": "Review backup job logs, restore settings, and whether the backups are complete and usable rather than only marked successful",
                     "score": 25
                 },
                 {
-                    "text": "Run a limited restore to a test location using the most recent successful set and compare the failure details against earlier sets",
+                    "answerText": "Run a limited restore to a test location using the most recent successful set and compare the failure details against earlier sets",
                     "score": 19
                 },
                 {
-                    "text": "Run the backups again on the next cycle before looking deeper into restore behavior",
+                    "answerText": "Run the backups again on the next cycle before looking deeper into restore behavior",
                     "score": 8
                 }
             ],
@@ -1457,26 +1464,26 @@ label defineFull:
 
         {
             "id": "medium_sched_024",
-            "question_difficulty": "medium",
+            "question_difficulty": "Medium",
             "spawn_rules": {
                 "easy": {"allowed": False, "weight": 0},
                 "medium": {"allowed": True, "weight": 8},
                 "hard": {"allowed": True, "weight": 5}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 21,
             "question": "A task that should run nightly on a server has stopped running, but the script still works when launched manually. What should you check first?",
             "choices": [
                 {
-                    "text": "Check Task Scheduler triggers, execution history, and the credentials or permissions used by the scheduled context",
+                    "answerText": "Check Task Scheduler triggers, execution history, and the credentials or permissions used by the scheduled context",
                     "score": 21
                 },
                 {
-                    "text": "Create a duplicate scheduled task under a different account and compare whether it executes successfully overnight",
+                    "answerText": "Create a duplicate scheduled task under a different account and compare whether it executes successfully overnight",
                     "score": 16
                 },
                 {
-                    "text": "Run the task manually each morning until the schedule starts working again",
+                    "answerText": "Run the task manually each morning until the schedule starts working again",
                     "score": 7
                 }
             ],
@@ -1488,26 +1495,26 @@ label defineFull:
 
         {
             "id": "medium_auth_025",
-            "question_difficulty": "medium",
+            "question_difficulty": "Medium",
             "spawn_rules": {
                 "easy": {"allowed": False, "weight": 0},
                 "medium": {"allowed": True, "weight": 10},
                 "hard": {"allowed": True, "weight": 6}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 27,
             "question": "Users can authenticate to some internal services but fail on others after a recent DNS change. What should you investigate first?",
             "choices": [
                 {
-                    "text": "Check whether the affected services now resolve to the correct systems and whether service-related DNS records still match expectations",
+                    "answerText": "Check whether the affected services now resolve to the correct systems and whether service-related DNS records still match expectations",
                     "score": 27
                 },
                 {
-                    "text": "Compare a working service and a failing service from the same client to see whether the failure follows hostname, endpoint, or service type",
+                    "answerText": "Compare a working service and a failing service from the same client to see whether the failure follows hostname, endpoint, or service type",
                     "score": 21
                 },
                 {
-                    "text": "Reset passwords for the affected users and clear all saved credentials before testing again",
+                    "answerText": "Reset passwords for the affected users and clear all saved credentials before testing again",
                     "score": 7
                 }
             ],
@@ -1519,30 +1526,30 @@ label defineFull:
 
         {
             "id": "hard_auth_001",
-            "question_difficulty": "hard",
+            "question_difficulty": "Hard",
             "spawn_rules": {
                 "easy": {"allowed": True, "weight": 2},
                 "medium": {"allowed": True, "weight": 5},
                 "hard": {"allowed": True, "weight": 10}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 42,
             "question": "Several users intermittently fail domain authentication. Logs show Kerberos errors, but password resets do not help. What should you check first?",
             "choices": [
                 {
-                    "text": "Review time synchronization and DNS pathing for affected clients and domain controllers involved in the failures",
+                    "answerText": "Review time synchronization and DNS pathing for affected clients and domain controllers involved in the failures",
                     "score": 42
                 },
                 {
-                    "text": "Capture one failed sign-in path and compare it to a successful sign-in path to identify whether the issue follows a specific DC or client group",
+                    "answerText": "Capture one failed sign-in path and compare it to a successful sign-in path to identify whether the issue follows a specific DC or client group",
                     "score": 34
                 },
                 {
-                    "text": "Restart the affected clients and domain controllers in a controlled order to clear stale authentication state",
+                    "answerText": "Restart the affected clients and domain controllers in a controlled order to clear stale authentication state",
                     "score": 16
                 },
                 {
-                    "text": "Reset the passwords again and require all affected users to sign in with fresh credentials",
+                    "answerText": "Reset the passwords again and require all affected users to sign in with fresh credentials",
                     "score": 7
                 }
             ],
@@ -1554,30 +1561,30 @@ label defineFull:
 
         {
             "id": "hard_net_002",
-            "question_difficulty": "hard",
+            "question_difficulty": "Hard",
             "spawn_rules": {
                 "easy": {"allowed": True, "weight": 1},
                 "medium": {"allowed": True, "weight": 4},
                 "hard": {"allowed": True, "weight": 9}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 45,
             "question": "Multiple users report intermittent connectivity loss. Network logs show repeated ARP conflicts. What is the best first response?",
             "choices": [
                 {
-                    "text": "Trace the conflicting ARP entries to identify the duplicate IP assignment and correct the addressing issue",
+                    "answerText": "Trace the conflicting ARP entries to identify the duplicate IP assignment and correct the addressing issue",
                     "score": 45
                 },
                 {
-                    "text": "Isolate one impacted segment and compare switch tables or client lease data to determine whether the conflict is DHCP-driven or static",
+                    "answerText": "Isolate one impacted segment and compare switch tables or client lease data to determine whether the conflict is DHCP-driven or static",
                     "score": 36
                 },
                 {
-                    "text": "Restart the affected switches to clear learned state and see whether the conflict pattern resets",
+                    "answerText": "Restart the affected switches to clear learned state and see whether the conflict pattern resets",
                     "score": 15
                 },
                 {
-                    "text": "Assign new static IPs to the impacted users so they can reconnect while the rest of the network settles",
+                    "answerText": "Assign new static IPs to the impacted users so they can reconnect while the rest of the network settles",
                     "score": 11
                 }
             ],
@@ -1589,30 +1596,30 @@ label defineFull:
 
         {
             "id": "hard_ad_003",
-            "question_difficulty": "hard",
+            "question_difficulty": "Hard",
             "spawn_rules": {
                 "easy": {"allowed": True, "weight": 1},
                 "medium": {"allowed": True, "weight": 4},
                 "hard": {"allowed": True, "weight": 9}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 44,
             "question": "Changes made on one domain controller are not appearing on another site hours later. What should you investigate first?",
             "choices": [
                 {
-                    "text": "Review replication health, site-link behavior, and the connectivity path between the affected domain controllers",
+                    "answerText": "Review replication health, site-link behavior, and the connectivity path between the affected domain controllers",
                     "score": 44
                 },
                 {
-                    "text": "Compare directory metadata on both controllers to confirm whether the delay is replication, lingering objects, or stale reads",
+                    "answerText": "Compare directory metadata on both controllers to confirm whether the delay is replication, lingering objects, or stale reads",
                     "score": 35
                 },
                 {
-                    "text": "Restart both domain controllers so replication services reinitialize and retry the pending changes",
+                    "answerText": "Restart both domain controllers so replication services reinitialize and retry the pending changes",
                     "score": 16
                 },
                 {
-                    "text": "Recreate the missing changes manually on the second site to restore consistency more quickly",
+                    "answerText": "Recreate the missing changes manually on the second site to restore consistency more quickly",
                     "score": 12
                 }
             ],
@@ -1624,30 +1631,30 @@ label defineFull:
 
         {
             "id": "hard_dns_004",
-            "question_difficulty": "hard",
+            "question_difficulty": "Hard",
             "spawn_rules": {
                 "easy": {"allowed": True, "weight": 2},
                 "medium": {"allowed": True, "weight": 5},
                 "hard": {"allowed": True, "weight": 10}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 41,
             "question": "Internal users are intermittently sent to the wrong internal server by hostname. What should you check first?",
             "choices": [
                 {
-                    "text": "Review the DNS records, cache state, and stale registration behavior tied to the hostname in question",
+                    "answerText": "Review the DNS records, cache state, and stale registration behavior tied to the hostname in question",
                     "score": 41
                 },
                 {
-                    "text": "Query the hostname from multiple client groups and compare whether the wrong destination follows subnet, resolver, or client cache",
+                    "answerText": "Query the hostname from multiple client groups and compare whether the wrong destination follows subnet, resolver, or client cache",
                     "score": 33
                 },
                 {
-                    "text": "Restart the intended application server and force it to reregister its network identity",
+                    "answerText": "Restart the intended application server and force it to reregister its network identity",
                     "score": 13
                 },
                 {
-                    "text": "Hardcode the expected IP on the affected clients until normal resolution behavior returns",
+                    "answerText": "Hardcode the expected IP on the affected clients until normal resolution behavior returns",
                     "score": 10
                 }
             ],
@@ -1659,30 +1666,30 @@ label defineFull:
 
         {
             "id": "hard_security_005",
-            "question_difficulty": "hard",
+            "question_difficulty": "Hard",
             "spawn_rules": {
                 "easy": {"allowed": True, "weight": 1},
                 "medium": {"allowed": True, "weight": 4},
                 "hard": {"allowed": True, "weight": 9}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 50,
             "question": "Multiple user accounts show failed sign-in attempts from unfamiliar external IP addresses within a short time window. What is the best first action?",
             "choices": [
                 {
-                    "text": "Contain the affected accounts and escalate as a likely security incident while preserving the relevant authentication evidence",
+                    "answerText": "Contain the affected accounts and escalate as a likely security incident while preserving the relevant authentication evidence",
                     "score": 50
                 },
                 {
-                    "text": "Correlate the failed sign-ins across accounts and services first so you can confirm whether the pattern is password spray before containment",
+                    "answerText": "Correlate the failed sign-ins across accounts and services first so you can confirm whether the pattern is password spray before containment",
                     "score": 38
                 },
                 {
-                    "text": "Reset the affected passwords immediately and continue monitoring whether the attempts persist afterward",
+                    "answerText": "Reset the affected passwords immediately and continue monitoring whether the attempts persist afterward",
                     "score": 24
                 },
                 {
-                    "text": "Wait to see whether the activity escalates into successful logins before involving security responders",
+                    "answerText": "Wait to see whether the activity escalates into successful logins before involving security responders",
                     "score": 5
                 }
             ],
@@ -1694,30 +1701,30 @@ label defineFull:
 
         {
             "id": "hard_backup_006",
-            "question_difficulty": "hard",
+            "question_difficulty": "Hard",
             "spawn_rules": {
                 "easy": {"allowed": True, "weight": 2},
                 "medium": {"allowed": True, "weight": 5},
                 "hard": {"allowed": True, "weight": 10}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 43,
             "question": "Backup jobs have been reporting success, but test restores consistently fail. What should you do first?",
             "choices": [
                 {
-                    "text": "Review backup logs, restore settings, and chain integrity to determine why valid backups are not producing valid restores",
+                    "answerText": "Review backup logs, restore settings, and chain integrity to determine why valid backups are not producing valid restores",
                     "score": 43
                 },
                 {
-                    "text": "Perform a controlled restore from more than one backup point to determine whether the failure is tied to a specific generation or the restore workflow itself",
+                    "answerText": "Perform a controlled restore from more than one backup point to determine whether the failure is tied to a specific generation or the restore workflow itself",
                     "score": 35
                 },
                 {
-                    "text": "Run another backup cycle before testing restores again so the newest set is definitely fresh",
+                    "answerText": "Run another backup cycle before testing restores again so the newest set is definitely fresh",
                     "score": 11
                 },
                 {
-                    "text": "Delete the existing backup set and rebuild the schedule from scratch to eliminate any legacy issues",
+                    "answerText": "Delete the existing backup set and rebuild the schedule from scratch to eliminate any legacy issues",
                     "score": 8
                 }
             ],
@@ -1729,30 +1736,30 @@ label defineFull:
 
         {
             "id": "hard_vpn_007",
-            "question_difficulty": "hard",
+            "question_difficulty": "Hard",
             "spawn_rules": {
                 "easy": {"allowed": True, "weight": 1},
                 "medium": {"allowed": True, "weight": 4},
                 "hard": {"allowed": True, "weight": 9}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 46,
             "question": "VPN users are receiving IPs from an unexpected network range and cannot reach protected internal systems. What should you check first?",
             "choices": [
                 {
-                    "text": "Review the VPN address pool, route assignment, and any access rules tied to the issued range",
+                    "answerText": "Review the VPN address pool, route assignment, and any access rules tied to the issued range",
                     "score": 46
                 },
                 {
-                    "text": "Capture a working and failing VPN session to compare assigned routes, DNS, and policy attributes side by side",
+                    "answerText": "Capture a working and failing VPN session to compare assigned routes, DNS, and policy attributes side by side",
                     "score": 37
                 },
                 {
-                    "text": "Restart the VPN service and compare whether the next sessions return to the expected address pool",
+                    "answerText": "Restart the VPN service and compare whether the next sessions return to the expected address pool",
                     "score": 15
                 },
                 {
-                    "text": "Assign manual static addresses to the remote users who need immediate access",
+                    "answerText": "Assign manual static addresses to the remote users who need immediate access",
                     "score": 8
                 }
             ],
@@ -1764,30 +1771,30 @@ label defineFull:
 
         {
             "id": "hard_storage_008",
-            "question_difficulty": "hard",
+            "question_difficulty": "Hard",
             "spawn_rules": {
                 "easy": {"allowed": True, "weight": 2},
                 "medium": {"allowed": True, "weight": 5},
                 "hard": {"allowed": True, "weight": 10}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 42,
             "question": "A file server loses a large amount of disk space overnight, and users also report unusual file renames. What is the best first response?",
             "choices": [
                 {
-                    "text": "Investigate the file activity immediately and escalate the event as a possible active incident before normal cleanup actions",
+                    "answerText": "Investigate the file activity immediately and escalate the event as a possible active incident before normal cleanup actions",
                     "score": 42
                 },
                 {
-                    "text": "Place the share in a limited-access state and collect recent file-change details so you can determine whether automation or malware is responsible",
+                    "answerText": "Place the share in a limited-access state and collect recent file-change details so you can determine whether automation or malware is responsible",
                     "score": 36
                 },
                 {
-                    "text": "Expand the volume temporarily so service remains available while you review the changed data afterward",
+                    "answerText": "Expand the volume temporarily so service remains available while you review the changed data afterward",
                     "score": 18
                 },
                 {
-                    "text": "Delete the newest large files first so the volume returns to normal and then revisit the renames later",
+                    "answerText": "Delete the newest large files first so the volume returns to normal and then revisit the renames later",
                     "score": 7
                 }
             ],
@@ -1799,30 +1806,30 @@ label defineFull:
 
         {
             "id": "hard_gpo_009",
-            "question_difficulty": "hard",
+            "question_difficulty": "Hard",
             "spawn_rules": {
                 "easy": {"allowed": True, "weight": 2},
                 "medium": {"allowed": True, "weight": 5},
                 "hard": {"allowed": True, "weight": 9}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 40,
             "question": "After a new Group Policy deployment, many machines become noticeably slower during login and startup. What should you investigate first?",
             "choices": [
                 {
-                    "text": "Review the newly deployed policy settings and identify which recent change aligns with the slowdown pattern",
+                    "answerText": "Review the newly deployed policy settings and identify which recent change aligns with the slowdown pattern",
                     "score": 40
                 },
                 {
-                    "text": "Compare one affected machine and one unaffected machine with policy-result data to isolate which setting is adding delay",
+                    "answerText": "Compare one affected machine and one unaffected machine with policy-result data to isolate which setting is adding delay",
                     "score": 33
                 },
                 {
-                    "text": "Restart the impacted machines and see whether the next boot applies the policy more cleanly",
+                    "answerText": "Restart the impacted machines and see whether the next boot applies the policy more cleanly",
                     "score": 13
                 },
                 {
-                    "text": "Disable unrelated background software globally to reduce boot-time overhead while the issue is present",
+                    "answerText": "Disable unrelated background software globally to reduce boot-time overhead while the issue is present",
                     "score": 7
                 }
             ],
@@ -1834,30 +1841,30 @@ label defineFull:
 
         {
             "id": "hard_service_010",
-            "question_difficulty": "hard",
+            "question_difficulty": "Hard",
             "spawn_rules": {
                 "easy": {"allowed": True, "weight": 1},
                 "medium": {"allowed": True, "weight": 4},
                 "hard": {"allowed": True, "weight": 8}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 41,
             "question": "An internal application service shows as running, but clients cannot connect and port tests fail. What is the best first step?",
             "choices": [
                 {
-                    "text": "Verify whether the service is truly listening on the expected interface and whether firewalls allow the connection path",
+                    "answerText": "Verify whether the service is truly listening on the expected interface and whether firewalls allow the connection path",
                     "score": 41
                 },
                 {
-                    "text": "Compare local service port state to a known-good server running the same application stack",
+                    "answerText": "Compare local service port state to a known-good server running the same application stack",
                     "score": 34
                 },
                 {
-                    "text": "Restart the service and check whether the port binds properly after a clean startup cycle",
+                    "answerText": "Restart the service and check whether the port binds properly after a clean startup cycle",
                     "score": 14
                 },
                 {
-                    "text": "Reinstall the clients that are reporting connection failures to eliminate workstation-side variables",
+                    "answerText": "Reinstall the clients that are reporting connection failures to eliminate workstation-side variables",
                     "score": 6
                 }
             ],
@@ -1869,30 +1876,30 @@ label defineFull:
 
         {
             "id": "hard_proxy_011",
-            "question_difficulty": "hard",
+            "question_difficulty": "Hard",
             "spawn_rules": {
                 "easy": {"allowed": False, "weight": 0},
                 "medium": {"allowed": True, "weight": 5},
                 "hard": {"allowed": True, "weight": 10}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 43,
             "question": "After a firewall policy change, users can reach some external sites but fail on others in inconsistent ways. What should you check first?",
             "choices": [
                 {
-                    "text": "Review the changed firewall, proxy, or filtering logic and map the failures to the new outbound policy behavior",
+                    "answerText": "Review the changed firewall, proxy, or filtering logic and map the failures to the new outbound policy behavior",
                     "score": 43
                 },
                 {
-                    "text": "Run controlled browsing tests from multiple users and compare the failing destinations against category, protocol, or path differences",
+                    "answerText": "Run controlled browsing tests from multiple users and compare the failing destinations against category, protocol, or path differences",
                     "score": 35
                 },
                 {
-                    "text": "Clear browser caches and authentication tokens on the most heavily impacted user machines",
+                    "answerText": "Clear browser caches and authentication tokens on the most heavily impacted user machines",
                     "score": 9
                 },
                 {
-                    "text": "Roll back the browser version on the affected workstations to rule out client rendering regressions",
+                    "answerText": "Roll back the browser version on the affected workstations to rule out client rendering regressions",
                     "score": 7
                 }
             ],
@@ -1904,30 +1911,30 @@ label defineFull:
 
         {
             "id": "hard_identity_012",
-            "question_difficulty": "hard",
+            "question_difficulty": "Hard",
             "spawn_rules": {
                 "easy": {"allowed": False, "weight": 0},
                 "medium": {"allowed": True, "weight": 5},
                 "hard": {"allowed": True, "weight": 9}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 47,
             "question": "A machine reports a trust relationship failure, and other symptoms suggest the computer account password may be out of sync with the domain. What is the best response?",
             "choices": [
                 {
-                    "text": "Repair the machine account trust or reset the secure channel after confirming the trust path is broken",
+                    "answerText": "Repair the machine account trust or reset the secure channel after confirming the trust path is broken",
                     "score": 47
                 },
                 {
-                    "text": "Validate secure channel status and domain reachability first, then decide whether the machine account needs repair",
+                    "answerText": "Validate secure channel status and domain reachability first, then decide whether the machine account needs repair",
                     "score": 39
                 },
                 {
-                    "text": "Create a fresh user profile so the user can sign in under a newly built desktop context",
+                    "answerText": "Create a fresh user profile so the user can sign in under a newly built desktop context",
                     "score": 8
                 },
                 {
-                    "text": "Shift the user to a permanent local account so work can continue without domain dependency",
+                    "answerText": "Shift the user to a permanent local account so work can continue without domain dependency",
                     "score": 5
                 }
             ],
@@ -1939,30 +1946,30 @@ label defineFull:
 
         {
             "id": "hard_dns_013",
-            "question_difficulty": "hard",
+            "question_difficulty": "Hard",
             "spawn_rules": {
                 "easy": {"allowed": False, "weight": 0},
                 "medium": {"allowed": True, "weight": 4},
                 "hard": {"allowed": True, "weight": 9}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 44,
             "question": "Internal domains resolve correctly, but external domains fail from the DNS servers themselves. What should you check first?",
             "choices": [
                 {
-                    "text": "Review DNS forwarders, root hints, and whether the servers have working outbound DNS reachability",
+                    "answerText": "Review DNS forwarders, root hints, and whether the servers have working outbound DNS reachability",
                     "score": 44
                 },
                 {
-                    "text": "Query several external names directly from the DNS servers and compare responses by forwarder path to isolate where resolution stops",
+                    "answerText": "Query several external names directly from the DNS servers and compare responses by forwarder path to isolate where resolution stops",
                     "score": 35
                 },
                 {
-                    "text": "Point clients to public DNS temporarily so internet name resolution can continue while you investigate",
+                    "answerText": "Point clients to public DNS temporarily so internet name resolution can continue while you investigate",
                     "score": 15
                 },
                 {
-                    "text": "Restart the DNS service and wait for it to rebuild normal external resolution behavior",
+                    "answerText": "Restart the DNS service and wait for it to rebuild normal external resolution behavior",
                     "score": 12
                 }
             ],
@@ -1974,30 +1981,30 @@ label defineFull:
 
         {
             "id": "hard_forensics_014",
-            "question_difficulty": "hard",
+            "question_difficulty": "Hard",
             "spawn_rules": {
                 "easy": {"allowed": False, "weight": 0},
                 "medium": {"allowed": True, "weight": 4},
                 "hard": {"allowed": True, "weight": 8}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 49,
             "question": "A workstation shows an unknown process and unusual outbound traffic spikes to destinations users do not recognize. What is the best first action?",
             "choices": [
                 {
-                    "text": "Isolate the workstation from the network and escalate while preserving as much investigative context as possible",
+                    "answerText": "Isolate the workstation from the network and escalate while preserving as much investigative context as possible",
                     "score": 49
                 },
                 {
-                    "text": "Capture the current connection and process details immediately before deciding whether to isolate the system",
+                    "answerText": "Capture the current connection and process details immediately before deciding whether to isolate the system",
                     "score": 37
                 },
                 {
-                    "text": "Kill the suspicious process and monitor whether the traffic pattern stops without disconnecting the machine",
+                    "answerText": "Kill the suspicious process and monitor whether the traffic pattern stops without disconnecting the machine",
                     "score": 20
                 },
                 {
-                    "text": "Restart the system and return it to the user if the traffic does not reappear right away",
+                    "answerText": "Restart the system and return it to the user if the traffic does not reappear right away",
                     "score": 8
                 }
             ],
@@ -2009,30 +2016,30 @@ label defineFull:
 
         {
             "id": "hard_cert_015",
-            "question_difficulty": "hard",
+            "question_difficulty": "Hard",
             "spawn_rules": {
                 "easy": {"allowed": False, "weight": 0},
                 "medium": {"allowed": True, "weight": 5},
                 "hard": {"allowed": True, "weight": 9}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 42,
             "question": "An internal application suddenly begins showing certificate warnings across many systems after a certificate renewal. What should you check first?",
             "choices": [
                 {
-                    "text": "Review the renewed certificate's binding, hostname match, and full trust chain as presented by the application",
+                    "answerText": "Review the renewed certificate's binding, hostname match, and full trust chain as presented by the application",
                     "score": 42
                 },
                 {
-                    "text": "Compare the old and new certificates to determine whether EKU, SAN, issuer chain, or binding behavior changed unexpectedly",
+                    "answerText": "Compare the old and new certificates to determine whether EKU, SAN, issuer chain, or binding behavior changed unexpectedly",
                     "score": 34
                 },
                 {
-                    "text": "Restart the application service so the new certificate presentation path is fully refreshed",
+                    "answerText": "Restart the application service so the new certificate presentation path is fully refreshed",
                     "score": 14
                 },
                 {
-                    "text": "Advise users to bypass the warning until the certificate environment stabilizes after renewal",
+                    "answerText": "Advise users to bypass the warning until the certificate environment stabilizes after renewal",
                     "score": 2
                 }
             ],
@@ -2044,30 +2051,30 @@ label defineFull:
 
         {
             "id": "hard_sched_016",
-            "question_difficulty": "hard",
+            "question_difficulty": "Hard",
             "spawn_rules": {
                 "easy": {"allowed": False, "weight": 0},
                 "medium": {"allowed": True, "weight": 4},
                 "hard": {"allowed": True, "weight": 8}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 40,
             "question": "An overnight scheduled task that updates shared data stops running after a service account password change. The script still works when launched manually by an admin. What should you check first?",
             "choices": [
                 {
-                    "text": "Review the scheduled task credentials, execution context, and permission model tied to the service account change",
+                    "answerText": "Review the scheduled task credentials, execution context, and permission model tied to the service account change",
                     "score": 40
                 },
                 {
-                    "text": "Clone the scheduled task under a separate account and compare whether the failure follows the task definition or the account context",
+                    "answerText": "Clone the scheduled task under a separate account and compare whether the failure follows the task definition or the account context",
                     "score": 31
                 },
                 {
-                    "text": "Restart the server and allow the task to retry under a clean system state on the next run",
+                    "answerText": "Restart the server and allow the task to retry under a clean system state on the next run",
                     "score": 11
                 },
                 {
-                    "text": "Run the script manually each morning until the scheduled copy begins working again",
+                    "answerText": "Run the script manually each morning until the scheduled copy begins working again",
                     "score": 9
                 }
             ],
@@ -2079,30 +2086,30 @@ label defineFull:
 
         {
             "id": "hard_mail_017",
-            "question_difficulty": "hard",
+            "question_difficulty": "Hard",
             "spawn_rules": {
                 "easy": {"allowed": False, "weight": 0},
                 "medium": {"allowed": True, "weight": 5},
                 "hard": {"allowed": True, "weight": 9}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 41,
             "question": "Outbound mail is delayed for all users, and queue monitoring shows messages accumulating faster than they leave. What should you do first?",
             "choices": [
                 {
-                    "text": "Review transport queue behavior, connector health, and the stage at which outbound delivery is backing up",
+                    "answerText": "Review transport queue behavior, connector health, and the stage at which outbound delivery is backing up",
                     "score": 41
                 },
                 {
-                    "text": "Send controlled internal-to-external tests and compare queue growth patterns by destination domain and message size",
+                    "answerText": "Send controlled internal-to-external tests and compare queue growth patterns by destination domain and message size",
                     "score": 33
                 },
                 {
-                    "text": "Flush or clear selected queue items to see whether the transport backlog begins moving again",
+                    "answerText": "Flush or clear selected queue items to see whether the transport backlog begins moving again",
                     "score": 12
                 },
                 {
-                    "text": "Restart mail clients and have users resend delayed messages from scratch",
+                    "answerText": "Restart mail clients and have users resend delayed messages from scratch",
                     "score": 5
                 }
             ],
@@ -2114,30 +2121,30 @@ label defineFull:
 
         {
                 "id": "hard_replication_018",
-                "question_difficulty": "hard",
+                "question_difficulty": "Hard",
                 "spawn_rules": {
                     "easy": {"allowed": False, "weight": 0},
                     "medium": {"allowed": True, "weight": 4},
                     "hard": {"allowed": True, "weight": 9}
                 },
-                "location": "helpdesk",
+                "location": defineHelpdesk,
                 "points": 46,
                 "question": "SYSVOL changes are visible on one domain controller but not another, and login scripts are inconsistent between sites. What should you check first?",
                 "choices": [
                     {
-                        "text": "Review SYSVOL or DFS replication health and confirm the replication path between the relevant domain controllers",
+                        "answerText": "Review SYSVOL or DFS replication health and confirm the replication path between the relevant domain controllers",
                         "score": 46
                     },
                     {
-                        "text": "Compare the script versions and timestamps on both controllers to determine whether the issue is truly replication or an update path mistake",
+                        "answerText": "Compare the script versions and timestamps on both controllers to determine whether the issue is truly replication or an update path mistake",
                         "score": 36
                     },
                     {
-                        "text": "Copy the correct scripts manually to the missing controller so logins become consistent again while you continue checking",
+                        "answerText": "Copy the correct scripts manually to the missing controller so logins become consistent again while you continue checking",
                         "score": 15
                     },
                     {
-                        "text": "Restart the affected client machines so they redraw the latest login resources from the domain",
+                        "answerText": "Restart the affected client machines so they redraw the latest login resources from the domain",
                         "score": 6
                     }
                 ],
@@ -2149,30 +2156,30 @@ label defineFull:
 
         {
             "id": "hard_latency_019",
-            "question_difficulty": "hard",
+            "question_difficulty": "Hard",
             "spawn_rules": {
                 "easy": {"allowed": False, "weight": 0},
                 "medium": {"allowed": True, "weight": 4},
                 "hard": {"allowed": True, "weight": 8}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 40,
             "question": "An application performs normally internally but becomes unusably slow for remote VPN users during peak hours only. What should you check first?",
             "choices": [
                 {
-                    "text": "Review VPN throughput, latency, and peak-time path congestion between remote users and the application environment",
+                    "answerText": "Review VPN throughput, latency, and peak-time path congestion between remote users and the application environment",
                     "score": 40
                 },
                 {
-                    "text": "Compare application response timing from an internal host and a VPN-connected host during the same window to separate app delay from network delay",
+                    "answerText": "Compare application response timing from an internal host and a VPN-connected host during the same window to separate app delay from network delay",
                     "score": 32
                 },
                 {
-                    "text": "Increase server-side application resources and monitor whether remote users improve during the next peak period",
+                    "answerText": "Increase server-side application resources and monitor whether remote users improve during the next peak period",
                     "score": 14
                 },
                 {
-                    "text": "Schedule a daily VPN service restart before peak hours so the tunnel environment begins from a clean state",
+                    "answerText": "Schedule a daily VPN service restart before peak hours so the tunnel environment begins from a clean state",
                     "score": 9
                 }
             ],
@@ -2184,30 +2191,30 @@ label defineFull:
 
         {
             "id": "hard_acl_020",
-            "question_difficulty": "hard",
+            "question_difficulty": "Hard",
             "spawn_rules": {
                 "easy": {"allowed": False, "weight": 0},
                 "medium": {"allowed": True, "weight": 5},
                 "hard": {"allowed": True, "weight": 10}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 45,
             "question": "After a network redesign, one subnet can reach the internet but cannot access specific internal application ports used by a legacy service. What should you check first?",
             "choices": [
                 {
-                    "text": "Review the ACLs, firewall rules, and route changes affecting the redesigned subnet's path to the legacy service",
+                    "answerText": "Review the ACLs, firewall rules, and route changes affecting the redesigned subnet's path to the legacy service",
                     "score": 45
                 },
                 {
-                    "text": "Test the legacy ports from the affected subnet and a working subnet to identify whether the loss is policy-specific or route-specific",
+                    "answerText": "Test the legacy ports from the affected subnet and a working subnet to identify whether the loss is policy-specific or route-specific",
                     "score": 36
                 },
                 {
-                    "text": "Move the affected users to a temporary VLAN that still has the older access behavior while you observe traffic patterns",
+                    "answerText": "Move the affected users to a temporary VLAN that still has the older access behavior while you observe traffic patterns",
                     "score": 15
                 },
                 {
-                    "text": "Reinstall the client application used to reach the service on several failing systems",
+                    "answerText": "Reinstall the client application used to reach the service on several failing systems",
                     "score": 6
                 }
             ],
@@ -2219,30 +2226,30 @@ label defineFull:
 
         {
             "id": "hard_db_021",
-            "question_difficulty": "hard",
+            "question_difficulty": "Hard",
             "spawn_rules": {
                 "easy": {"allowed": False, "weight": 0},
                 "medium": {"allowed": False, "weight": 0},
                 "hard": {"allowed": True, "weight": 9}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 44,
             "question": "An application server can reach its database by IP, but the application still fails to authenticate after a recent service migration. What should you check first?",
             "choices": [
                 {
-                    "text": "Review the connection string, service account permissions, and any name-based authentication dependencies introduced by the migration",
+                    "answerText": "Review the connection string, service account permissions, and any name-based authentication dependencies introduced by the migration",
                     "score": 44
                 },
                 {
-                    "text": "Compare the migrated server's application settings to the pre-migration environment to isolate which identity or endpoint detail changed",
+                    "answerText": "Compare the migrated server's application settings to the pre-migration environment to isolate which identity or endpoint detail changed",
                     "score": 35
                 },
                 {
-                    "text": "Restart the database service and the application service together so the session and identity path reinitialize cleanly",
+                    "answerText": "Restart the database service and the application service together so the session and identity path reinitialize cleanly",
                     "score": 12
                 },
                 {
-                    "text": "Replace hostname references with raw IP references everywhere in the application configuration and retest",
+                    "answerText": "Replace hostname references with raw IP references everywhere in the application configuration and retest",
                     "score": 10
                 }
             ],
@@ -2254,30 +2261,30 @@ label defineFull:
 
         {
             "id": "hard_eventlog_022",
-            "question_difficulty": "hard",
+            "question_difficulty": "Hard",
             "spawn_rules": {
                 "easy": {"allowed": False, "weight": 0},
                 "medium": {"allowed": False, "weight": 0},
                 "hard": {"allowed": True, "weight": 8}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 40,
             "question": "A critical service began failing after a system patch cycle, but only on one of several identically configured servers. What should you check first?",
             "choices": [
                 {
-                    "text": "Compare logs, service state, and effective configuration between the failing server and a working peer",
+                    "answerText": "Compare logs, service state, and effective configuration between the failing server and a working peer",
                     "score": 40
                 },
                 {
-                    "text": "Review the exact patch and application sequence on the failing host to determine whether one server diverged during the cycle",
+                    "answerText": "Review the exact patch and application sequence on the failing host to determine whether one server diverged during the cycle",
                     "score": 34
                 },
                 {
-                    "text": "Roll back the most recent patch from the failing server before collecting any additional diagnostics",
+                    "answerText": "Roll back the most recent patch from the failing server before collecting any additional diagnostics",
                     "score": 16
                 },
                 {
-                    "text": "Restart the service several times across the patch window to see whether it stabilizes as dependencies settle",
+                    "answerText": "Restart the service several times across the patch window to see whether it stabilizes as dependencies settle",
                     "score": 10
                 }
             ],
@@ -2289,30 +2296,30 @@ label defineFull:
 
         {
             "id": "hard_storage_023",
-            "question_difficulty": "hard",
+            "question_difficulty": "Hard",
             "spawn_rules": {
                 "easy": {"allowed": False, "weight": 0},
                 "medium": {"allowed": False, "weight": 0},
                 "hard": {"allowed": True, "weight": 9}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 43,
             "question": "A shared storage volume is online, but only some application servers can write to it after a permission model change. What should you check first?",
             "choices": [
                 {
-                    "text": "Review the volume ACLs, host access rules, and the service identities used by the servers that can and cannot write",
+                    "answerText": "Review the volume ACLs, host access rules, and the service identities used by the servers that can and cannot write",
                     "score": 43
                 },
                 {
-                    "text": "Compare a working application server and a failing one to determine whether the permission issue follows the host, service identity, or storage path",
+                    "answerText": "Compare a working application server and a failing one to determine whether the permission issue follows the host, service identity, or storage path",
                     "score": 35
                 },
                 {
-                    "text": "Remove the write restrictions temporarily and observe whether all servers resume normal operation immediately",
+                    "answerText": "Remove the write restrictions temporarily and observe whether all servers resume normal operation immediately",
                     "score": 12
                 },
                 {
-                    "text": "Restart the storage-connected application servers to refresh any stale access tokens or sessions",
+                    "answerText": "Restart the storage-connected application servers to refresh any stale access tokens or sessions",
                     "score": 11
                 }
             ],
@@ -2324,30 +2331,30 @@ label defineFull:
 
         {
             "id": "hard_cloudsync_024",
-            "question_difficulty": "hard",
+            "question_difficulty": "Hard",
             "spawn_rules": {
                 "easy": {"allowed": False, "weight": 0},
                 "medium": {"allowed": False, "weight": 0},
                 "hard": {"allowed": True, "weight": 8}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 41,
             "question": "A hybrid identity sync job completes, but some new on-prem changes never appear in the cloud directory. What should you investigate first?",
             "choices": [
                 {
-                    "text": "Review sync scope, connector state, filtering rules, and the error path for the objects that are missing",
+                    "answerText": "Review sync scope, connector state, filtering rules, and the error path for the objects that are missing",
                     "score": 41
                 },
                 {
-                    "text": "Compare one object that synced successfully and one that did not to identify which attribute or scope difference is blocking export",
+                    "answerText": "Compare one object that synced successfully and one that did not to identify which attribute or scope difference is blocking export",
                     "score": 34
                 },
                 {
-                    "text": "Restart the sync server and run another full sync cycle before checking the connector details",
+                    "answerText": "Restart the sync server and run another full sync cycle before checking the connector details",
                     "score": 14
                 },
                 {
-                    "text": "Create the missing cloud-side objects manually so the environments look aligned again",
+                    "answerText": "Create the missing cloud-side objects manually so the environments look aligned again",
                     "score": 10
                 }
             ],
@@ -2359,30 +2366,30 @@ label defineFull:
 
         {
             "id": "hard_cert_025",
-            "question_difficulty": "hard",
+            "question_difficulty": "Hard",
             "spawn_rules": {
                 "easy": {"allowed": False, "weight": 0},
                 "medium": {"allowed": False, "weight": 0},
                 "hard": {"allowed": True, "weight": 10}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 48,
             "question": "Mutual TLS authentication suddenly fails between two internal services after a certificate rollover, even though both services are up and reachable. What should you check first?",
             "choices": [
                 {
-                    "text": "Review the new certificates, trust chain, mapping rules, and client or server certificate requirements used in the mutual TLS flow",
+                    "answerText": "Review the new certificates, trust chain, mapping rules, and client or server certificate requirements used in the mutual TLS flow",
                     "score": 48
                 },
                 {
-                    "text": "Compare the old and new certificates for SAN, EKU, issuer, and trust differences that could change how the two services validate one another",
+                    "answerText": "Compare the old and new certificates for SAN, EKU, issuer, and trust differences that could change how the two services validate one another",
                     "score": 39
                 },
                 {
-                    "text": "Restart both services so the renewed certificates are reloaded from a clean state and then retest authentication",
+                    "answerText": "Restart both services so the renewed certificates are reloaded from a clean state and then retest authentication",
                     "score": 15
                 },
                 {
-                    "text": "Disable strict certificate validation temporarily so traffic can resume while the trust relationship is reviewed",
+                    "answerText": "Disable strict certificate validation temporarily so traffic can resume while the trust relationship is reviewed",
                     "score": 4
                 }
             ],
@@ -2400,20 +2407,20 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 2},
                 "hard": {"allowed": True, "weight": 1}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 6,
             "question": "A user reports that a website is down, but only says it is not loading in their browser. What do you do first?",
             "choices": [
                 {
-                    "text": "Check whether the site fails for other users and confirm whether the issue is browser-specific or broader",
+                    "answerText": "Check whether the site fails for other users and confirm whether the issue is browser-specific or broader",
                     "score": 6
                 },
                 {
-                    "text": "Clear the user's browser cache and assume the issue is just stale local content",
+                    "answerText": "Clear the user's browser cache and assume the issue is just stale local content",
                     "score": 0
                 },
                 {
-                    "text": "Reinstall the browser immediately because it is the fastest way to rule out client corruption",
+                    "answerText": "Reinstall the browser immediately because it is the fastest way to rule out client corruption",
                     "score": -5
                 }
             ],
@@ -2431,20 +2438,20 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 0},
                 "hard": {"allowed": True, "weight": 0}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 0,
             "question": "You focused on the browser, but more users are now reporting the same website issue. How do you recover?",
             "choices": [
                 {
-                    "text": "Check DNS and upstream connectivity, then compare results from multiple users and systems",
+                    "answerText": "Check DNS and upstream connectivity, then compare results from multiple users and systems",
                     "score": 0
                 },
                 {
-                    "text": "Restart the affected users' computers so they can reconnect with clean sessions",
+                    "answerText": "Restart the affected users' computers so they can reconnect with clean sessions",
                     "score": -3
                 },
                 {
-                    "text": "Continue rebuilding browsers because the first repair may not have fully completed",
+                    "answerText": "Continue rebuilding browsers because the first repair may not have fully completed",
                     "score": -8
                 }
             ],
@@ -2462,20 +2469,20 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 2},
                 "hard": {"allowed": True, "weight": 1}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 7,
             "question": "A user says they cannot log in after a password change. What do you do first?",
             "choices": [
                 {
-                    "text": "Confirm whether old credentials are still cached on another device or service before changing the account again",
+                    "answerText": "Confirm whether old credentials are still cached on another device or service before changing the account again",
                     "score": 7
                 },
                 {
-                    "text": "Reset the password again right away so the user has a fresh credential to try",
+                    "answerText": "Reset the password again right away so the user has a fresh credential to try",
                     "score": 0
                 },
                 {
-                    "text": "Disable the account until the login behavior settles down across the environment",
+                    "answerText": "Disable the account until the login behavior settles down across the environment",
                     "score": -6
                 }
             ],
@@ -2493,20 +2500,20 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 0},
                 "hard": {"allowed": True, "weight": 0}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 0,
             "question": "You reset the password again, but the account keeps locking out. What is the best recovery step?",
             "choices": [
                 {
-                    "text": "Trace saved credentials, synced devices, and background sign-ins still attempting the old password",
+                    "answerText": "Trace saved credentials, synced devices, and background sign-ins still attempting the old password",
                     "score": 0
                 },
                 {
-                    "text": "Keep unlocking the account as each lockout occurs so the user can continue working",
+                    "answerText": "Keep unlocking the account as each lockout occurs so the user can continue working",
                     "score": -4
                 },
                 {
-                    "text": "Create a brand-new user account and migrate access instead of investigating the lockout source",
+                    "answerText": "Create a brand-new user account and migrate access instead of investigating the lockout source",
                     "score": -9
                 }
             ],
@@ -2524,20 +2531,20 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 2},
                 "hard": {"allowed": True, "weight": 1}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 6,
             "question": "One user says a printer is not working. What do you do first?",
             "choices": [
                 {
-                    "text": "Confirm the selected printer, queue target, and whether the issue affects only that user or multiple users",
+                    "answerText": "Confirm the selected printer, queue target, and whether the issue affects only that user or multiple users",
                     "score": 6
                 },
                 {
-                    "text": "Restart the shared printer immediately so any stuck state is cleared before more users are affected",
+                    "answerText": "Restart the shared printer immediately so any stuck state is cleared before more users are affected",
                     "score": 0
                 },
                 {
-                    "text": "Replace the print driver on the server before checking whether the problem is only local to one user",
+                    "answerText": "Replace the print driver on the server before checking whether the problem is only local to one user",
                     "score": -5
                 }
             ],
@@ -2555,20 +2562,20 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 0},
                 "hard": {"allowed": True, "weight": 0}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 0,
             "question": "You restarted the shared printer, but now other users are complaining too. What is the best recovery step?",
             "choices": [
                 {
-                    "text": "Check the shared queue, verify the user's target printer, and compare behavior between working and failing users",
+                    "answerText": "Check the shared queue, verify the user's target printer, and compare behavior between working and failing users",
                     "score": 0
                 },
                 {
-                    "text": "Restart the print server as well so the whole path reinitializes together",
+                    "answerText": "Restart the print server as well so the whole path reinitializes together",
                     "score": -4
                 },
                 {
-                    "text": "Redeploy the printer to every user immediately to eliminate any remaining client inconsistency",
+                    "answerText": "Redeploy the printer to every user immediately to eliminate any remaining client inconsistency",
                     "score": -8
                 }
             ],
@@ -2586,20 +2593,20 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 2},
                 "hard": {"allowed": True, "weight": 1}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 8,
             "question": "A user says they lost access after changing roles. What do you do first?",
             "choices": [
                 {
-                    "text": "Compare current group membership with the access model expected for the new role",
+                    "answerText": "Compare current group membership with the access model expected for the new role",
                     "score": 8
                 },
                 {
-                    "text": "Grant the requested access manually so the user can keep working while role mapping is checked later",
+                    "answerText": "Grant the requested access manually so the user can keep working while role mapping is checked later",
                     "score": 0
                 },
                 {
-                    "text": "Clone access from another employee with a similar title so the permissions match more quickly",
+                    "answerText": "Clone access from another employee with a similar title so the permissions match more quickly",
                     "score": -7
                 }
             ],
@@ -2617,20 +2624,20 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 0},
                 "hard": {"allowed": True, "weight": 0}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 0,
             "question": "You granted access manually, and now the user can reach resources their new role should not have. What is the best recovery step?",
             "choices": [
                 {
-                    "text": "Remove the manual grants, verify role-based groups, and reapply only the access required by the role model",
+                    "answerText": "Remove the manual grants, verify role-based groups, and reapply only the access required by the role model",
                     "score": 0
                 },
                 {
-                    "text": "Leave the access in place for now and document the exception until someone else reviews the role mapping",
+                    "answerText": "Leave the access in place for now and document the exception until someone else reviews the role mapping",
                     "score": -5
                 },
                 {
-                    "text": "Copy the same manual access to similar users so the department stays consistent",
+                    "answerText": "Copy the same manual access to similar users so the department stays consistent",
                     "score": -10
                 }
             ],
@@ -2648,20 +2655,20 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 2},
                 "hard": {"allowed": True, "weight": 1}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 7,
             "question": "A workstation is very slow and memory usage is almost full. What do you do first?",
             "choices": [
                 {
-                    "text": "Identify the memory-heavy processes before deciding whether the issue is normal load or a runaway application",
+                    "answerText": "Identify the memory-heavy processes before deciding whether the issue is normal load or a runaway application",
                     "score": 7
                 },
                 {
-                    "text": "Restart the PC immediately so the user gets temporary relief while you plan a deeper review later",
+                    "answerText": "Restart the PC immediately so the user gets temporary relief while you plan a deeper review later",
                     "score": 0
                 },
                 {
-                    "text": "Recommend replacing the workstation because high memory use usually means the hardware is no longer sufficient",
+                    "answerText": "Recommend replacing the workstation because high memory use usually means the hardware is no longer sufficient",
                     "score": -6
                 }
             ],
@@ -2679,20 +2686,20 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 0},
                 "hard": {"allowed": True, "weight": 0}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 0,
             "question": "You restarted the PC, but the slowdown returned after logon. What is the best recovery step?",
             "choices": [
                 {
-                    "text": "Inspect process memory usage, startup behavior, and whether a specific app is reclaiming all available memory",
+                    "answerText": "Inspect process memory usage, startup behavior, and whether a specific app is reclaiming all available memory",
                     "score": 0
                 },
                 {
-                    "text": "Schedule another restart later in the day so the user gets several shorter windows of normal performance",
+                    "answerText": "Schedule another restart later in the day so the user gets several shorter windows of normal performance",
                     "score": -4
                 },
                 {
-                    "text": "Begin replacing hardware immediately without collecting any application or process data",
+                    "answerText": "Begin replacing hardware immediately without collecting any application or process data",
                     "score": -9
                 }
             ],
@@ -2710,20 +2717,20 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 4},
                 "hard": {"allowed": True, "weight": 2}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 22,
             "question": "A new Group Policy is applying to some users but not others in the same department. What do you do first?",
             "choices": [
                 {
-                    "text": "Check OU placement, inheritance, and filtering before changing machines or domain infrastructure",
+                    "answerText": "Check OU placement, inheritance, and filtering before changing machines or domain infrastructure",
                     "score": 22
                 },
                 {
-                    "text": "Run gpupdate on affected users and assume any policy gap is just a delayed refresh problem",
+                    "answerText": "Run gpupdate on affected users and assume any policy gap is just a delayed refresh problem",
                     "score": 0
                 },
                 {
-                    "text": "Restart the domain controller that received the latest policy edits to clear possible stale policy state",
+                    "answerText": "Restart the domain controller that received the latest policy edits to clear possible stale policy state",
                     "score": -18
                 }
             ],
@@ -2741,20 +2748,20 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 0},
                 "hard": {"allowed": True, "weight": 0}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 0,
             "question": "You forced policy updates, but the same users still do not receive the new setting. How do you recover?",
             "choices": [
                 {
-                    "text": "Compare a working user and a failing user for OU location, inheritance, and filtering differences",
+                    "answerText": "Compare a working user and a failing user for OU location, inheritance, and filtering differences",
                     "score": 0
                 },
                 {
-                    "text": "Continue forcing updates and have the users log off repeatedly until the setting eventually appears",
+                    "answerText": "Continue forcing updates and have the users log off repeatedly until the setting eventually appears",
                     "score": -11
                 },
                 {
-                    "text": "Duplicate the policy into a second GPO and link it broadly so it reaches everyone by force",
+                    "answerText": "Duplicate the policy into a second GPO and link it broadly so it reaches everyone by force",
                     "score": -26
                 }
             ],
@@ -2772,20 +2779,20 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 4},
                 "hard": {"allowed": True, "weight": 2}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 21,
             "question": "Several users report Outlook credential prompts, but other services still authenticate normally. What do you do first?",
             "choices": [
                 {
-                    "text": "Check cached credentials, profile state, and whether the mail endpoint configuration still matches expectations",
+                    "answerText": "Check cached credentials, profile state, and whether the mail endpoint configuration still matches expectations",
                     "score": 21
                 },
                 {
-                    "text": "Reset the affected passwords so every user gets a fresh authentication path into the mailbox service",
+                    "answerText": "Reset the affected passwords so every user gets a fresh authentication path into the mailbox service",
                     "score": 0
                 },
                 {
-                    "text": "Reinstall Office on all affected systems so the client stack is rebuilt the same way everywhere",
+                    "answerText": "Reinstall Office on all affected systems so the client stack is rebuilt the same way everywhere",
                     "score": -17
                 }
             ],
@@ -2803,20 +2810,20 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 0},
                 "hard": {"allowed": True, "weight": 0}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 0,
             "question": "You reset passwords, but Outlook still prompts on the same users. What is the best recovery step?",
             "choices": [
                 {
-                    "text": "Inspect cached credentials, rebuild one mail profile if needed, and compare the result against the existing configuration",
+                    "answerText": "Inspect cached credentials, rebuild one mail profile if needed, and compare the result against the existing configuration",
                     "score": 0
                 },
                 {
-                    "text": "Reset the passwords again and clear every remembered login so no old token remains anywhere",
+                    "answerText": "Reset the passwords again and clear every remembered login so no old token remains anywhere",
                     "score": -10
                 },
                 {
-                    "text": "Continue reimaging or reinstalling office applications until the prompts disappear on at least one machine",
+                    "answerText": "Continue reimaging or reinstalling office applications until the prompts disappear on at least one machine",
                     "score": -24
                 }
             ],
@@ -2834,20 +2841,20 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 4},
                 "hard": {"allowed": True, "weight": 2}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 23,
             "question": "A shared folder is accessible to some users, but others get access denied even though they should match. What do you do first?",
             "choices": [
                 {
-                    "text": "Compare permissions and group membership between a working user and a failing user before granting anything new",
+                    "answerText": "Compare permissions and group membership between a working user and a failing user before granting anything new",
                     "score": 23
                 },
                 {
-                    "text": "Grant the affected users direct access temporarily so work continues while you investigate later",
+                    "answerText": "Grant the affected users direct access temporarily so work continues while you investigate later",
                     "score": 0
                 },
                 {
-                    "text": "Restart the file server to refresh file-sharing behavior and clear any stale access state",
+                    "answerText": "Restart the file server to refresh file-sharing behavior and clear any stale access state",
                     "score": -16
                 }
             ],
@@ -2865,20 +2872,20 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 0},
                 "hard": {"allowed": True, "weight": 0}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 0,
             "question": "You granted direct access, and now the folder has inconsistent permissions across users. What is the best recovery step?",
             "choices": [
                 {
-                    "text": "Remove the temporary grants and reconcile the permission model using group membership and intended share design",
+                    "answerText": "Remove the temporary grants and reconcile the permission model using group membership and intended share design",
                     "score": 0
                 },
                 {
-                    "text": "Leave the direct permissions in place and document the exceptions so no one loses access again",
+                    "answerText": "Leave the direct permissions in place and document the exceptions so no one loses access again",
                     "score": -12
                 },
                 {
-                    "text": "Expand the direct permissions to similar users so the share behaves the same way for the whole team",
+                    "answerText": "Expand the direct permissions to similar users so the share behaves the same way for the whole team",
                     "score": -27
                 }
             ],
@@ -2896,20 +2903,20 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 4},
                 "hard": {"allowed": True, "weight": 2}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 24,
             "question": "A Windows service starts, then immediately stops. What do you do first?",
             "choices": [
                 {
-                    "text": "Check dependencies, startup parameters, and event log details before changing the service configuration",
+                    "answerText": "Check dependencies, startup parameters, and event log details before changing the service configuration",
                     "score": 24
                 },
                 {
-                    "text": "Change the service account first so the process has a different identity and may stay running",
+                    "answerText": "Change the service account first so the process has a different identity and may stay running",
                     "score": 0
                 },
                 {
-                    "text": "Restart the whole server so the service has a cleaner startup sequence and more room to stabilize",
+                    "answerText": "Restart the whole server so the service has a cleaner startup sequence and more room to stabilize",
                     "score": -18
                 }
             ],
@@ -2927,20 +2934,20 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 0},
                 "hard": {"allowed": True, "weight": 0}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 0,
             "question": "You changed the service account, but the service still starts and stops. What is the best recovery step?",
             "choices": [
                 {
-                    "text": "Return to the logs, dependency chain, and startup configuration to identify the actual reason for the stop event",
+                    "answerText": "Return to the logs, dependency chain, and startup configuration to identify the actual reason for the stop event",
                     "score": 0
                 },
                 {
-                    "text": "Try additional service accounts until one of them appears to keep the service running longer",
+                    "answerText": "Try additional service accounts until one of them appears to keep the service running longer",
                     "score": -12
                 },
                 {
-                    "text": "Rebuild the server role entirely so the service can be reintroduced in a clean environment",
+                    "answerText": "Rebuild the server role entirely so the service can be reintroduced in a clean environment",
                     "score": -28
                 }
             ],
@@ -2958,20 +2965,20 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 4},
                 "hard": {"allowed": True, "weight": 2}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 25,
             "question": "Backups report success, but restore tests fail. What do you do first?",
             "choices": [
                 {
-                    "text": "Inspect backup logs, restore settings, and chain integrity to confirm whether the backups are actually usable",
+                    "answerText": "Inspect backup logs, restore settings, and chain integrity to confirm whether the backups are actually usable",
                     "score": 25
                 },
                 {
-                    "text": "Run another backup cycle first so you have a newer set before continuing the restore investigation",
+                    "answerText": "Run another backup cycle first so you have a newer set before continuing the restore investigation",
                     "score": 0
                 },
                 {
-                    "text": "Delete the current backup set and build a fresh schedule because the old one is clearly unreliable now",
+                    "answerText": "Delete the current backup set and build a fresh schedule because the old one is clearly unreliable now",
                     "score": -20
                 }
             ],
@@ -2989,20 +2996,20 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 0},
                 "hard": {"allowed": True, "weight": 0}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 0,
             "question": "You ran another backup, but restore tests still fail. What is the best recovery step?",
             "choices": [
                 {
-                    "text": "Compare restore behavior across multiple restore points and inspect the backup chain and restore configuration directly",
+                    "answerText": "Compare restore behavior across multiple restore points and inspect the backup chain and restore configuration directly",
                     "score": 0
                 },
                 {
-                    "text": "Continue running fresh backups until one of them eventually restores correctly",
+                    "answerText": "Continue running fresh backups until one of them eventually restores correctly",
                     "score": -13
                 },
                 {
-                    "text": "Stop doing restore tests and rely on successful backup job status until a real emergency happens",
+                    "answerText": "Stop doing restore tests and rely on successful backup job status until a real emergency happens",
                     "score": -30
                 }
             ],
@@ -3020,20 +3027,20 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 2},
                 "hard": {"allowed": True, "weight": 4}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 44,
             "question": "Users intermittently fail Kerberos authentication, and password resets do not help. What do you do first?",
             "choices": [
                 {
-                    "text": "Check time synchronization and DNS paths between clients and the domain controllers involved in the failures",
+                    "answerText": "Check time synchronization and DNS paths between clients and the domain controllers involved in the failures",
                     "score": 44
                 },
                 {
-                    "text": "Capture more failed sign-ins before touching the environment so you can build a cleaner pattern of the incident",
+                    "answerText": "Capture more failed sign-ins before touching the environment so you can build a cleaner pattern of the incident",
                     "score": 0
                 },
                 {
-                    "text": "Restart the affected domain controllers so authentication starts from a clean service state",
+                    "answerText": "Restart the affected domain controllers so authentication starts from a clean service state",
                     "score": -34
                 }
             ],
@@ -3051,20 +3058,20 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 0},
                 "hard": {"allowed": True, "weight": 0}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 0,
             "question": "You restarted domain controllers, but Kerberos failures continue and users are now more disrupted. What is the best recovery step?",
             "choices": [
                 {
-                    "text": "Check time skew, DNS resolution, and which controllers the failing clients are actually reaching",
+                    "answerText": "Check time skew, DNS resolution, and which controllers the failing clients are actually reaching",
                     "score": 0
                 },
                 {
-                    "text": "Restart more affected systems so every authentication component comes back up in a consistent order",
+                    "answerText": "Restart more affected systems so every authentication component comes back up in a consistent order",
                     "score": -18
                 },
                 {
-                    "text": "Disable Kerberos-related enforcement temporarily so logins can proceed while you revisit the issue later",
+                    "answerText": "Disable Kerberos-related enforcement temporarily so logins can proceed while you revisit the issue later",
                     "score": -50
                 }
             ],
@@ -3082,20 +3089,20 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 2},
                 "hard": {"allowed": True, "weight": 4}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 46,
             "question": "ARP conflicts are causing intermittent connectivity across part of the network. What do you do first?",
             "choices": [
                 {
-                    "text": "Trace the duplicate IP source and identify whether the conflict is coming from DHCP, static addressing, or a rogue device",
+                    "answerText": "Trace the duplicate IP source and identify whether the conflict is coming from DHCP, static addressing, or a rogue device",
                     "score": 46
                 },
                 {
-                    "text": "Restart the affected switches first so learned state is cleared before deeper network tracing begins",
+                    "answerText": "Restart the affected switches first so learned state is cleared before deeper network tracing begins",
                     "score": 0
                 },
                 {
-                    "text": "Assign new static IPs to impacted users so they can reconnect while the environment stabilizes",
+                    "answerText": "Assign new static IPs to impacted users so they can reconnect while the environment stabilizes",
                     "score": -32
                 }
             ],
@@ -3113,20 +3120,20 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 0},
                 "hard": {"allowed": True, "weight": 0}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 0,
             "question": "You restarted switches, but the ARP conflict came back and more users are now unstable. What is the best recovery step?",
             "choices": [
                 {
-                    "text": "Identify the conflicting address owners and correct the duplicate IP assignment at the source",
+                    "answerText": "Identify the conflicting address owners and correct the duplicate IP assignment at the source",
                     "score": 0
                 },
                 {
-                    "text": "Restart the same switches again during a quieter period so the network has a better chance to settle",
+                    "answerText": "Restart the same switches again during a quieter period so the network has a better chance to settle",
                     "score": -20
                 },
                 {
-                    "text": "Begin mass readdressing users without first determining which device actually owns the duplicate IP",
+                    "answerText": "Begin mass readdressing users without first determining which device actually owns the duplicate IP",
                     "score": -52
                 }
             ],
@@ -3144,20 +3151,20 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 2},
                 "hard": {"allowed": True, "weight": 4}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 48,
             "question": "A workstation shows an unknown process and unusual outbound traffic spikes. What do you do first?",
             "choices": [
                 {
-                    "text": "Isolate the workstation from the network and escalate while preserving as much context as possible",
+                    "answerText": "Isolate the workstation from the network and escalate while preserving as much context as possible",
                     "score": 48
                 },
                 {
-                    "text": "Collect more process and connection evidence before deciding whether the host really needs containment",
+                    "answerText": "Collect more process and connection evidence before deciding whether the host really needs containment",
                     "score": 0
                 },
                 {
-                    "text": "Kill the suspicious process and return the workstation to the user if the traffic stops afterward",
+                    "answerText": "Kill the suspicious process and return the workstation to the user if the traffic stops afterward",
                     "score": -36
                 }
             ],
@@ -3175,20 +3182,20 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 0},
                 "hard": {"allowed": True, "weight": 0}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 0,
             "question": "You killed the process, but the traffic resumed under a different name and evidence is now incomplete. What is the best recovery step?",
             "choices": [
                 {
-                    "text": "Isolate the host now and escalate the event with whatever connection and timeline data remains available",
+                    "answerText": "Isolate the host now and escalate the event with whatever connection and timeline data remains available",
                     "score": 0
                 },
                 {
-                    "text": "Keep terminating suspicious processes as they appear until one of them does not come back",
+                    "answerText": "Keep terminating suspicious processes as they appear until one of them does not come back",
                     "score": -22
                 },
                 {
-                    "text": "Restart the system and release it back to the user if traffic looks normal for a few minutes",
+                    "answerText": "Restart the system and release it back to the user if traffic looks normal for a few minutes",
                     "score": -54
                 }
             ],
@@ -3206,20 +3213,20 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 2},
                 "hard": {"allowed": True, "weight": 4}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 45,
             "question": "After a network redesign, one subnet can reach the internet but not a legacy internal application. What do you do first?",
             "choices": [
                 {
-                    "text": "Check ACLs, route changes, and firewall policy between the redesigned subnet and the legacy service path",
+                    "answerText": "Check ACLs, route changes, and firewall policy between the redesigned subnet and the legacy service path",
                     "score": 45
                 },
                 {
-                    "text": "Move affected users temporarily to a known-working subnet so operations continue while the redesign is reviewed later",
+                    "answerText": "Move affected users temporarily to a known-working subnet so operations continue while the redesign is reviewed later",
                     "score": 0
                 },
                 {
-                    "text": "Reinstall the application client on impacted systems so it can adapt to the new network environment",
+                    "answerText": "Reinstall the application client on impacted systems so it can adapt to the new network environment",
                     "score": -30
                 }
             ],
@@ -3237,20 +3244,20 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 0},
                 "hard": {"allowed": True, "weight": 0}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 0,
             "question": "You moved users to another subnet, but now policy exceptions are spreading and the legacy app path is still unresolved. What is the best recovery step?",
             "choices": [
                 {
-                    "text": "Return to the ACL, firewall, and route path for the affected subnet and validate the exact policy break",
+                    "answerText": "Return to the ACL, firewall, and route path for the affected subnet and validate the exact policy break",
                     "score": 0
                 },
                 {
-                    "text": "Keep moving additional users to the working subnet so the business impact stays low while the redesign remains unchanged",
+                    "answerText": "Keep moving additional users to the working subnet so the business impact stays low while the redesign remains unchanged",
                     "score": -20
                 },
                 {
-                    "text": "Redesign the client deployment package first so the application behaves the same on every subnet regardless of policy",
+                    "answerText": "Redesign the client deployment package first so the application behaves the same on every subnet regardless of policy",
                     "score": -50
                 }
             ],
@@ -3268,20 +3275,20 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 1},
                 "hard": {"allowed": True, "weight": 4}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 47,
             "question": "A hybrid identity sync completes successfully, but some on-prem changes never appear in the cloud directory. What do you do first?",
             "choices": [
                 {
-                    "text": "Check sync scope, filtering, connector health, and object-specific sync errors before creating cloud-side fixes",
+                    "answerText": "Check sync scope, filtering, connector health, and object-specific sync errors before creating cloud-side fixes",
                     "score": 47
                 },
                 {
-                    "text": "Create the missing cloud objects manually so the two environments look aligned again while you investigate later",
+                    "answerText": "Create the missing cloud objects manually so the two environments look aligned again while you investigate later",
                     "score": 0
                 },
                 {
-                    "text": "Restart the sync server and force repeated full sync cycles until every missing object eventually appears",
+                    "answerText": "Restart the sync server and force repeated full sync cycles until every missing object eventually appears",
                     "score": -35
                 }
             ],
@@ -3299,20 +3306,20 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 0},
                 "hard": {"allowed": True, "weight": 0}
             },
-            "location": "helpdesk",
+            "location": defineHelpdesk,
             "points": 0,
             "question": "You created missing cloud objects manually, but now identities are drifting between on-prem and cloud. What is the best recovery step?",
             "choices": [
                 {
-                    "text": "Identify the sync scope or filtering problem, then reconcile the manually created cloud objects with the intended sync model",
+                    "answerText": "Identify the sync scope or filtering problem, then reconcile the manually created cloud objects with the intended sync model",
                     "score": 0
                 },
                 {
-                    "text": "Continue creating missing cloud objects by hand so the visible directories stay aligned for users",
+                    "answerText": "Continue creating missing cloud objects by hand so the visible directories stay aligned for users",
                     "score": -22
                 },
                 {
-                    "text": "Disable synchronization entirely until the cloud directory is rebuilt from the manually created objects",
+                    "answerText": "Disable synchronization entirely until the cloud directory is rebuilt from the manually created objects",
                     "score": -55
                 }
             ],
@@ -3322,3 +3329,4 @@ label defineFull:
             "repeatable": False
         }
     ]
+    return
