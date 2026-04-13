@@ -37,7 +37,7 @@ label defineFull:
             ],
             "feedback": "If internal resources still work, the strongest first lead is external name resolution rather than general connectivity. Restarting the workstation can help if the issue is tied to a temporary client-side state, but it does not directly test the likely cause. Reinstalling the browser is the weakest choice because the pattern points to resolution or network behavior, not the browser itself.",
             "shorthand": "Network Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -68,7 +68,7 @@ label defineFull:
             ],
             "feedback": "Simple input problems are common and easy to rule out first. Resetting the password can solve the issue, but it skips a basic check and changes the account state earlier than necessary. Disabling the account is too aggressive for an ordinary sign-in failure.",
             "shorthand": "Account Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -99,7 +99,7 @@ label defineFull:
             ],
             "feedback": "Since only one user is affected, the best first check is the local printer selection or device mapping. Restarting the printer may help in some cases, but the limited scope makes a shared hardware issue less convincing. Replacing the server-side driver is broader than needed for a single-user symptom.",
             "shorthand": "Connection Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -126,7 +126,7 @@ label defineFull:
             ],
             "feedback": "If the server responds by IP, the basic network path is functioning. That makes name resolution the strongest explanation. A server outage does not fit as well because direct access already succeeded.",
             "shorthand": "Network Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -157,7 +157,7 @@ label defineFull:
             ],
             "feedback": "The best first move is to understand what the process is, since it could be legitimate, broken, or malicious. Ending it may improve performance quickly, but it risks interrupting something important before you know what it does. Ignoring unusually high CPU use leaves the likely cause untouched.",
             "shorthand": "Device Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -188,7 +188,7 @@ label defineFull:
             ],
             "feedback": "Time mismatch is a direct problem for domain authentication, especially with Kerberos. Resetting the password changes credentials without addressing the timing issue. Rejoining the domain is much more disruptive than needed for this symptom.",
             "shorthand": "Account Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -215,7 +215,7 @@ label defineFull:
             ],
             "feedback": "Basic client-side state is quick to verify and often resolves the issue immediately. Replacing network hardware is far too large a first step when the problem may be local to the laptop.",
             "shorthand": "Connection Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -246,7 +246,7 @@ label defineFull:
             ],
             "feedback": "Mapped drive failures are most often tied to permissions or path reachability. Restarting the server affects everyone and is not well justified as a first check. Creating a new share does not solve the original problem and can make troubleshooting more confusing.",
             "shorthand": "Connection Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -277,7 +277,7 @@ label defineFull:
             ],
             "feedback": "Large attachments and connection problems are common reasons mail remains in the Outbox. Reinstalling the client may help in some cases, but it is a heavier step than checking the most likely cause first. Deleting the profile immediately is riskier and skips simple validation.",
             "shorthand": "Software Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -308,7 +308,7 @@ label defineFull:
             ],
             "feedback": "Repeated lockouts usually mean something is still using outdated credentials in the background. Repeatedly unlocking the account only treats the symptom. Recreating the account is much more disruptive than needed for a common credential issue.",
             "shorthand": "Account Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -335,7 +335,7 @@ label defineFull:
             ],
             "feedback": "Because the issue affects one user, local browser state is a stronger suspect than the website server itself. Restarting the server is not a strong first move for a single-user display problem.",
             "shorthand": "Software Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -362,7 +362,7 @@ label defineFull:
             ],
             "feedback": "High disk usage usually comes from a specific process or workload, so identifying the source is the strongest first move. Waiting without checking anything leaves the likely cause unresolved.",
             "shorthand": "Device Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -389,7 +389,7 @@ label defineFull:
             ],
             "feedback": "Trying another port is fast, low-risk, and directly checks whether the issue is local to the port or connection. Replacing major hardware is not justified as a first troubleshooting step.",
             "shorthand": "Device Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -420,7 +420,7 @@ label defineFull:
             ],
             "feedback": "Audio output selection and mute state are common causes of missing sound and are easy to verify first. Replacing speakers may help if hardware is bad, but it is not the strongest first move. Reinstalling the operating system is far too heavy for this symptom.",
             "shorthand": "Device Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -451,7 +451,7 @@ label defineFull:
             ],
             "feedback": "Checking the failure details is the strongest next step because it explains why the update did not apply. Ignoring failed updates can lead to stability or security problems. Rebuilding the system is a last resort, not an initial response.",
             "shorthand": "Software Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -482,7 +482,7 @@ label defineFull:
             ],
             "feedback": "Cached credentials explain why offline sign-in works, so the next step is to verify domain connectivity and resolution. Replacing the keyboard does not fit the symptom. Creating another user account avoids the real problem instead of diagnosing domain access.",
             "shorthand": "Connection Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -513,7 +513,7 @@ label defineFull:
             ],
             "feedback": "Looking at memory-heavy processes is the best way to tell whether the issue is normal use, a leak, or a runaway app. Restarting may temporarily improve performance but removes useful context before you inspect it. Replacing unrelated hardware does not match the symptom.",
             "shorthand": "Device Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -544,7 +544,7 @@ label defineFull:
             ],
             "feedback": "A missing or unusable IP address points directly to network configuration or DHCP behavior. Replacing the workstation is too drastic before checking lease assignment. Mapping a drive does not solve or meaningfully diagnose the lack of a valid address.",
             "shorthand": "Network Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -571,7 +571,7 @@ label defineFull:
             ],
             "feedback": "Unexpected characters are often caused by the wrong layout or language selection. Reinstalling the operating system is much too disruptive for what is commonly a simple settings issue.",
             "shorthand": "Device Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -598,7 +598,7 @@ label defineFull:
             ],
             "feedback": "Connection and display settings are common reasons a second monitor is missing. Replacing the graphics card is too aggressive as an initial troubleshooting step.",
             "shorthand": "Device Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -629,7 +629,7 @@ label defineFull:
             ],
             "feedback": "The strongest first move is to gather the information the application is already giving you through errors or process state. Reinstalling the operating system is far too broad. Deleting the application folder immediately is destructive and removes useful context before diagnosis.",
             "shorthand": "Software Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -660,7 +660,7 @@ label defineFull:
             ],
             "feedback": "Slow logons are often caused by startup apps, scripts, mapped drives, or network waits during sign-in. Replacing the PC is not justified by the symptom alone. Simply telling the user to wait avoids actual troubleshooting.",
             "shorthand": "Account Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -687,7 +687,7 @@ label defineFull:
             ],
             "feedback": "If only one user sees stale content, local caching is the strongest first explanation. Restarting the web server is more disruptive and less justified for a single-user symptom.",
             "shorthand": "Software Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -714,7 +714,7 @@ label defineFull:
             ],
             "feedback": "Physical connectivity is the simplest and most relevant first check for an Ethernet failure. Replacing the entire switch is much too broad as an initial response.",
             "shorthand": "Connection Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -745,7 +745,7 @@ label defineFull:
             ],
             "feedback": "Role-based access is usually controlled through group membership, so that is the strongest first place to look. Granting manual access may solve the immediate symptom but can bypass the intended permission model. Waiting without checking anything is weak support practice.",
             "shorthand": "Access Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -776,7 +776,7 @@ label defineFull:
             ],
             "feedback": "The strongest first step is to verify whether the DNS data itself is wrong, stale, or being queried incorrectly. Flushing client DNS is a reasonable troubleshooting step and may help isolate whether the problem is local caching, but it does not confirm whether the DNS records are actually correct. Restarting servers can sometimes refresh registrations, but it is a broader action that skips verification.",
             "shorthand": "Network Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -807,7 +807,7 @@ label defineFull:
             ],
             "feedback": "The most reliable answer checks whether the policy is targeted correctly in the first place. Comparing gpresult and forcing updates is a strong troubleshooting step and useful for validation, but it usually comes after or alongside checking scope. Restarting a domain controller is not tightly matched to a scoping issue and is more disruptive.",
             "shorthand": "Access Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -838,7 +838,7 @@ label defineFull:
             ],
             "feedback": "If VPN connects successfully but internal access fails, the strongest lead is routing, DNS, or tunnel configuration. Reinstalling the client is not unreasonable and may help if the configuration is corrupted, but it is less targeted than checking what settings the tunnel is actually providing. Resetting the password is weak because authentication already worked.",
             "shorthand": "Network Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -869,7 +869,7 @@ label defineFull:
             ],
             "feedback": "Checking cached credentials and endpoint/profile alignment best matches the symptom because other services still authenticate. Building a fresh profile is a solid diagnostic move and may fix the issue, but it is somewhat heavier than first checking credential and endpoint state. Password resets can help in limited cases but are less convincing when the issue is service-specific.",
             "shorthand": "Software Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -900,7 +900,7 @@ label defineFull:
             ],
             "feedback": "Comparing a working user and a failing user gives the cleanest path to the underlying permission difference. Granting temporary direct access can help isolate whether permissions are the root cause, but it is more of a workaround and can muddy the access model. Restarting the server is a weaker fit because the problem already looks like authorization, not availability.",
             "shorthand": "Access Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -931,7 +931,7 @@ label defineFull:
             ],
             "feedback": "Checking DHCP scope health is the best first step because it directly tests whether address assignment is the actual failure. Temporary static IPs can be a useful diagnostic move for isolating DHCP from general connectivity, but they do not explain why leasing is failing. Restarting clients may occasionally help but is less targeted than examining the lease source.",
             "shorthand": "Network Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -962,7 +962,7 @@ label defineFull:
             ],
             "feedback": "Because the same machine behaves differently based on connection type, the strongest first move is to compare the two network paths directly. Swapping the dock or adapter is a fair diagnostic test and can rule out local hardware, but it still comes after checking whether the network settings themselves differ. Reinstalling the application is less tied to the symptom.",
             "shorthand": "Network Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -993,7 +993,7 @@ label defineFull:
             ],
             "feedback": "The best first move is to verify why the profile is failing rather than immediately changing data or identity state. Renaming the profile folder can be a workable fix if corruption is local, but it is more intrusive than checking logs and path access first. Recreating the user account is too broad for a profile loading issue.",
             "shorthand": "Software Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -1024,7 +1024,7 @@ label defineFull:
             ],
             "feedback": "Because only some users are affected, client trust differences and chain validation are the strongest lead. Rebinding the certificate is not unreasonable and may help if the service is presenting the wrong chain, but it is broader than first comparing client trust behavior. Telling users to bypass warnings is unsafe and treats the problem as harmless without verification.",
             "shorthand": "Software Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -1055,7 +1055,7 @@ label defineFull:
             ],
             "feedback": "Since the issue appeared after an OU move, policy scope and inheritance are the strongest first checks. Running the script manually is a useful validation step and can separate script failure from policy delivery failure, but it does not answer why the targeting changed. Manual permanent mappings restore function but sidestep the root cause.",
             "shorthand": "Access Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -1086,7 +1086,7 @@ label defineFull:
             ],
             "feedback": "Repairing the machine trust is the best corrective step when the trust relationship is actually broken. Testing secure channel behavior and connectivity first is also a strong answer because it confirms the diagnosis before making changes, but it is slightly less direct as an immediate next step. Resetting the user's password does not fit a machine trust failure.",
             "shorthand": "Network Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -1117,7 +1117,7 @@ label defineFull:
             ],
             "feedback": "Looking at dependencies and logs is the strongest first move because the service is starting and then immediately failing for a reason that should be visible. Changing the service account can be a good targeted diagnostic if identity is suspected, but it is still a change before diagnosis. Restarting the server may help in edge cases but is broader and less informative.",
             "shorthand": "Software Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -1148,7 +1148,7 @@ label defineFull:
             ],
             "feedback": "The strongest answer checks the actual queue, spooler, and driver interaction first because the printer is already present but failing to process jobs. Redeploying to one machine is a fair test and may isolate whether the deployment object is bad, but it is not as direct as checking the queue path. Swapping to a generic driver might work, yet it changes configuration before confirming the real cause.",
             "shorthand": "Connection Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -1179,7 +1179,7 @@ label defineFull:
             ],
             "feedback": "Checking transport and queue health is the strongest first step because the symptom is organization-wide and server-side behavior is most likely. Running controlled message tests is also a good diagnostic approach and helps isolate where delay occurs, but it comes slightly after checking the queueing system directly. Restarting clients is weak for a broad delivery delay.",
             "shorthand": "Software Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -1210,7 +1210,7 @@ label defineFull:
             ],
             "feedback": "Checking the update and comparing logs/config is the strongest starting point because the timing directly implicates the change. A controlled rollback test is also a strong option and can validate whether the update caused the slowdown, but it is a more active change. Increasing resources may help performance, yet it assumes capacity is the problem rather than the update itself.",
             "shorthand": "Network Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -1241,7 +1241,7 @@ label defineFull:
             ],
             "feedback": "If a service is running but unreachable, the strongest lead is whether it is truly listening and reachable across the network path. Restarting the service is a fair secondary step and may help if binding failed, but it is less informative than checking the port state directly. Reinstalling a client is weaker because the symptom may exist before the client even reaches the service.",
             "shorthand": "Device Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -1272,7 +1272,7 @@ label defineFull:
             ],
             "feedback": "Checking the actual DNS data and cache state is the strongest first move because the hostname is resolving to the wrong destination. Testing from multiple subnets is also a strong diagnostic action and helps isolate scope, but it usually follows or complements direct DNS inspection. Restarting the application site is weaker because the symptom is name resolution, not availability alone.",
             "shorthand": "Access Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -1303,7 +1303,7 @@ label defineFull:
             ],
             "feedback": "The strongest answer investigates why space disappeared before changing or removing data. Expanding the volume can be a reasonable stabilization step if the situation is critical, but it still avoids the cause and may delay root-cause analysis. Deleting files immediately can destroy useful data or evidence and is riskier.",
             "shorthand": "Network Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -1334,7 +1334,7 @@ label defineFull:
             ],
             "feedback": "If one domain controller has the change and another appears not to, replication is the strongest first thing to examine. Refreshing the user's token is a reasonable diagnostic move if the directory change has already replicated and the symptom is authorization, but the prompt suggests the directory state itself is inconsistent. Recreating the user is excessive.",
             "shorthand": "Access Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -1365,7 +1365,7 @@ label defineFull:
             ],
             "feedback": "Because the issue began after a desk move, checking VLAN or switch-port placement is the strongest answer. Comparing the moved workstation's network details to a working one is also a very good diagnostic step and closely related, but it is slightly less direct than checking the port configuration itself. Reinstalling the machine is poorly matched to the timing.",
             "shorthand": "Network Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -1396,7 +1396,7 @@ label defineFull:
             ],
             "feedback": "Checking the profile or folder redirection configuration is the best first move because it addresses the mechanism intended to carry settings and documents. Comparing a working user to a failing user is also a strong diagnostic approach, but it usually supports the same underlying check rather than replacing it. Manual copying is only a workaround.",
             "shorthand": "Network Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -1427,7 +1427,7 @@ label defineFull:
             ],
             "feedback": "The strongest answer focuses on the recent network change and the policy layer that now treats destinations differently. Controlled client tests are also useful and can help isolate scope, but they come just after examining the configuration change itself. Reinstalling browsers is less convincing when multiple users are affected after a network change.",
             "shorthand": "Software Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -1458,7 +1458,7 @@ label defineFull:
             ],
             "feedback": "The best answer checks whether the backup chain and restore configuration are actually valid. Running a controlled restore test is also a strong option and helps narrow the failure, but it is slightly more active than first reading the job and restore details already available. Re-running backups without diagnosing restore failure avoids the core issue.",
             "shorthand": "Software Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -1489,7 +1489,7 @@ label defineFull:
             ],
             "feedback": "Because the script works manually, the scheduler context is the strongest first area to inspect. Creating a duplicate task under another account is a valid diagnostic test, but it is a change rather than an initial inspection. Running the task manually is only a workaround and does not explain why the schedule broke.",
             "shorthand": "Software Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -1520,7 +1520,7 @@ label defineFull:
             ],
             "feedback": "Because the failures began after a DNS change and only affect some services, checking how those services resolve is the strongest answer. Comparing a working and failing service from the same client is also a strong troubleshooting move and can help isolate whether the issue is resolution or service-specific, but it still follows the same underlying hypothesis. Password resets are a weaker fit.",
             "shorthand": "Account Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -1555,7 +1555,7 @@ label defineFull:
             ],
             "feedback": "Checking time sync and DNS is the strongest first move because Kerberos depends directly on both. Comparing failed and successful sign-ins is also a very strong diagnostic step and helps narrow scope, but it is slightly less direct than first validating the core Kerberos dependencies already suggested by the logs. Restarting systems may help with stale state but does not explain the cause. Additional password resets are weak because that angle has already been tested.",
             "shorthand": "Account Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -1590,7 +1590,7 @@ label defineFull:
             ],
             "feedback": "The strongest answer directly identifies the duplicate addressing source causing the ARP conflict. Segment-level isolation and comparison of leases versus static assignments is also very strong and useful for narrowing the cause, but it is slightly less direct than resolving the conflicting entries themselves. Restarting switches may hide the issue temporarily without fixing it. Assigning more static IPs can make address management worse.",
             "shorthand": "Network Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -1625,7 +1625,7 @@ label defineFull:
             ],
             "feedback": "Checking replication health and inter-site behavior is the strongest first move because the problem is cross-site inconsistency. Comparing metadata is also a strong investigative option and can help distinguish several replication failure modes, but it follows the same diagnosis path rather than replacing the initial health check. Restarting controllers is broader and less precise. Manual recreation risks masking the actual replication issue.",
             "shorthand": "Access Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -1660,7 +1660,7 @@ label defineFull:
             ],
             "feedback": "Checking the DNS data and cache state is the strongest first step because the hostname is resolving incorrectly. Multi-client testing is also a strong diagnostic method and helps isolate scope, but it is slightly less direct than checking the resolution source itself. Restarting the target server may help if registration failed, but it is still a broader action. Hardcoding clients is a workaround that creates future maintenance problems.",
             "shorthand": "Network Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -1695,7 +1695,7 @@ label defineFull:
             ],
             "feedback": "Containment and escalation are strongest because the pattern already suggests an active threat. Correlation work is useful and can sharpen the incident picture, but it should not delay a reasonable containment response. Password resets may help reduce immediate exposure but do not address the broader event on their own. Waiting for successful compromise is too passive.",
             "shorthand": "Network Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -1730,7 +1730,7 @@ label defineFull:
             ],
             "feedback": "The strongest answer examines why restore functionality is broken even though backups show success. Controlled restores across more than one generation are also a strong diagnostic move and help isolate whether the problem is data-set specific or workflow-specific, but they follow closely after checking the restore and backup details already available. Re-running backups does not fix restore failure. Deleting backups too early risks losing usable recovery points.",
             "shorthand": "Software Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -1765,7 +1765,7 @@ label defineFull:
             ],
             "feedback": "Checking the VPN pool and policy logic is the best first move because the wrong addresses are being assigned at the source. Comparing a working and failing session is also a strong diagnostic method and helps isolate which session attributes differ, but it is slightly less direct than inspecting the server-side policy first. Restarting the service may temporarily change behavior without explaining it. Manual addressing is a workaround.",
             "shorthand": "Network Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -1800,7 +1800,7 @@ label defineFull:
             ],
             "feedback": "The strongest first response is to treat the combination of sudden space loss and unusual renames as potentially malicious and investigate immediately. Restricting access and collecting change data is also a strong containment-oriented response, but it is slightly more tactical than the broader incident-first framing. Expanding storage may keep service alive but does not address the apparent abnormal activity. Deleting files can remove evidence or worsen impact.",
             "shorthand": "Software Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -1835,7 +1835,7 @@ label defineFull:
             ],
             "feedback": "Reviewing the changed policy itself is the strongest first step because the slowdown appeared directly after deployment. Comparing affected and unaffected machines is also strong and can isolate the exact setting, but it follows naturally after acknowledging that the recent policy change is the likely source. Restarting repeats the same condition without diagnosis. Disabling unrelated software is too speculative.",
             "shorthand": "Software Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -1870,7 +1870,7 @@ label defineFull:
             ],
             "feedback": "Confirming whether the service is actually listening and reachable is the strongest first step because the failure appears before the application layer fully engages. Comparing against a known-good server is also a strong diagnostic method, but it is slightly less direct than checking the affected service's port and firewall state. Restarting the service may help if binding failed, but it is still a change before diagnosis. Reinstalling clients is weaker.",
             "shorthand": "Software Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -1905,7 +1905,7 @@ label defineFull:
             ],
             "feedback": "The strongest first move is to connect the symptom pattern to the known firewall change. Controlled browsing tests are also strong and help isolate scope and traffic class, but they complement rather than replace checking the changed policy. Cache clearing and browser rollback are weaker because the issue spans users after a network-layer change.",
             "shorthand": "Network Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -1940,7 +1940,7 @@ label defineFull:
             ],
             "feedback": "Repairing the machine trust is the strongest corrective action when the machine account relationship is the real failure. Validating the secure channel first is also a very strong answer because it confirms the diagnosis before altering the relationship, but it is slightly less direct as the response. Creating a new user profile does not fix machine trust. Permanent local-account use avoids the problem rather than solving it.",
             "shorthand": "Device Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -1975,7 +1975,7 @@ label defineFull:
             ],
             "feedback": "Checking forwarders, root hints, and outbound reachability is the strongest first step because internal resolution still works, which narrows the failure to external lookup handling. Direct query testing from the servers is also strong and helps isolate the break point, but it follows the same root hypothesis. Pointing clients elsewhere may restore some access temporarily, yet it bypasses the issue and can break internal resolution design. Restarting DNS is broader and less informative.",
             "shorthand": "Access Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -2010,7 +2010,7 @@ label defineFull:
             ],
             "feedback": "Isolation with escalation is strongest because suspicious outbound behavior can indicate compromise and active harm to the environment. Capturing connection and process details first is also a strong option if done quickly and safely, but it introduces some delay before containment. Killing the process may reduce symptoms while destroying useful evidence. Restarting can also erase context and is weaker.",
             "shorthand": "Network Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -2045,7 +2045,7 @@ label defineFull:
             ],
             "feedback": "The strongest first step is to verify what certificate is actually being presented and whether it matches trust and hostname expectations. Comparing old and new certificates is also a very strong diagnostic action, but it follows after confirming the current live presentation path. Restarting the service may help if the binding was not refreshed, but it is less precise than checking the certificate state directly. Bypassing warnings is unsafe.",
             "shorthand": "Software Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -2080,7 +2080,7 @@ label defineFull:
             ],
             "feedback": "Checking the stored credentials and execution context is the strongest answer because the failure began immediately after a service account password change. Cloning the task under another account is a strong diagnostic technique, but it is a change rather than a first inspection. Restarting the server does not directly address the credential mismatch. Manual daily execution is only a workaround.",
             "shorthand": "Account Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -2115,7 +2115,7 @@ label defineFull:
             ],
             "feedback": "The strongest answer examines the transport layer directly because queue growth shows the failure is server-side. Controlled test messages are also strong and help isolate where delivery breaks, but they come after or alongside checking the queue stage itself. Clearing queue items is risky and may destroy messages without fixing the cause. Restarting clients is a weak fit.",
             "shorthand": "Network Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -2150,7 +2150,7 @@ label defineFull:
                 ],
                 "feedback": "Checking SYSVOL or DFS replication health is the strongest first step because the same domain content is inconsistent between controllers. Comparing file versions on both sides is also a strong diagnostic move and helps confirm whether replication is actually at fault, but it is slightly less direct than checking replication health itself. Manual copying can restore function but risks obscuring the root problem. Client restarts do not solve inconsistent SYSVOL content.",
                 "shorthand": "Access Issue",
-                "followup_event": {"allowed": False, "event_id": ""},
+                "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
                 "repeatable": False
         },
 
@@ -2185,7 +2185,7 @@ label defineFull:
             ],
             "feedback": "Because only remote VPN users slow down and only during peak periods, the strongest first move is to inspect the VPN path and congestion profile. Internal versus VPN timing comparison is also a strong diagnostic step and helps prove whether the bottleneck is network or application, but it slightly follows the network-path hypothesis rather than replacing it. Increasing server resources may help if the application is borderline, but it does not fit the scope as well. Routine service restarts are a weak workaround.",
             "shorthand": "Network Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -2220,7 +2220,7 @@ label defineFull:
             ],
             "feedback": "The strongest first step is to inspect the network policy and route changes introduced by the redesign. Comparing port access from working and failing subnets is also a strong diagnostic move and helps prove whether the failure is tied to policy or routing, but it follows the same root hypothesis. Moving users to another VLAN can restore function temporarily, though it avoids fixing the design. Reinstalling the client is weak because the symptom follows subnet placement.",
             "shorthand": "Software Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -2255,7 +2255,7 @@ label defineFull:
             ],
             "feedback": "If the server can reach the database by IP but authentication fails after migration, the strongest first step is to review how the application now identifies and authenticates to the database. Comparing migrated and pre-migration settings is also a strong method and helps surface exactly what changed, but it is slightly broader than checking the live connection and identity configuration first. Restarting services may clear state but does not diagnose the migration-related difference. Replacing hostnames with IPs may bypass some name-based issues but can break intended authentication behavior.",
             "shorthand": "Software Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -2290,7 +2290,7 @@ label defineFull:
             ],
             "feedback": "Comparing the failing server to a working peer is the strongest first move because the environment should be the same except for whatever diverged. Reviewing patch sequence on the failing host is also strong and may reveal the divergence, but it is slightly narrower than side-by-side comparison of overall state. Rolling back immediately can help if a patch is the cause, yet it changes the system before diagnosis. Repeated restarts are weaker.",
             "shorthand": "Network Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -2325,7 +2325,7 @@ label defineFull:
             ],
             "feedback": "The strongest first step is to inspect the actual permission and identity model that changed. Comparing a working and failing server is also a strong diagnostic move and can quickly narrow whether the problem is host-specific or identity-specific, but it follows the same root direction. Temporarily removing restrictions restores access at the expense of control and can weaken security. Restarts may refresh tokens but do not explain why only some servers fail.",
             "shorthand": "Device Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -2360,7 +2360,7 @@ label defineFull:
             ],
             "feedback": "Checking sync scope, filters, and object-specific errors is the strongest first move because only some changes are missing. Comparing a working and missing object is also a strong method and helps isolate the exact differentiator, but it usually follows the connector and filter review. Restarting and forcing another sync may eventually help but does not explain the selective failure. Manual cloud creation risks divergence.",
             "shorthand": "Access Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -2395,7 +2395,7 @@ label defineFull:
             ],
             "feedback": "The strongest answer checks the live certificate trust and mapping requirements actually used by the mutual TLS exchange. Comparing old and new certificates is also a strong diagnostic approach and may reveal what changed, but it follows slightly behind checking the currently active certificate and trust path first. Restarting services may be appropriate if certificates were not reloaded, but it is less direct than verifying the trust requirements. Disabling validation undermines the whole security model.",
             "shorthand": "Network Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -2426,7 +2426,7 @@ label defineFull:
             ],
             "feedback": "The trap is assuming a browser symptom always means a browser problem. Confirming scope first avoids wasting time on a client-only fix when the issue could be broader. Clearing cache may help, but it skips validation. Reinstalling the browser commits too early to the wrong layer.",
             "shorthand": "Network Issue",
-            "followup_event": {"allowed": True, "event_id": "trap_easy_001_followup"},
+            "followup_event": {"allowed": True, "event_id": "trap_easy_001_followup", "score_cutoff": 6},
             "repeatable": False
         },
 
@@ -2457,7 +2457,7 @@ label defineFull:
             ],
             "feedback": "Once the scope widens, the best recovery is to move away from the client-only assumption and check shared infrastructure. Restarting clients may produce temporary relief in a few cases, but it still does not address the likely cause. Continuing browser rebuilds deepens the mistake.",
             "shorthand": "Network Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -2488,7 +2488,7 @@ label defineFull:
             ],
             "feedback": "The trap is thinking every login issue after a password change needs another reset. Cached credentials on phones, VPNs, or background apps often create repeated failures. A second reset may help briefly, but it usually avoids the real cause. Disabling the account is an overreaction.",
             "shorthand": "Network Issue",
-            "followup_event": {"allowed": True, "event_id": "trap_easy_002_followup"},
+            "followup_event": {"allowed": True, "event_id": "trap_easy_002_followup", "score_cutoff": 7},
             "repeatable": False
         },
 
@@ -2519,7 +2519,7 @@ label defineFull:
             ],
             "feedback": "The correct recovery is to find what is still using the old password. Repeated unlocks only manage the symptom. Replacing the user account causes unnecessary disruption and still avoids root cause analysis.",
             "shorthand": "Access Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -2550,7 +2550,7 @@ label defineFull:
             ],
             "feedback": "The trap is escalating too quickly from a single-user symptom to shared infrastructure changes. Checking scope and printer selection is the strongest first step. Restarting the printer may help sometimes, but it assumes the issue is shared hardware. Replacing drivers is broader than the evidence supports.",
             "shorthand": "Software Issue",
-            "followup_event": {"allowed": True, "event_id": "trap_easy_003_followup"},
+            "followup_event": {"allowed": True, "event_id": "trap_easy_003_followup", "score_cutoff": 6},
             "repeatable": False
         },
 
@@ -2581,7 +2581,7 @@ label defineFull:
             ],
             "feedback": "The best way out is to return to scope and queue analysis. Restarting more infrastructure expands the disruption without proving the cause. Full redeployment is even more disruptive and still does not confirm whether the original issue was local.",
             "shorthand": "Network Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -2612,7 +2612,7 @@ label defineFull:
             ],
             "feedback": "The trap is solving the access symptom without validating the role model. Group membership is the correct first place to look. Manual granting may get the user working, but it bypasses intended controls. Cloning someone else's access can over-permission the user badly.",
             "shorthand": "Network Issue",
-            "followup_event": {"allowed": True, "event_id": "trap_easy_004_followup"},
+            "followup_event": {"allowed": True, "event_id": "trap_easy_004_followup", "score_cutoff": 8},
             "repeatable": False
         },
 
@@ -2643,7 +2643,7 @@ label defineFull:
             ],
             "feedback": "The best recovery is to undo the manual shortcut and return to the intended access structure. Leaving excess access in place preserves the security problem. Expanding the same mistake to more users makes the damage worse.",
             "shorthand": "Software Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -2674,7 +2674,7 @@ label defineFull:
             ],
             "feedback": "The trap is jumping to relief or replacement before understanding the memory load. Restarting may help briefly, but it erases useful context. Replacement assumes the problem is hardware when it may be a single bad process.",
             "shorthand": "Software Issue",
-            "followup_event": {"allowed": True, "event_id": "trap_easy_005_followup"},
+            "followup_event": {"allowed": True, "event_id": "trap_easy_005_followup", "score_cutoff": 7},
             "repeatable": False
         },
 
@@ -2705,7 +2705,7 @@ label defineFull:
             ],
             "feedback": "Once the slowdown returns, the right recovery is to inspect what is consuming memory. Repeated restarts only hide the issue temporarily. Replacing hardware without evidence can waste time and still miss the true cause.",
             "shorthand": "Network Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -2736,7 +2736,7 @@ label defineFull:
             ],
             "feedback": "The trap is assuming inconsistency means policy refresh rather than policy scope. Checking targeting is the strongest answer. Forcing updates can help test symptoms, but it does not prove the policy is scoped correctly. Restarting a domain controller is disruptive and poorly targeted.",
             "shorthand": "Device Issue",
-            "followup_event": {"allowed": True, "event_id": "trap_medium_001_followup"},
+            "followup_event": {"allowed": True, "event_id": "trap_medium_001_followup", "score_cutoff": 22},
             "repeatable": False
         },
 
@@ -2767,7 +2767,7 @@ label defineFull:
             ],
             "feedback": "The best recovery is to compare scope and policy path between working and failing users. Repeated gpupdate cycles continue the same wrong assumption. Broadly duplicating the policy can create even more confusion and side effects.",
             "shorthand": "Access Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -2798,7 +2798,7 @@ label defineFull:
             ],
             "feedback": "The trap is treating a mail-specific prompt as a general credential failure. Checking cached credentials and profile state matches the actual scope of the issue. Password resets may work in a few cases, but they skip the more likely cause. Reinstalling Office across affected systems is an unnecessarily broad move.",
             "shorthand": "Network Issue",
-            "followup_event": {"allowed": True, "event_id": "trap_medium_002_followup"},
+            "followup_event": {"allowed": True, "event_id": "trap_medium_002_followup", "score_cutoff": 21},
             "repeatable": False
         },
 
@@ -2829,7 +2829,7 @@ label defineFull:
             ],
             "feedback": "The correct recovery is to move back toward cached credentials and profile state. Repeating password resets extends the same mistake. Broad rebuilds add more disruption while still avoiding the likely cause.",
             "shorthand": "Software Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -2860,7 +2860,7 @@ label defineFull:
             ],
             "feedback": "The trap is bypassing permission analysis with temporary grants. Comparing a working user to a failing user reveals the access difference cleanly. Direct grants may solve the symptom but damage the permission model. Restarting the server does not fit an authorization problem well.",
             "shorthand": "Software Issue",
-            "followup_event": {"allowed": True, "event_id": "trap_medium_003_followup"},
+            "followup_event": {"allowed": True, "event_id": "trap_medium_003_followup", "score_cutoff": 23},
             "repeatable": False
         },
 
@@ -2891,7 +2891,7 @@ label defineFull:
             ],
             "feedback": "The best way out is to remove the shortcut and restore the intended permission design. Leaving exceptions in place preserves the problem. Expanding the mistake to more users creates a much larger access-control issue.",
             "shorthand": "Network Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -2922,7 +2922,7 @@ label defineFull:
             ],
             "feedback": "The trap is making service changes before understanding why the service stops. Logs and dependencies are the strongest first step. Changing the account can help sometimes, but it changes a variable before diagnosis. Restarting the server is broader and less informative.",
             "shorthand": "Device Issue",
-            "followup_event": {"allowed": True, "event_id": "trap_medium_004_followup"},
+            "followup_event": {"allowed": True, "event_id": "trap_medium_004_followup", "score_cutoff": 24},
             "repeatable": False
         },
 
@@ -2953,7 +2953,7 @@ label defineFull:
             ],
             "feedback": "The correct recovery is to go back to evidence from logs and dependencies. Cycling through more service accounts repeats the same guesswork. Rebuilding the whole server is a major escalation without diagnosis.",
             "shorthand": "Access Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -2984,7 +2984,7 @@ label defineFull:
             ],
             "feedback": "The trap is trusting job success messages more than restore evidence. The strongest move is to inspect why restore use is failing. Running another backup does not fix a broken restore path. Deleting the backup set can remove data you may still need.",
             "shorthand": "Network Issue",
-            "followup_event": {"allowed": True, "event_id": "trap_medium_005_followup"},
+            "followup_event": {"allowed": True, "event_id": "trap_medium_005_followup", "score_cutoff": 25},
             "repeatable": False
         },
 
@@ -3015,7 +3015,7 @@ label defineFull:
             ],
             "feedback": "The only good recovery is to focus on restore function itself. More backups can continue failing silently. Abandoning restore testing is the worst outcome because it leaves recovery capability unknown.",
             "shorthand": "Software Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -3046,7 +3046,7 @@ label defineFull:
             ],
             "feedback": "The trap is delaying or overreacting instead of validating Kerberos fundamentals first. Time and DNS are directly tied to Kerberos success. Collecting more failure data can be useful, but it delays the most likely root checks. Restarting domain controllers is disruptive and does not target the most probable cause.",
             "shorthand": "Software Issue",
-            "followup_event": {"allowed": True, "event_id": "trap_hard_001_followup"},
+            "followup_event": {"allowed": True, "event_id": "trap_hard_001_followup", "score_cutoff": 44},
             "repeatable": False
         },
 
@@ -3077,7 +3077,7 @@ label defineFull:
             ],
             "feedback": "The best recovery is to return to the actual dependencies of Kerberos. More restarts only extend the disruption. Weakening authentication controls to hide the problem creates a far worse outcome.",
             "shorthand": "Network Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -3108,7 +3108,7 @@ label defineFull:
             ],
             "feedback": "The trap is reacting to the symptom instead of finding the duplicate address source. Switch restarts may reduce symptoms briefly, but they do not solve the conflict. Assigning more static IPs can make the addressing problem worse.",
             "shorthand": "Device Issue",
-            "followup_event": {"allowed": True, "event_id": "trap_hard_002_followup"},
+            "followup_event": {"allowed": True, "event_id": "trap_hard_002_followup", "score_cutoff": 46},
             "repeatable": False
         },
 
@@ -3139,7 +3139,7 @@ label defineFull:
             ],
             "feedback": "Once the conflict returns, the only real path out is to identify the address collision source. More restarts keep repeating the same ineffective action. Mass readdressing without diagnosis risks breaking more systems than the original conflict.",
             "shorthand": "Access Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -3170,7 +3170,7 @@ label defineFull:
             ],
             "feedback": "The trap is waiting too long or destroying evidence before containment. Isolation is the strongest protective response when compromise is plausible. Additional collection can be useful, but it should not delay reasonable containment. Killing the process may hide the symptom while destroying context.",
             "shorthand": "Network Issue",
-            "followup_event": {"allowed": True, "event_id": "trap_hard_003_followup"},
+            "followup_event": {"allowed": True, "event_id": "trap_hard_003_followup", "score_cutoff": 48},
             "repeatable": False
         },
 
@@ -3201,7 +3201,7 @@ label defineFull:
             ],
             "feedback": "Even after losing some evidence, isolation is still the best recovery step. Repeatedly terminating processes keeps damaging the investigation and may not stop the root cause. Restarting and returning the system to use risks continued compromise.",
             "shorthand": "Software Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -3232,7 +3232,7 @@ label defineFull:
             ],
             "feedback": "The trap is treating a path-specific network issue like a client application problem. The strongest first step is to inspect the routing and policy path that changed. Moving users can work around the issue briefly, but it delays fixing the design. Reinstalling clients does not fit the subnet-specific symptom.",
             "shorthand": "Network Issue",
-            "followup_event": {"allowed": True, "event_id": "trap_hard_004_followup"},
+            "followup_event": {"allowed": True, "event_id": "trap_hard_004_followup", "score_cutoff": 45},
             "repeatable": False
         },
 
@@ -3263,7 +3263,7 @@ label defineFull:
             ],
             "feedback": "The best recovery is to fix the network path that broke. Moving more users keeps increasing operational sprawl. Reworking the client package does not address the policy and route issue that created the failure.",
             "shorthand": "Access Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         },
 
@@ -3294,7 +3294,7 @@ label defineFull:
             ],
             "feedback": "The trap is hiding a selective sync problem with manual cloud-side fixes or repeated sync retries. The strongest first step is to inspect why those objects are excluded or failing. Manual creation can create divergence. Repeated full syncs still avoid the actual filter or connector problem.",
             "shorthand": "Network Issue",
-            "followup_event": {"allowed": True, "event_id": "trap_hard_005_followup"},
+            "followup_event": {"allowed": True, "event_id": "trap_hard_005_followup", "score_cutoff": 47},
             "repeatable": False
         },
 
@@ -3325,7 +3325,7 @@ label defineFull:
             ],
             "feedback": "The only real recovery is to fix the sync model and then reconcile the manual drift. Continuing manual creation makes the divergence worse. Disabling synchronization entirely turns a selective sync issue into a much larger identity management failure.",
             "shorthand": "Network Issue",
-            "followup_event": {"allowed": False, "event_id": ""},
+            "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
             "repeatable": False
         }
     ]
