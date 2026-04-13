@@ -19,7 +19,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 5},
                 "hard": {"allowed": False, "weight": 0}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 6,
             "question": "A user says websites are not loading, but shared drives and other internal resources still work. What should you check first?",
             "choices": [
@@ -52,7 +52,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 5},
                 "hard": {"allowed": False, "weight": 0}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 7,
             "question": "A user cannot sign in and gets a wrong password message. What is the best first response?",
             "choices": [
@@ -85,7 +85,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 4},
                 "hard": {"allowed": False, "weight": 0}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 6,
             "question": "One user cannot print, but everyone else can. What should you check first?",
             "choices": [
@@ -118,7 +118,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 5},
                 "hard": {"allowed": False, "weight": 0}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 8,
             "question": "A user can reach a server by IP address but not by hostname. What is the most likely issue?",
             "choices": [
@@ -147,7 +147,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 4},
                 "hard": {"allowed": False, "weight": 0}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 7,
             "question": "A user reports their PC is very slow, and Task Manager shows one process using 95% CPU. What should you do first?",
             "choices": [
@@ -180,7 +180,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 4},
                 "hard": {"allowed": False, "weight": 0}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 6,
             "question": "A domain user cannot log in, and the workstation clock is several minutes off. What should you do first?",
             "choices": [
@@ -213,7 +213,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 5},
                 "hard": {"allowed": False, "weight": 0}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 5,
             "question": "A laptop user says they cannot connect to Wi-Fi. What is the best first check?",
             "choices": [
@@ -242,7 +242,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 4},
                 "hard": {"allowed": False, "weight": 0}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 7,
             "question": "A user cannot access a mapped drive they normally use. What should you check first?",
             "choices": [
@@ -275,7 +275,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 4},
                 "hard": {"allowed": False, "weight": 0}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 6,
             "question": "A user's emails are stuck in the Outbox. What should you check first?",
             "choices": [
@@ -308,7 +308,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 5},
                 "hard": {"allowed": False, "weight": 0}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 8,
             "question": "A user's account keeps locking again shortly after being unlocked. What is the best thing to investigate?",
             "choices": [
@@ -341,7 +341,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 4},
                 "hard": {"allowed": False, "weight": 0}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 5,
             "question": "A website displays incorrectly for one user, but works for others. What is a strong first step?",
             "choices": [
@@ -370,7 +370,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 4},
                 "hard": {"allowed": False, "weight": 0}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 6,
             "question": "A workstation is sluggish and Task Manager shows disk usage near 100%. What should you do first?",
             "choices": [
@@ -399,7 +399,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 3},
                 "hard": {"allowed": False, "weight": 0}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 5,
             "question": "A USB device is not recognized when plugged in. What is the best first step?",
             "choices": [
@@ -428,7 +428,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 3},
                 "hard": {"allowed": False, "weight": 0}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 5,
             "question": "A user reports no sound from their computer. What should you check first?",
             "choices": [
@@ -461,7 +461,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 4},
                 "hard": {"allowed": False, "weight": 0}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 6,
             "question": "A system update failed to install. What is the best next step?",
             "choices": [
@@ -494,7 +494,7 @@ label defineFull:
                 "medium": {"allowed": False, "weight": 0},
                 "hard": {"allowed": True, "weight": 3}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 7,
             "question": "A user can sign in with cached credentials while offline, but cannot authenticate to the domain when connected. What should you check first?",
             "choices": [
@@ -527,7 +527,7 @@ label defineFull:
                 "medium": {"allowed": False, "weight": 0},
                 "hard": {"allowed": True, "weight": 3}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 6,
             "question": "A system is slowing down and available memory is almost gone. What is the best first step?",
             "choices": [
@@ -560,7 +560,7 @@ label defineFull:
                 "medium": {"allowed": False, "weight": 0},
                 "hard": {"allowed": True, "weight": 3}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 7,
             "question": "A workstation has no usable IP address. What should you investigate first?",
             "choices": [
@@ -593,7 +593,7 @@ label defineFull:
                 "medium": {"allowed": False, "weight": 0},
                 "hard": {"allowed": True, "weight": 2}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 5,
             "question": "A user says the keyboard is typing the wrong characters. What is the best first check?",
             "choices": [
@@ -622,7 +622,7 @@ label defineFull:
                 "medium": {"allowed": False, "weight": 0},
                 "hard": {"allowed": True, "weight": 2}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 5,
             "question": "A second monitor is not being detected. What should you do first?",
             "choices": [
@@ -651,7 +651,7 @@ label defineFull:
                 "medium": {"allowed": False, "weight": 0},
                 "hard": {"allowed": True, "weight": 3}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 6,
             "question": "An application will not launch on a user's PC. What is the most useful first step?",
             "choices": [
@@ -684,7 +684,7 @@ label defineFull:
                 "medium": {"allowed": False, "weight": 0},
                 "hard": {"allowed": True, "weight": 3}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 7,
             "question": "A user says logging into Windows takes much longer than usual. What should you check first?",
             "choices": [
@@ -717,7 +717,7 @@ label defineFull:
                 "medium": {"allowed": False, "weight": 0},
                 "hard": {"allowed": True, "weight": 2}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 6,
             "question": "A user sees old content on a webpage while others see the updated version. What should you try first?",
             "choices": [
@@ -746,7 +746,7 @@ label defineFull:
                 "medium": {"allowed": False, "weight": 0},
                 "hard": {"allowed": True, "weight": 2}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 5,
             "question": "A desktop cannot connect over Ethernet. What should you check first?",
             "choices": [
@@ -775,7 +775,7 @@ label defineFull:
                 "medium": {"allowed": False, "weight": 0},
                 "hard": {"allowed": True, "weight": 3}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 8,
             "question": "A user changed roles recently and now says they are missing access they should have. What should you check first?",
             "choices": [
@@ -808,7 +808,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 10},
                 "hard": {"allowed": False, "weight": 0}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 20,
             "question": "Users can reach internal servers by IP, but several internal hostnames fail intermittently. What should you check first?",
             "choices": [
@@ -841,7 +841,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 10},
                 "hard": {"allowed": False, "weight": 0}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 24,
             "question": "A new Group Policy setting is applying to some users but not others in the same department. What is the best next step?",
             "choices": [
@@ -874,7 +874,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 9},
                 "hard": {"allowed": False, "weight": 0}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 22,
             "question": "A remote user can connect to VPN, but cannot access internal resources once connected. What should you investigate first?",
             "choices": [
@@ -907,7 +907,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 9},
                 "hard": {"allowed": False, "weight": 0}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 21,
             "question": "Several users report Outlook repeatedly asking for credentials, but they can still sign into other services. What should you check first?",
             "choices": [
@@ -940,7 +940,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 10},
                 "hard": {"allowed": False, "weight": 0}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 23,
             "question": "A shared folder is accessible to some users but returns access denied for others who should have the same access. What is the best next step?",
             "choices": [
@@ -973,7 +973,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 9},
                 "hard": {"allowed": False, "weight": 0}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 25,
             "question": "Newly connected devices are intermittently failing to receive valid IP addresses. What should you check first?",
             "choices": [
@@ -1006,7 +1006,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 9},
                 "hard": {"allowed": False, "weight": 0}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 18,
             "question": "An internal web application loads fine on Wi-Fi but fails when the same laptop is docked on Ethernet. What should you compare first?",
             "choices": [
@@ -1039,7 +1039,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 8},
                 "hard": {"allowed": False, "weight": 0}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 19,
             "question": "A user signs into a domain PC and gets a temporary profile instead of their normal desktop. What is the best first step?",
             "choices": [
@@ -1072,7 +1072,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 8},
                 "hard": {"allowed": False, "weight": 0}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 20,
             "question": "Some users are getting certificate warnings on an internal site, while others are not. What should you check first?",
             "choices": [
@@ -1105,7 +1105,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 10},
                 "hard": {"allowed": False, "weight": 0}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 22,
             "question": "A login script that maps department drives is not running for several users after a recent OU change. What is the best first step?",
             "choices": [
@@ -1138,7 +1138,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 10},
                 "hard": {"allowed": True, "weight": 6}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 28,
             "question": "A workstation suddenly shows a trust relationship error when a domain user tries to sign in. What is the best next step?",
             "choices": [
@@ -1171,7 +1171,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 9},
                 "hard": {"allowed": True, "weight": 6}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 24,
             "question": "A Windows service starts successfully, then stops after a few seconds. What should you check first?",
             "choices": [
@@ -1204,7 +1204,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 8},
                 "hard": {"allowed": True, "weight": 5}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 23,
             "question": "A printer deployed by policy appears on user machines, but jobs remain stuck in queue and never print. What should you check first?",
             "choices": [
@@ -1237,7 +1237,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 9},
                 "hard": {"allowed": True, "weight": 6}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 26,
             "question": "Email delivery is delayed for many users across the organization, but messages eventually arrive. What should you investigate first?",
             "choices": [
@@ -1270,7 +1270,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 8},
                 "hard": {"allowed": True, "weight": 5}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 21,
             "question": "An internal application became slow for everyone immediately after a version update. What is the best first step?",
             "choices": [
@@ -1303,7 +1303,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 8},
                 "hard": {"allowed": True, "weight": 5}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 22,
             "question": "A service shows as running on the server, but clients cannot connect to it. What should you check first?",
             "choices": [
@@ -1336,7 +1336,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 10},
                 "hard": {"allowed": True, "weight": 6}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 27,
             "question": "Internal users are being sent to the wrong internal site when using a hostname that should point elsewhere. What should you check first?",
             "choices": [
@@ -1369,7 +1369,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 8},
                 "hard": {"allowed": True, "weight": 5}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 24,
             "question": "A file server suddenly reports critically low disk space overnight. What is the best first step?",
             "choices": [
@@ -1402,7 +1402,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 9},
                 "hard": {"allowed": True, "weight": 6}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 26,
             "question": "A user's group membership was changed on one domain controller, but another system still does not reflect the change hours later. What should you check first?",
             "choices": [
@@ -1435,7 +1435,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 8},
                 "hard": {"allowed": True, "weight": 5}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 23,
             "question": "A user moved desks and can reach the internet, but cannot access internal systems they used before. What is the best first check?",
             "choices": [
@@ -1468,7 +1468,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 8},
                 "hard": {"allowed": True, "weight": 5}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 20,
             "question": "A user's desktop settings and documents are not following them between domain PCs as expected. What should you check first?",
             "choices": [
@@ -1501,7 +1501,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 9},
                 "hard": {"allowed": True, "weight": 6}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 22,
             "question": "Several users can browse some websites but fail on others after a recent network configuration change. What should you investigate first?",
             "choices": [
@@ -1534,7 +1534,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 9},
                 "hard": {"allowed": True, "weight": 6}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 25,
             "question": "Backups have been completing successfully for weeks, but restore tests are failing. What is the best next step?",
             "choices": [
@@ -1567,7 +1567,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 8},
                 "hard": {"allowed": True, "weight": 5}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 21,
             "question": "A task that should run nightly on a server has stopped running, but the script still works when launched manually. What should you check first?",
             "choices": [
@@ -1600,7 +1600,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 10},
                 "hard": {"allowed": True, "weight": 6}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 27,
             "question": "Users can authenticate to some internal services but fail on others after a recent DNS change. What should you investigate first?",
             "choices": [
@@ -1633,7 +1633,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 5},
                 "hard": {"allowed": True, "weight": 10}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 42,
             "question": "Several users intermittently fail domain authentication. Logs show Kerberos errors, but password resets do not help. What should you check first?",
             "choices": [
@@ -1670,7 +1670,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 4},
                 "hard": {"allowed": True, "weight": 9}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 45,
             "question": "Multiple users report intermittent connectivity loss. Network logs show repeated ARP conflicts. What is the best first response?",
             "choices": [
@@ -1707,7 +1707,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 4},
                 "hard": {"allowed": True, "weight": 9}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 44,
             "question": "Changes made on one domain controller are not appearing on another site hours later. What should you investigate first?",
             "choices": [
@@ -1744,7 +1744,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 5},
                 "hard": {"allowed": True, "weight": 10}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 41,
             "question": "Internal users are intermittently sent to the wrong internal server by hostname. What should you check first?",
             "choices": [
@@ -1781,7 +1781,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 4},
                 "hard": {"allowed": True, "weight": 9}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 50,
             "question": "Multiple user accounts show failed sign-in attempts from unfamiliar external IP addresses within a short time window. What is the best first action?",
             "choices": [
@@ -1818,7 +1818,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 5},
                 "hard": {"allowed": True, "weight": 10}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 43,
             "question": "Backup jobs have been reporting success, but test restores consistently fail. What should you do first?",
             "choices": [
@@ -1855,7 +1855,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 4},
                 "hard": {"allowed": True, "weight": 9}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 46,
             "question": "VPN users are receiving IPs from an unexpected network range and cannot reach protected internal systems. What should you check first?",
             "choices": [
@@ -1892,7 +1892,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 5},
                 "hard": {"allowed": True, "weight": 10}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 42,
             "question": "A file server loses a large amount of disk space overnight, and users also report unusual file renames. What is the best first response?",
             "choices": [
@@ -1929,7 +1929,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 5},
                 "hard": {"allowed": True, "weight": 9}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 40,
             "question": "After a new Group Policy deployment, many machines become noticeably slower during login and startup. What should you investigate first?",
             "choices": [
@@ -1966,7 +1966,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 4},
                 "hard": {"allowed": True, "weight": 8}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 41,
             "question": "An internal application service shows as running, but clients cannot connect and port tests fail. What is the best first step?",
             "choices": [
@@ -2003,7 +2003,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 5},
                 "hard": {"allowed": True, "weight": 10}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 43,
             "question": "After a firewall policy change, users can reach some external sites but fail on others in inconsistent ways. What should you check first?",
             "choices": [
@@ -2040,7 +2040,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 5},
                 "hard": {"allowed": True, "weight": 9}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 47,
             "question": "A machine reports a trust relationship failure, and other symptoms suggest the computer account password may be out of sync with the domain. What is the best response?",
             "choices": [
@@ -2077,7 +2077,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 4},
                 "hard": {"allowed": True, "weight": 9}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 44,
             "question": "Internal domains resolve correctly, but external domains fail from the DNS servers themselves. What should you check first?",
             "choices": [
@@ -2114,7 +2114,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 4},
                 "hard": {"allowed": True, "weight": 8}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 49,
             "question": "A workstation shows an unknown process and unusual outbound traffic spikes to destinations users do not recognize. What is the best first action?",
             "choices": [
@@ -2151,7 +2151,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 5},
                 "hard": {"allowed": True, "weight": 9}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 42,
             "question": "An internal application suddenly begins showing certificate warnings across many systems after a certificate renewal. What should you check first?",
             "choices": [
@@ -2188,7 +2188,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 4},
                 "hard": {"allowed": True, "weight": 8}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 40,
             "question": "An overnight scheduled task that updates shared data stops running after a service account password change. The script still works when launched manually by an admin. What should you check first?",
             "choices": [
@@ -2225,7 +2225,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 5},
                 "hard": {"allowed": True, "weight": 9}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 41,
             "question": "Outbound mail is delayed for all users, and queue monitoring shows messages accumulating faster than they leave. What should you do first?",
             "choices": [
@@ -2262,7 +2262,7 @@ label defineFull:
                     "medium": {"allowed": True, "weight": 4},
                     "hard": {"allowed": True, "weight": 9}
                 },
-                "location": ,
+                "location": defineHelpDesk,
                 "points": 46,
                 "question": "SYSVOL changes are visible on one domain controller but not another, and login scripts are inconsistent between sites. What should you check first?",
                 "choices": [
@@ -2299,7 +2299,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 4},
                 "hard": {"allowed": True, "weight": 8}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 40,
             "question": "An application performs normally internally but becomes unusably slow for remote VPN users during peak hours only. What should you check first?",
             "choices": [
@@ -2336,7 +2336,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 5},
                 "hard": {"allowed": True, "weight": 10}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 45,
             "question": "After a network redesign, one subnet can reach the internet but cannot access specific internal application ports used by a legacy service. What should you check first?",
             "choices": [
@@ -2373,7 +2373,7 @@ label defineFull:
                 "medium": {"allowed": False, "weight": 0},
                 "hard": {"allowed": True, "weight": 9}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 44,
             "question": "An application server can reach its database by IP, but the application still fails to authenticate after a recent service migration. What should you check first?",
             "choices": [
@@ -2410,7 +2410,7 @@ label defineFull:
                 "medium": {"allowed": False, "weight": 0},
                 "hard": {"allowed": True, "weight": 8}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 40,
             "question": "A critical service began failing after a system patch cycle, but only on one of several identically configured servers. What should you check first?",
             "choices": [
@@ -2447,7 +2447,7 @@ label defineFull:
                 "medium": {"allowed": False, "weight": 0},
                 "hard": {"allowed": True, "weight": 9}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 43,
             "question": "A shared storage volume is online, but only some application servers can write to it after a permission model change. What should you check first?",
             "choices": [
@@ -2484,7 +2484,7 @@ label defineFull:
                 "medium": {"allowed": False, "weight": 0},
                 "hard": {"allowed": True, "weight": 8}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 41,
             "question": "A hybrid identity sync job completes, but some new on-prem changes never appear in the cloud directory. What should you investigate first?",
             "choices": [
@@ -2521,7 +2521,7 @@ label defineFull:
                 "medium": {"allowed": False, "weight": 0},
                 "hard": {"allowed": True, "weight": 10}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 48,
             "question": "Mutual TLS authentication suddenly fails between two internal services after a certificate rollover, even though both services are up and reachable. What should you check first?",
             "choices": [
@@ -2558,7 +2558,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 2},
                 "hard": {"allowed": True, "weight": 1}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 6,
             "question": "A user reports that a website is down, but only says it is not loading in their browser. What do you do first?",
             "choices": [
@@ -2591,7 +2591,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 0},
                 "hard": {"allowed": True, "weight": 0}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 0,
             "question": "You focused on the browser, but more users are now reporting the same website issue. How do you recover?",
             "choices": [
@@ -2624,7 +2624,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 2},
                 "hard": {"allowed": True, "weight": 1}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 7,
             "question": "A user says they cannot log in after a password change. What do you do first?",
             "choices": [
@@ -2657,7 +2657,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 0},
                 "hard": {"allowed": True, "weight": 0}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 0,
             "question": "You reset the password again, but the account keeps locking out. What is the best recovery step?",
             "choices": [
@@ -2690,7 +2690,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 2},
                 "hard": {"allowed": True, "weight": 1}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 6,
             "question": "One user says a printer is not working. What do you do first?",
             "choices": [
@@ -2723,7 +2723,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 0},
                 "hard": {"allowed": True, "weight": 0}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 0,
             "question": "You restarted the shared printer, but now other users are complaining too. What is the best recovery step?",
             "choices": [
@@ -2756,7 +2756,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 2},
                 "hard": {"allowed": True, "weight": 1}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 8,
             "question": "A user says they lost access after changing roles. What do you do first?",
             "choices": [
@@ -2789,7 +2789,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 0},
                 "hard": {"allowed": True, "weight": 0}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 0,
             "question": "You granted access manually, and now the user can reach resources their new role should not have. What is the best recovery step?",
             "choices": [
@@ -2822,7 +2822,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 2},
                 "hard": {"allowed": True, "weight": 1}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 7,
             "question": "A workstation is very slow and memory usage is almost full. What do you do first?",
             "choices": [
@@ -2855,7 +2855,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 0},
                 "hard": {"allowed": True, "weight": 0}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 0,
             "question": "You restarted the PC, but the slowdown returned after logon. What is the best recovery step?",
             "choices": [
@@ -2888,7 +2888,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 4},
                 "hard": {"allowed": True, "weight": 2}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 22,
             "question": "A new Group Policy is applying to some users but not others in the same department. What do you do first?",
             "choices": [
@@ -2921,7 +2921,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 0},
                 "hard": {"allowed": True, "weight": 0}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 0,
             "question": "You forced policy updates, but the same users still do not receive the new setting. How do you recover?",
             "choices": [
@@ -2954,7 +2954,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 4},
                 "hard": {"allowed": True, "weight": 2}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 21,
             "question": "Several users report Outlook credential prompts, but other services still authenticate normally. What do you do first?",
             "choices": [
@@ -2987,7 +2987,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 0},
                 "hard": {"allowed": True, "weight": 0}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 0,
             "question": "You reset passwords, but Outlook still prompts on the same users. What is the best recovery step?",
             "choices": [
@@ -3020,7 +3020,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 4},
                 "hard": {"allowed": True, "weight": 2}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 23,
             "question": "A shared folder is accessible to some users, but others get access denied even though they should match. What do you do first?",
             "choices": [
@@ -3053,7 +3053,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 0},
                 "hard": {"allowed": True, "weight": 0}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 0,
             "question": "You granted direct access, and now the folder has inconsistent permissions across users. What is the best recovery step?",
             "choices": [
@@ -3086,7 +3086,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 4},
                 "hard": {"allowed": True, "weight": 2}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 24,
             "question": "A Windows service starts, then immediately stops. What do you do first?",
             "choices": [
@@ -3119,7 +3119,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 0},
                 "hard": {"allowed": True, "weight": 0}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 0,
             "question": "You changed the service account, but the service still starts and stops. What is the best recovery step?",
             "choices": [
@@ -3152,7 +3152,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 4},
                 "hard": {"allowed": True, "weight": 2}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 25,
             "question": "Backups report success, but restore tests fail. What do you do first?",
             "choices": [
@@ -3185,7 +3185,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 0},
                 "hard": {"allowed": True, "weight": 0}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 0,
             "question": "You ran another backup, but restore tests still fail. What is the best recovery step?",
             "choices": [
@@ -3218,7 +3218,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 2},
                 "hard": {"allowed": True, "weight": 4}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 44,
             "question": "Users intermittently fail Kerberos authentication, and password resets do not help. What do you do first?",
             "choices": [
@@ -3251,7 +3251,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 0},
                 "hard": {"allowed": True, "weight": 0}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 0,
             "question": "You restarted domain controllers, but Kerberos failures continue and users are now more disrupted. What is the best recovery step?",
             "choices": [
@@ -3284,7 +3284,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 2},
                 "hard": {"allowed": True, "weight": 4}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 46,
             "question": "ARP conflicts are causing intermittent connectivity across part of the network. What do you do first?",
             "choices": [
@@ -3317,7 +3317,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 0},
                 "hard": {"allowed": True, "weight": 0}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 0,
             "question": "You restarted switches, but the ARP conflict came back and more users are now unstable. What is the best recovery step?",
             "choices": [
@@ -3350,7 +3350,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 2},
                 "hard": {"allowed": True, "weight": 4}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 48,
             "question": "A workstation shows an unknown process and unusual outbound traffic spikes. What do you do first?",
             "choices": [
@@ -3383,7 +3383,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 0},
                 "hard": {"allowed": True, "weight": 0}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 0,
             "question": "You killed the process, but the traffic resumed under a different name and evidence is now incomplete. What is the best recovery step?",
             "choices": [
@@ -3416,7 +3416,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 2},
                 "hard": {"allowed": True, "weight": 4}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 45,
             "question": "After a network redesign, one subnet can reach the internet but not a legacy internal application. What do you do first?",
             "choices": [
@@ -3449,7 +3449,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 0},
                 "hard": {"allowed": True, "weight": 0}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 0,
             "question": "You moved users to another subnet, but now policy exceptions are spreading and the legacy app path is still unresolved. What is the best recovery step?",
             "choices": [
@@ -3482,7 +3482,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 1},
                 "hard": {"allowed": True, "weight": 4}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 47,
             "question": "A hybrid identity sync completes successfully, but some on-prem changes never appear in the cloud directory. What do you do first?",
             "choices": [
@@ -3515,7 +3515,7 @@ label defineFull:
                 "medium": {"allowed": True, "weight": 0},
                 "hard": {"allowed": True, "weight": 0}
             },
-            "location": ,
+            "location": defineHelpDesk,
             "points": 0,
             "question": "You created missing cloud objects manually, but now identities are drifting between on-prem and cloud. What is the best recovery step?",
             "choices": [
