@@ -40,7 +40,7 @@ label defineFull:
             "shorthand": "Network Issue",
             "longhand": "External sites fail, internal resources still work",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -73,7 +73,7 @@ label defineFull:
             "shorthand": "Account Issue",
             "longhand": "User cannot sign in, wrong password error",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -106,7 +106,7 @@ label defineFull:
             "shorthand": "Connection Issue",
             "longhand": "Single user cannot print, others can",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -135,7 +135,7 @@ label defineFull:
             "shorthand": "Network Issue",
             "longhand": "Hostname fails but IP access works",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -168,7 +168,7 @@ label defineFull:
             "shorthand": "Device Issue",
             "longhand": "High CPU usage causing system slowdown",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -201,7 +201,7 @@ label defineFull:
             "shorthand": "Account Issue",
             "longhand": "Domain login fails due to time mismatch",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -230,7 +230,7 @@ label defineFull:
             "shorthand": "Connection Issue",
             "longhand": "Laptop unable to connect to Wi-Fi",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -263,7 +263,7 @@ label defineFull:
             "shorthand": "Connection Issue",
             "longhand": "User cannot access mapped network drive",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -296,7 +296,7 @@ label defineFull:
             "shorthand": "Software Issue",
             "longhand": "Emails stuck in Outbox, not sending",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -329,7 +329,7 @@ label defineFull:
             "shorthand": "Account Issue",
             "longhand": "Account repeatedly locking after unlock",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -358,7 +358,7 @@ label defineFull:
             "shorthand": "Software Issue",
             "longhand": "Website displays incorrectly for one user",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -387,7 +387,7 @@ label defineFull:
             "shorthand": "Device Issue",
             "longhand": "High disk usage causing system slowdown",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -416,7 +416,7 @@ label defineFull:
             "shorthand": "Device Issue",
             "longhand": "USB device not recognized by system",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -449,7 +449,7 @@ label defineFull:
             "shorthand": "Device Issue",
             "longhand": "No sound output from user computer",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -482,7 +482,7 @@ label defineFull:
             "shorthand": "Software Issue",
             "longhand": "System update failed to install properly",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -515,7 +515,7 @@ label defineFull:
             "shorthand": "Connection Issue",
             "longhand": "Offline login works, domain login fails",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -548,7 +548,7 @@ label defineFull:
             "shorthand": "Device Issue",
             "longhand": "Low available memory causing system slowdown",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -581,7 +581,7 @@ label defineFull:
             "shorthand": "Network Issue",
             "longhand": "Workstation missing or invalid IP address",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -610,7 +610,7 @@ label defineFull:
             "shorthand": "Device Issue",
             "longhand": "Keyboard typing incorrect or unexpected characters",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -639,7 +639,7 @@ label defineFull:
             "shorthand": "Device Issue",
             "longhand": "Second monitor not detected by system",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -672,7 +672,7 @@ label defineFull:
             "shorthand": "Software Issue",
             "longhand": "Application fails to launch on user PC",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -705,7 +705,7 @@ label defineFull:
             "shorthand": "Account Issue",
             "longhand": "Windows login process unusually slow",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -734,7 +734,7 @@ label defineFull:
             "shorthand": "Software Issue",
             "longhand": "User sees outdated webpage content only",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -763,7 +763,7 @@ label defineFull:
             "shorthand": "Connection Issue",
             "longhand": "Desktop cannot connect via Ethernet",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -796,7 +796,7 @@ label defineFull:
             "shorthand": "Access Issue",
             "longhand": "User missing access after role change",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -829,7 +829,7 @@ label defineFull:
             "shorthand": "Network Issue",
             "longhand": "Intermittent internal hostname resolution failures",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -862,7 +862,7 @@ label defineFull:
             "shorthand": "Access Issue",
             "longhand": "Group Policy applies inconsistently across users",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -895,7 +895,7 @@ label defineFull:
             "shorthand": "Network Issue",
             "longhand": "VPN connects but no internal resource access",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -928,7 +928,7 @@ label defineFull:
             "shorthand": "Software Issue",
             "longhand": "Outlook repeatedly prompts for credentials",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -961,7 +961,7 @@ label defineFull:
             "shorthand": "Access Issue",
             "longhand": "Shared folder access denied for some users",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -994,7 +994,7 @@ label defineFull:
             "shorthand": "Network Issue",
             "longhand": "Devices intermittently failing to obtain IP",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -1027,7 +1027,7 @@ label defineFull:
             "shorthand": "Network Issue",
             "longhand": "App works on Wi-Fi, fails Ethernet",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -1060,7 +1060,7 @@ label defineFull:
             "shorthand": "Software Issue",
             "longhand": "Temporary profile loaded instead of normal",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -1093,7 +1093,7 @@ label defineFull:
             "shorthand": "Software Issue",
             "longhand": "Certificate warnings affect only some users",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -1126,7 +1126,7 @@ label defineFull:
             "shorthand": "Access Issue",
             "longhand": "Login script fails after OU change",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -1159,7 +1159,7 @@ label defineFull:
             "shorthand": "Network Issue",
             "longhand": "Workstation trust relationship with domain broken",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -1192,7 +1192,7 @@ label defineFull:
             "shorthand": "Software Issue",
             "longhand": "Service starts then stops unexpectedly",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -1225,7 +1225,7 @@ label defineFull:
             "shorthand": "Connection Issue",
             "longhand": "Print jobs stuck despite printer deployment",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -1258,7 +1258,7 @@ label defineFull:
             "shorthand": "Software Issue",
             "longhand": "Organization-wide email delivery delays occurring",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -1291,7 +1291,7 @@ label defineFull:
             "shorthand": "Network Issue",
             "longhand": "Application slow after recent version update",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -1324,7 +1324,7 @@ label defineFull:
             "shorthand": "Device Issue",
             "longhand": "Service running but clients cannot connect",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -1357,7 +1357,7 @@ label defineFull:
             "shorthand": "Access Issue",
             "longhand": "Hostname resolving to incorrect internal destination",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -1390,7 +1390,7 @@ label defineFull:
             "shorthand": "Network Issue",
             "longhand": "File server disk space suddenly depleted",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -1423,7 +1423,7 @@ label defineFull:
             "shorthand": "Access Issue",
             "longhand": "AD changes not replicating across controllers",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -1456,7 +1456,7 @@ label defineFull:
             "shorthand": "Network Issue",
             "longhand": "User moved desks, lost internal access",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -1489,7 +1489,7 @@ label defineFull:
             "shorthand": "Network Issue",
             "longhand": "User profile data not roaming correctly",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -1522,7 +1522,7 @@ label defineFull:
             "shorthand": "Software Issue",
             "longhand": "Some websites fail after network change",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -1555,7 +1555,7 @@ label defineFull:
             "shorthand": "Software Issue",
             "longhand": "Backups succeed but restores fail",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -1588,7 +1588,7 @@ label defineFull:
             "shorthand": "Software Issue",
             "longhand": "Scheduled task not running automatically",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -1621,7 +1621,7 @@ label defineFull:
             "shorthand": "Account Issue",
             "longhand": "Authentication failures after DNS configuration change",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -1658,7 +1658,7 @@ label defineFull:
             "shorthand": "Account Issue",
             "longhand": "Intermittent Kerberos authentication failures across users",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -1695,7 +1695,7 @@ label defineFull:
             "shorthand": "Network Issue",
             "longhand": "Network instability caused by ARP IP conflicts",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -1732,7 +1732,7 @@ label defineFull:
             "shorthand": "Access Issue",
             "longhand": "Domain controller replication delay across sites",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -1769,7 +1769,7 @@ label defineFull:
             "shorthand": "Network Issue",
             "longhand": "Hostname resolves to incorrect internal servers",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -1806,7 +1806,7 @@ label defineFull:
             "shorthand": "Network Issue",
             "longhand": "Multiple failed logins from suspicious external sources",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -1843,7 +1843,7 @@ label defineFull:
             "shorthand": "Software Issue",
             "longhand": "Backup success reported but restore consistently failing",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -1880,7 +1880,7 @@ label defineFull:
             "shorthand": "Network Issue",
             "longhand": "VPN assigns incorrect IP range blocking access",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -1917,7 +1917,7 @@ label defineFull:
             "shorthand": "Software Issue",
             "longhand": "Sudden disk loss with suspicious file renames",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -1954,7 +1954,7 @@ label defineFull:
             "shorthand": "Software Issue",
             "longhand": "New group policy causing widespread login slowdown",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -1991,7 +1991,7 @@ label defineFull:
             "shorthand": "Software Issue",
             "longhand": "Service running but not accepting connections",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -2028,7 +2028,7 @@ label defineFull:
             "shorthand": "Network Issue",
             "longhand": "Firewall change causing inconsistent external site access",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -2065,7 +2065,7 @@ label defineFull:
             "shorthand": "Device Issue",
             "longhand": "Machine trust relationship failure with domain",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -2102,7 +2102,7 @@ label defineFull:
             "shorthand": "Access Issue",
             "longhand": "Internal DNS works, external resolution failing",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -2139,7 +2139,7 @@ label defineFull:
             "shorthand": "Network Issue",
             "longhand": "Unknown process causing abnormal outbound traffic spikes",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -2176,7 +2176,7 @@ label defineFull:
             "shorthand": "Software Issue",
             "longhand": "Certificate renewal causing widespread trust warnings",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -2213,7 +2213,7 @@ label defineFull:
             "shorthand": "Account Issue",
             "longhand": "Scheduled task failing after service account change",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -2250,7 +2250,7 @@ label defineFull:
             "shorthand": "Network Issue",
             "longhand": "Mail queue buildup causing delivery delays",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -2287,7 +2287,7 @@ label defineFull:
                 "shorthand": "Access Issue",
             "longhand": "SYSVOL replication failure causing inconsistent scripts",
                 "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-                "is_followup": False
+                "is_followup": False,
             "repeatable": False
         },
 
@@ -2324,7 +2324,7 @@ label defineFull:
             "shorthand": "Network Issue",
             "longhand": "VPN users experience latency during peak hours",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -2361,7 +2361,7 @@ label defineFull:
             "shorthand": "Software Issue",
             "longhand": "Subnet cannot access internal service ports",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -2398,7 +2398,7 @@ label defineFull:
             "shorthand": "Software Issue",
             "longhand": "Application fails authentication after service migration",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -2435,7 +2435,7 @@ label defineFull:
             "shorthand": "Network Issue",
             "longhand": "Service failure on one patched server only",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -2472,7 +2472,7 @@ label defineFull:
             "shorthand": "Device Issue",
             "longhand": "Storage permissions inconsistent across application servers",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -2509,7 +2509,7 @@ label defineFull:
             "shorthand": "Access Issue",
             "longhand": "Hybrid sync missing some directory changes",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -2546,7 +2546,7 @@ label defineFull:
             "shorthand": "Network Issue",
             "longhand": "Mutual TLS authentication failure after certificate rollover",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -2579,7 +2579,7 @@ label defineFull:
             "shorthand": "Network Issue",
             "longhand": "Website appears down but scope not confirmed",
             "followup_event": {"allowed": True, "event_id": "trap_easy_001_followup", "score_cutoff": 6},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -2612,7 +2612,7 @@ label defineFull:
             "shorthand": "Network Issue",
             "longhand": "Issue expands after incorrect browser-focused troubleshooting",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": True
+            "is_followup": True,
             "repeatable": False
         },
 
@@ -2645,7 +2645,7 @@ label defineFull:
             "shorthand": "Network Issue",
             "longhand": "Login failure misattributed to password issue",
             "followup_event": {"allowed": True, "event_id": "trap_easy_002_followup", "score_cutoff": 7},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -2678,7 +2678,7 @@ label defineFull:
             "shorthand": "Access Issue",
             "longhand": "Account lockouts persist after repeated password resets",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": True
+            "is_followup": True,
             "repeatable": False
         },
 
@@ -2711,7 +2711,7 @@ label defineFull:
             "shorthand": "Software Issue",
             "longhand": "Single user printer issue escalated too quickly",
             "followup_event": {"allowed": True, "event_id": "trap_easy_003_followup", "score_cutoff": 6},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -2744,7 +2744,7 @@ label defineFull:
             "shorthand": "Network Issue",
             "longhand": "Restart caused wider printer outage across users",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": True
+            "is_followup": True,
             "repeatable": False
         },
 
@@ -2777,7 +2777,7 @@ label defineFull:
             "shorthand": "Network Issue",
             "longhand": "Access issue solved without validating role model",
             "followup_event": {"allowed": True, "event_id": "trap_easy_004_followup", "score_cutoff": 8},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -2810,7 +2810,7 @@ label defineFull:
             "shorthand": "Software Issue",
             "longhand": "Manual access caused over-permission security risk",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": True
+            "is_followup": True,
             "repeatable": False
         },
 
@@ -2843,7 +2843,7 @@ label defineFull:
             "shorthand": "Software Issue",
             "longhand": "Slow system assumed hardware instead of process",
             "followup_event": {"allowed": True, "event_id": "trap_easy_005_followup", "score_cutoff": 7},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -2876,7 +2876,7 @@ label defineFull:
             "shorthand": "Network Issue",
             "longhand": "Performance issue returns after temporary restart fix",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": True
+            "is_followup": True,
             "repeatable": False
         },
 
@@ -2909,7 +2909,7 @@ label defineFull:
             "shorthand": "Device Issue",
             "longhand": "Group policy issue mistaken for refresh delay",
             "followup_event": {"allowed": True, "event_id": "trap_medium_001_followup", "score_cutoff": 22},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -2942,7 +2942,7 @@ label defineFull:
             "shorthand": "Access Issue",
             "longhand": "Policy still fails due to incorrect scope assumptions",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": True
+            "is_followup": True,
             "repeatable": False
         },
 
@@ -2975,7 +2975,7 @@ label defineFull:
             "shorthand": "Network Issue",
             "longhand": "Outlook prompts mistaken for credential failure",
             "followup_event": {"allowed": True, "event_id": "trap_medium_002_followup", "score_cutoff": 21},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -3008,7 +3008,7 @@ label defineFull:
             "shorthand": "Software Issue",
             "longhand": "Credential prompts persist after unnecessary resets",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": True
+            "is_followup": True,
             "repeatable": False
         },
 
@@ -3041,7 +3041,7 @@ label defineFull:
             "shorthand": "Software Issue",
             "longhand": "Access denied solved by bypassing permissions",
             "followup_event": {"allowed": True, "event_id": "trap_medium_003_followup", "score_cutoff": 23},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -3074,7 +3074,7 @@ label defineFull:
             "shorthand": "Network Issue",
             "longhand": "Permission inconsistencies caused by manual overrides",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": True
+            "is_followup": True,
             "repeatable": False
         },
 
@@ -3107,7 +3107,7 @@ label defineFull:
             "shorthand": "Device Issue",
             "longhand": "Service failure fixed without checking logs",
             "followup_event": {"allowed": True, "event_id": "trap_medium_004_followup", "score_cutoff": 24},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -3140,7 +3140,7 @@ label defineFull:
             "shorthand": "Access Issue",
             "longhand": "Service still failing due to missed root cause",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": True
+            "is_followup": True,
             "repeatable": False
         },
 
@@ -3173,7 +3173,7 @@ label defineFull:
             "shorthand": "Network Issue",
             "longhand": "Backup success assumed without restore validation",
             "followup_event": {"allowed": True, "event_id": "trap_medium_005_followup", "score_cutoff": 25},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -3206,7 +3206,7 @@ label defineFull:
             "shorthand": "Software Issue",
             "longhand": "Restore failure persists despite new backups",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": True
+            "is_followup": True,
             "repeatable": False
         },
 
@@ -3239,7 +3239,7 @@ label defineFull:
             "shorthand": "Software Issue",
             "longhand": "Kerberos failures misdiagnosed without checking dependencies",
             "followup_event": {"allowed": True, "event_id": "trap_hard_001_followup", "score_cutoff": 44},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -3272,7 +3272,7 @@ label defineFull:
             "shorthand": "Network Issue",
             "longhand": "Kerberos failures persist after unnecessary restarts",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": True
+            "is_followup": True,
             "repeatable": False
         },
 
@@ -3305,7 +3305,7 @@ label defineFull:
             "shorthand": "Device Issue",
             "longhand": "ARP conflict handled without identifying duplicate source",
             "followup_event": {"allowed": True, "event_id": "trap_hard_002_followup", "score_cutoff": 46},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -3338,7 +3338,7 @@ label defineFull:
             "shorthand": "Access Issue",
             "longhand": "ARP conflicts return after ineffective switch restarts",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": True
+            "is_followup": True,
             "repeatable": False
         },
 
@@ -3371,7 +3371,7 @@ label defineFull:
             "shorthand": "Network Issue",
             "longhand": "Suspicious activity handled without proper containment",
             "followup_event": {"allowed": True, "event_id": "trap_hard_003_followup", "score_cutoff": 48},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -3404,7 +3404,7 @@ label defineFull:
             "shorthand": "Software Issue",
             "longhand": "Compromise worsens after destroying investigative evidence",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": True
+            "is_followup": True,
             "repeatable": False
         },
 
@@ -3437,7 +3437,7 @@ label defineFull:
             "shorthand": "Network Issue",
             "longhand": "Subnet access issue misdiagnosed as client problem",
             "followup_event": {"allowed": True, "event_id": "trap_hard_004_followup", "score_cutoff": 45},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -3470,7 +3470,7 @@ label defineFull:
             "shorthand": "Access Issue",
             "longhand": "Network issues expand due to workaround subnet moves",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": True
+            "is_followup": True,
             "repeatable": False
         },
 
@@ -3503,7 +3503,7 @@ label defineFull:
             "shorthand": "Network Issue",
             "longhand": "Sync issue bypassed with manual cloud fixes",
             "followup_event": {"allowed": True, "event_id": "trap_hard_005_followup", "score_cutoff": 47},
-            "is_followup": False
+            "is_followup": False,
             "repeatable": False
         },
 
@@ -3536,7 +3536,7 @@ label defineFull:
             "shorthand": "Network Issue",
             "longhand": "Directory drift caused by manual sync bypass",
             "followup_event": {"allowed": False, "event_id": "", "score_cutoff": 0},
-            "is_followup": True
+            "is_followup": True,
             "repeatable": False
         }
     ]
