@@ -17,8 +17,10 @@ label defineTutorial:
     init python:
         tutorial = {
             "id": "tutorial",
+            "shorthand": "Stolen Lunch",
+            "longhand": "An employee's missing lunch",
             "location": defineCubicle,
-            "points": 9,
+            "points": 5,
             "question": "Someone's lunch got stolen out of the break room fridge! As the new resident problem-solver, what's your plan of action?",
             "choices": [
                 {
@@ -38,31 +40,31 @@ label defineTutorial:
     $ fullArrayOfEvents.append(tutorial)
     return
 
-
-#TO: FUNCTION AND EVENT LIBRARY WRITER;
-#   USE THE HARDCODED DEFINITIONS FOR EACH DEPARTMENT IN LOCATION ARGUMENT
-#   IT'LL MAKE THINGS MUCH EASIER FOR DEBUGGING AND CODE STABILITY
-
-#Assigns maximums for: how many events can be done in a single run
-#                      how much score can be accumulated in a single run (as a fallback)
-#                      how much maximum score all events on screen can total to (for adding events)
+#Assigns cutoffs for:   maximum value of all questions on screen
+#                       maximum score that can be accumulated through questions
+#                       maximum number of questions until feedback
+#                       number of days until the simulation ends
 label defineArray:
     if gameScript == "easy":
-        $ activeCeiling = 90
-        $ scoreTerminate = 500
-        $ scriptTerminate = 15
+        $ activeCeiling = 60
+        $ scoreTerminate = 30
+        $ scriptTerminate = 20
+        $ numDays = 4
     elif gameScript == "medium":
-        $ activeCeiling = 120
-        $ scoreTerminate = 800
-        $ scriptTerminate = 25
-    elif gameScript == "hard":
-        $ activeCeiling = 180
-        $ scoreTerminate = 1500
-        $ scriptTerminate = 40
-    else:
         $ activeCeiling = 100
+        $ scoreTerminate = 100
+        $ scriptTerminate = 25
+        $ numDays = 5
+    elif gameScript == "hard":
+        $ activeCeiling = 150
+        $ scoreTerminate = 180
+        $ scriptTerminate = 25
+        $ numDays = 7
+    else:
+        $ activeCeiling = 10
         $ scoreTerminate = 1
         $ scriptTerminate = 1
+        $ numDays = 1
 
 #   See: event_library.
     call defineFull
@@ -78,17 +80,20 @@ label defineArray:
                 #This creates artificial rarity and frequency of events.
                 for i in range(eventLowLayer.get('weight')):
                     fullArrayOfEvents.append(entry)
+                #Shuffle the array of events to add more randomness and decrease bell curve skew.
+                renpy.random.shuffle(fullArrayOfEvents)
+            #If the event is a followup event to a trap question, add it to its own array.
+            if entry.get('is_followup'):
+                followUpDefine.append(entry)
+    #Set the original array to blank to save memory. It will not be referenced again.
+    $ event_library.clear()
     #See below.
     call addEvents
-    #Set the original array to blank to save memory. It will not be referenced again.
-    $ event_library = []
     return
-
-    #call eventUpdate
 
 #label getDynamicSize:
     #KEEP THIS COMMENTED
-    #This utilizes an external library not innately packed with Ren'Py and will always fail to compile on anything other than my end.
+    #This utilizes an external library not innately packed with Ren'Py and will always fail to compile on anything other than my machine.
     #This prints the byte-size of the event (and hopefully later the event library) to the console.
     #Other than my own overhead predictions, it also lets me check to see how efficient I need to be to iterate and process all of this code.
     #python:
@@ -106,18 +111,25 @@ label addEvents:
         global activeCeiling        
         global fullArrayOfEvents
         global currentEvents
-        global completedEvents
+        global dayEvents
         global scriptTerminate
         global score
         global scoreTerminate
+        global endDayValid
 
-        #Multipliers for point "ceiling" to restrict event spawning for the first one to three questions, give or take.
+        #Length of completed events, bar followup events. Traps and followups count for one question answered for multiplier.
+        multCounter = 0
+        for entry in dayEvents:
+            if not entry.get('is_followup'):
+                multCounter = multCounter + 1
+
+        #Multipliers for point "ceiling" to restrict event spawning for the first one to three questions, give or take. Needs finer tuning.
         if gameScript == "easy":
-            currentMultiplier = 0.5 * len(completedEvents)
+            currentMultiplier = 0.2 * multCounter * (currentDay ** 0.4)
         elif gameScript == "medium":
-            currentMultiplier = 0.3 * (len(completedEvents))
+            currentMultiplier = 0.3 * multCounter * (currentDay ** 0.6)
         elif gameScript == "hard":
-            currentMultiplier = 0.4 * (len(completedEvents))**1.2
+            currentMultiplier = 0.25 * multCounter**1.2 * (currentDay * 0.5)
         else:
             currentMultiplier = 1
 
@@ -125,7 +137,8 @@ label addEvents:
         if currentMultiplier > 1:
             currentMultiplier = 1
         #For first event, multiplier will always be zero, so add 0.1 to force one single event to spawn.
-        if currentMultiplier == 0:
+        #I have no clue how it keeps creating multipliers less than zero but it keeps happening and apparently it's a thing.
+        if currentMultiplier <= 0:
             currentMultiplier = 0.1
 
         #For loop to determine how many points the questions on screen are worth.
@@ -136,18 +149,38 @@ label addEvents:
             activePoints = activePoints + addPoints
         #Set the ceiling for "available points" according to the progression multiplier.
         addCeiling = activeCeiling * currentMultiplier
-        #Get length of list of every spawnable event.
-        index = len(fullArrayOfEvents)
+        if addCeiling <= 0:
+            addCeiling = 1
+        #If called externally, sets the temp event variable to blank to prevent edge case errors.
+        addedEvent = {}
         #If the points on screen is less than its cap, spawn another event until it equals or exceeds the cap.
-        while activePoints < addCeiling:
+        #   Edge case for trap followup events, which are locked to only allow themselves to exist while active.
+        while activePoints < addCeiling and not followUpActive:
             #If the score or number of completed events exceeds cutoff, spawn no new events regardless.
-            if score < scoreTerminate and len(completedEvents) < scriptTerminate:
-                #Grab a random event from the list of spawnable events and add it to queue.
-                #Add its point value to the number of points in queue, repeat until condition met.
+            if dayScore < scoreTerminate and len(dayEvents) < scriptTerminate:
+                #Get length of list of every spawnable event.
+                index = (len(fullArrayOfEvents) - 1)
+                #Grab a random event from the list of spawnable events.
                 newRandomEvent = renpy.random.randint(1, index)
-                currentEvents.append(fullArrayOfEvents[newRandomEvent])
+                addedEvent = fullArrayOfEvents[newRandomEvent]
+                #Shuffle order of answers to make it slightly more difficult to pattern-recognize answers per question.
+                renpy.random.shuffle(addedEvent.get('choices'))
+                #Add event with shuffled answers to queue.
+                currentEvents.append(addedEvent)
+                #Add its point value to the cap.
                 activePoints = activePoints + fullArrayOfEvents[newRandomEvent].get('points')
+                #If/else for repeatable. If repeatable, remove only that copy of the event from the library.
+                #   This assumes all repeatable events have at least 1 weight.
+                if not addedEvent.get('repeatable'):
+                    for event in fullArrayOfEvents:
+                        if event.get('id') == addedEvent.get('id'):
+                            fullArrayOfEvents.remove(event)
+                #Else, search the entire pullee array for all copies of the event and remove them procedurally.
+                else:
+                    fullArrayOfEvents.remove(addedEvent)
+            #If the cap has been reached, set flag to allow early workday endings.
             else:
+                endDayValid = True
                 break
     #See below.
     call sortEvents
@@ -156,47 +189,65 @@ label addEvents:
 label sortEvents:
     #Simple sort to sort events from easiest first to hardest last.
     #Makes visuals more concise and tidy.
+    #   With the removal of difficulty declaration, this is more a QOL thing than anything functional.
+    #   But I digress, it's still cool to have I guess.
     python:
         sort = []
-        global currentEvents
+        mediumThreshold = 0
         for option in currentEvents:
-            if option.get('question_difficulty') == "easy":
+            if option.get('question_difficulty') == "Easy":
+                sort.insert(0, option)
+                mediumThreshold = sort.index(option)
+            if option.get('question_difficulty') == "Medium":
+                sort.insert(mediumThreshold, option)
+            if option.get('question_difficulty') == "Hard":
                 sort.append(option)
-                currentEvents.remove(option)
-        for option in currentEvents:
-            if option.get("question_difficulty") == "medium":
-                sort.append(option)
-                currentEvents.remove(option)
-        for option in currentEvents:
-            if option.get("question_difficulty") == "hard":
-                sort.append(option)
-                currentEvents.remove(option)
-        currentEvents.append(sort)
+        currentEvents.clear()
+        for entry in sort:
+            currentEvents.append(entry)
         if [] in currentEvents:
             currentEvents.remove([])
     return
 
 label eventUpdate:
     #Display a notification saying which event was resolved.
-    $ renpy.notify(f"Event resolved: {tempEvent.get('shorthand')}")
+    if dayScore + dynamScore > scoreTerminate:
+        $ renpy.notify(f"Workday complete!")
+    else:
+        $ renpy.notify(f"Event resolved: {tempEvent.get('shorthand')}")
     #Clear the finished event from the active event queue.
     $ currentEvents.remove(tempEvent)
     #Add the event to a dummy array of "completed" events.
-    $ completedEvents.append(tempEvent)
+    $ dayEvents.append(tempEvent)
     #Add the response's score to the total score
-    #TODO: Refactor according to proper scoring system. This is temp and for debug.
-    $ score += dynamScore
     #Edge case for calling from the tutorial cycle, prevents escape and allows the tutorial to complete as intended. Tutorial no longer completely boned!
     if tempEvent.get('id') == "tutorial":
+        $ dayScore += dynamScore
         call tutorialConclusion
+    python:
+        if followUpActive:
+            for entry in sideArray:
+                currentEvents.append(entry)
+            sideArray.clear()
+            followUpActive = False
+        if tempEvent.get('followup_event').get('allowed') and dynamScore < tempEvent.get('followup_event').get('score_cutoff'):
+            for entry in currentEvents:
+                sideArray.append(entry)
+            currentEvents.clear()
+            followUpActive = True
+            getEntry = tempEvent.get('followup_event').get('event_id')
+            for entry in followUpDefine:
+                if entry.get('id') == getEntry:
+                    currentEvents.append(entry)
+    #TODO: Refactor according to proper scoring system. This is temp and for debug.
+    $ dayScore += dynamScore
     #Clears the temporary variable, effectively removing all copies of the event from active memory except in the above completed events.
     $ tempEvent = {}
     #Menu items created through a for loop have disastrous selection highlighting, this variable exists solely to remedy it.
     $ responseSelected = None
     #Calls below cycle to update notification marks on the main screen.
-
+    #This addEvents call seems irrelevant but it is MISSION CRITICAL!!! Removing it bricks the refresh self-sustain, somehow.
     call addEvents
-
     call evUpdateNotif
     call screen mainGameplayLoop
     
@@ -205,44 +256,55 @@ label eventUpdate:
 label evUpdateNotif:
     python:
         #Calls the pre-existing array and 8 associated booleans, allows function to alter proper variables
+        global eventToView
         global currentEvents
-        global officeEventToView
-        global rdEventToView
-        global cyberEventToView
-        global serverEventToView
-        global deskEventToView
-        global storageEventToView
-        global copyEventToView
-        global cubicleEventToView
 
-        #Sets all booleans to false to prevent false positives
-        officeEventToView = False
-        rdEventToView = False
-        cyberEventToView = False
-        serverEventToView = False
-        deskEventToView = False
-        storageEventToView = False
-        copyEventToView = False
-        cubicleEventToView = False
+        #Clears the array of departments with events ready.
+        eventToView.clear()
 
         #Iterates through active events for the entire array.
         #If an event's location matches a department, it sets the notification flag.
-        #Multiple events in the same department are fine, as it only needs to set it once.
+        #Multiple events in the same department are fine, as it only checks false and refuses true.
         for option in currentEvents:
-            if option.get('location') == defineOffice:
-                officeEventToView = True
-            if option.get('location') == defineRD:
-                rdEventToView = True
-            if option.get('location') == defineCyber:
-                cyberEventToView = True
-            if option.get('location') == defineServer:
-                serverEventToView = True
-            if option.get('location') == defineHelpdesk:
-                deskEventToView = True
-            if option.get('location') == defineStorage:
-                storageEventToView = True
-            if option.get('location') == defineCopier:
-                copyEventToView = True
-            if option.get('location') == defineCubicle:
-                cubicleEventToView = True
-                    
+            if option.get('location') == defineOffice and defineOffice not in eventToView:
+                eventToView.append(defineOffice)
+            if option.get('location') == defineRD and defineRD not in eventToView:
+                eventToView.append(defineRD)
+            if option.get('location') == defineCyber and defineCyber not in eventToView:
+                eventToView.append(defineCyber)
+            if option.get('location') == defineServer and defineServer not in eventToView:
+                eventToView.append(defineServer)
+            if option.get('location') == defineHelpdesk and defineHelpdesk not in eventToView:
+                eventToView.append(defineHelpdesk)
+            if option.get('location') == defineStorage and defineStorage not in eventToView:
+                eventToView.append(defineStorage)
+            if option.get('location') == defineCopier and defineCopier not in eventToView:
+                eventToView.append(defineCopier)
+            if option.get('location') == defineCubicle and defineCubicle not in eventToView:
+                eventToView.append(defineCubicle)
+    return
+
+label endDay:
+    #End-of-day event closer
+    python:
+        #Clears the current event queue, if it exists.
+        if currentEvents:
+            for entry in currentEvents:
+                dayEvents.append(entry)
+        currentEvents.clear()
+        #Adds the score of completed events to the total.
+        score = score + dayScore
+        #Adds all completed events to the complete queue.
+        #Cleared questions from above will be added to complete but will not be counted towards score.
+        #Order matters!
+        for entry in dayEvents:
+            completedEvents.append(entry)
+    #See screens.
+    call screen returnFeedback
+    #Add new events to queue.
+    call addEvents
+    #Updates notifs
+    call evUpdateNotif
+    #Resumes normal gameplay, plus one day.
+    call screen mainGameplayLoop
+    return
