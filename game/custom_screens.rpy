@@ -213,7 +213,7 @@ screen returnFeedback():
     frame:
         xalign 0.5 yalign 0.5
         vbox:
-            if currentDay < numDays
+            if currentDay < numDays:
                 text "Workday Summary"
                 text "score here"
                 text "insert array questions"
