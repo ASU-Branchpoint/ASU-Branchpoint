@@ -1,5 +1,4 @@
-default departmentsViewed = []
-default tutorialOfficeBypass = False
+default cubicleEvent = False
 default cisoEventTrigger = False
 default tutorialComplete = False
 default officeWarning = True
@@ -11,14 +10,7 @@ label tutorial:
     #Set opening flag to true to allow catch cases and prevent scenario escape.
     $ tutorialMode = True
 
-    $ officeEventToView = True
-    $ rdEventToView = True
-    $ deskEventToView = True
-    $ cyberEventToView = True
-    $ serverEventToView = True
-    $ cubicleEventToView = True
-    $ storageEventToView = True 
-    $ copyEventToView = True
+    $ eventToView = [defineOffice, defineRD, defineCyber, defineServer, defineHelpdesk, defineStorage, defineCopier, defineCubicle]
 
     scene bg main_hq_hall
 
@@ -85,7 +77,7 @@ label tutorial:
 
 label tutorialConclusion:
     g "Hmm... I suppose that's not a half bad option. Certainly worse ways to go about it."
-    g "Based on your response, the employees down there have awarded you... [score] out of 5 points."
+    g "Based on your response, the employees down there have awarded you... [dayScore] out of 5 points."
     g "Betcha didn't think we were keeping score, did you?"
     g "Given that you actually responded with something sensible, it seems like you're a natural at this."
     g "Well, looks like you're really getting the hang of things. I think we'd do well to keep you around even after your time as an intern here is up."
@@ -93,16 +85,18 @@ label tutorialConclusion:
     g "Come swing by my department if you need a hand."
     g "Otherwise, I think you're on your own. You'll start actually working tomorrow. Show up at 9 on the dot."
     "You have now completed the tutorial. When you wish to play the full game, return to the title screen."
+    $ eventToView.clear()
+    $ cubicleEvent = False
     $ tutorialComplete = True
     $ cisoEventTrigger = False
-    return
+    call screen mainGameplayLoop
 
 #Tutorial label to handle the event tree for CISO Office.
 #When cycling through the department explanations, a string of the department's name is added to an array.
 #If the name is in the array, skip the introduction on future clicks and prevent the name being added multiple times.
 #If the array is long enough to contain all departments, proceed to the next phase of the tutorial.
 label tutorialOfficeGeneral:
-    if "CISO" not in departmentsViewed:
+    if defineOffice in eventToView:
         g "I believe I'll leave you on your own for this. It'd be rude for me to sit in with you."
         c "This is my office, the CISO's office."
         c "Easy now... We're a small department. You don't have to be afraid of me."
@@ -115,15 +109,14 @@ label tutorialOfficeGeneral:
         "This is where a large number of managerial decisions happen."
         "Events in this location are high-priority with high risk to high reward."
         "Additionally, events in this location tend to be rarer, and persist for longer."
-        $ officeEventToView = False
-        $ departmentsViewed.append("CISO")
+        $ eventToView.remove(defineOffice)
     menu:
         "Could you repeat the department's function?":
             "This is where a large number of managerial decisions happen."
             "Events in this location are high-priority with high risk to high reward."
             "Additionally, events in this location tend to be rarer, and persist for longer."
             jump tutorialOfficeGeneral
-        "... An \"event\"\?" if len(departmentsViewed) > 7:
+        "... An \"event\"\?" if len(eventToView) < 1:
             if tutorialComplete:
                 "Events will be marked by an exclamation mark next to their respective department."
                 "The bottom option will always take you back to the department list, no strings attached."
@@ -141,14 +134,15 @@ label tutorialOfficeGeneral:
                 $ cisoEventTrigger = False
                 if tutorial not in currentEvents:
                     $ currentEvents.append(tutorial)
-                $ cubicleEventToView = True
+                $ eventToView.append(defineCubicle)
+                $ cubicleEvent = True
             jump tutorialOfficeGeneral
         "Never mind.":
                 call screen mainGameplayLoop
 
 #Tutorial label to handle event trees for R&D Department.
 label tutorialResDevGeneral:
-    if "R&D" not in departmentsViewed:
+    if defineRD in eventToView:
         p "Welcome to the R&D department."
         p "We handle a lot of our company's future-facing projects..."
         p "..."
@@ -158,9 +152,8 @@ label tutorialResDevGeneral:
         g "Notably, I don't think any of his employees hate working under him."
         "The R&D department hosts events that will have less short-term impacts and more long-term impacts."
         "However, they should not necessarily be passed up for other departments when time is low."
-        $ rdEventToView = False
-        $ departmentsViewed.append("R&D")
-    if len(departmentsViewed) > 7 and officeWarning and cisoEventTrigger == False:
+        $ eventToView.remove(defineRD)
+    if len(eventToView) < 1 and officeWarning and cisoEventTrigger == False:
         g "We should go to the CISO's office. I've been told there might be an \"event\" there worth looking at."
         $ cisoEventTrigger = True
     menu:
@@ -173,7 +166,7 @@ label tutorialResDevGeneral:
 
 #Tutorial label to handle event trees for Helpdesk.
 label tutorialHelpDeskGeneral:
-    if "Helpdesk" not in departmentsViewed:
+    if defineHelpdesk in eventToView:
         b "Welcome back!"
         b "Guess they've got you walking around like we're animals in a zoo, eh?"
         b "Well, this is the Help Desk. You've got a problem, we're the first people you turn to."
@@ -185,9 +178,8 @@ label tutorialHelpDeskGeneral:
         "This serves as a middle ground between the Cubicles, the Device Storage, and the Cybersecurity departments."
         "Events here can often be handled easily, but may be overwhelming in comparison to other departments."
         "If neglected, problems here can escalate to other departments, and bring more pressuring decisions with them."
-        $ deskEventToView = False
-        $ departmentsViewed.append("Helpdesk")
-    if len(departmentsViewed) > 7 and officeWarning and cisoEventTrigger == False:
+        $ eventToView.remove(defineHelpdesk)
+    if len(eventToView) < 1 and officeWarning and cisoEventTrigger == False:
         g "We should go to the CISO's office. I've been told there might be an \"event\" there worth looking at."
         $ cisoEventTrigger = True
     menu:
@@ -202,7 +194,7 @@ label tutorialHelpDeskGeneral:
 
 #Tutorial label to handle event trees for Cybersecurity.
 label tutorialCyberSecGeneral:
-    if "Cybersecurity" not in departmentsViewed:
+    if defineCyber in eventToView:
         g "Here's my department. I know it ain't all that pretty..."
         g "But, we keep things safe and secure and that's what counts."
         g "Also, don't touch the light switch."
@@ -212,9 +204,8 @@ label tutorialCyberSecGeneral:
         "When they happen, Cybersecurity events often are high caliber threats."
         "These events can critically affect everything, both short and long-term."
         g "Let's keep moving."
-        $ cyberEventToView = False
-        $ departmentsViewed.append("Cybersecurity")
-    if len(departmentsViewed) > 7 and officeWarning and cisoEventTrigger == False:
+        $ eventToView.remove(defineCyber)
+    if len(eventToView) < 1 and officeWarning and cisoEventTrigger == False:
         g "We should go to the CISO's office. I've been told there might be an \"event\" there worth looking at."
         $ cisoEventTrigger = True
     menu:
@@ -228,7 +219,7 @@ label tutorialCyberSecGeneral:
 
 #Tutorial label to handle event trees for Server Room.
 label tutorialServersGeneral:
-    if "Servers" not in departmentsViewed:
+    if defineServer in eventToView:
         a "Who are you? I don't recall opening access..."
         a "Oh, hey, Giovanni. I assume the intern is with you."
         g "Didn't mean to surprise you."
@@ -239,9 +230,8 @@ label tutorialServersGeneral:
         "The Server Room is a mission-critical department with a wide breadth of event severity."
         "While minor events can sometimes be resolved on their own, high-tier events can bring every other department to a screeching halt if left unchecked."
         g "I'll let you get back to it, then. We'll be taking our leave."
-        $ serverEventToView = False
-        $ departmentsViewed.append("Servers")
-    if len(departmentsViewed) > 7 and officeWarning and cisoEventTrigger == False:
+        $ eventToView.remove(defineServer)
+    if len(eventToView) < 1 and officeWarning and cisoEventTrigger == False:
         g "We should go to the CISO's office. I've been told there might be an \"event\" there worth looking at."
         $ cisoEventTrigger = True
     menu:
@@ -254,7 +244,7 @@ label tutorialServersGeneral:
 
 #Tutorial label to handle event trees for Cubicles.
 label tutorialCubicleGeneral:
-    if "Cubicles" not in departmentsViewed:
+    if defineCubicle in eventToView and not cubicleEvent:
         g "Sounds like they're on their best behavior for the intern."
         g "That's rare."
         e "You look a little lost. I'm assuming you're new here?"
@@ -268,12 +258,11 @@ label tutorialCubicleGeneral:
         "If neglected, they can find their own way to resolve their issues, for better or for worse."
         g "Best not get involved in the political environment down here."
         g "Eleanor props it up to be real nice, but it's a warzone when things get going."
-        $ cubicleEventToView = False
-        $ departmentsViewed.append("Cubicles")
+        $ eventToView.remove(defineCubicle)
         #Fascinatingly, this is the only department to require manual hiding of the text box following the introduction.
         #Probably something to do with the python code lurking below, but as it's a non-issue and fixed bug it's not of much note.
         window hide
-    if len(departmentsViewed) > 7 and officeWarning and cisoEventTrigger == False:
+    if len(eventToView) < 1 and officeWarning and cisoEventTrigger == False:
         g "We should go to the CISO's office. I've been told there might be an \"event\" there worth looking at."
         $ cisoEventTrigger = True
     #Bastardized copy of pre-existing dropdown event code, starting here.
@@ -282,18 +271,18 @@ label tutorialCubicleGeneral:
     python:
         global currentEvents
         global dynamicRoomArray
-        global cubicleEventToView
+        global eventToView
         #Loads relevant variables from renpy instead of using its own blank ones (why does it behave that way)
         #Even though the only event that can possibly spawn in tutorial is in cubicles and is tutorial, better safe than sorry.
         #I'd rather have the game not function properly than break in half when something unexpected happens.
         for option in currentEvents:
             if option.get('location') == defineCubicle:
-                dynamicRoomArray.append((option.get('id'), option))
+                dynamicRoomArray.append((option.get('longhand'), option))
         #If there is no event to resolve, allow display and function of button allowing repeats of the department explanation.
-        if not cubicleEventToView:
+        if defineCubicle not in eventToView and not cubicleEvent:
             dynamicRoomArray.append(("Could you repeat the department's function?", "redefine"))
         #If no event is active and there is an event in completed events, allow explanation of how events play out and resolve.
-        if not cubicleEventToView and len(completedEvents) == 1:
+        if defineCubicle not in eventToView and len(completedEvents) == 1:
             dynamicRoomArray.append(("Repeat how the events play out.", "repeat"))
         #Bail out button to just return to main screen.
         dynamicRoomArray.append(("Never mind...", "home"))
@@ -322,7 +311,7 @@ label tutorialCubicleGeneral:
 
 #Tutorial label to handle event trees for Device Storage.
 label tutorialStorageGeneral:
-    if "Storage" not in departmentsViewed:
+    if defineStorage in eventToView:
         m "Look, I've told you already... you lot have run me out of Authenticator Cards, I can't activate more until..."
         m "Ah. You're not one of the Cubicle employees."
         m "I apologize for my outburst, those idiots lose those cards like their pockets have holes in them."
@@ -335,9 +324,8 @@ label tutorialStorageGeneral:
         "If an event here occurs, it typically means that something is running short."
         "This can drastically drive down the effectiveness and self-sufficiency of other departments as a result."
         g "Unfortunately, I don't think we'll be any help here."
-        $ storageEventToView = False
-        $ departmentsViewed.append("Storage")
-    if len(departmentsViewed) > 7 and officeWarning and cisoEventTrigger == False:
+        $ eventToView.remove(defineStorage)
+    if len(eventToView) < 1 and officeWarning and cisoEventTrigger == False:
         g "We should go to the CISO's office. I've been told there might be an \"event\" there worth looking at."
         $ cisoEventTrigger = True
     menu:
@@ -351,7 +339,7 @@ label tutorialStorageGeneral:
 
 #Tutorial label to handle event trees for Copy Room.
 label tutorialCopierGeneral:
-    if "Copier" not in departmentsViewed:
+    if defineCopier in eventToView:
         n "The one time the print queue isn't clogged to high heaven..."
         n "Sorry, I've just been monitoring and fixing these things all day."
         n "You'd be astounded how often these things clog up and need things unblocked."
@@ -365,9 +353,8 @@ label tutorialCopierGeneral:
         "Its importance should not be understated when it comes to keeping the company as a whole afloat."
         g "Alright, Norm. I'll be back in a couple days to get that new photocopier set up."
         g "With or without my trusty intern here."
-        $ copyEventToView = False
-        $ departmentsViewed.append("Copier")
-    if len(departmentsViewed) > 7 and officeWarning and cisoEventTrigger == False:
+        $ eventToView.remove(defineCopier)
+    if len(eventToView) < 1 and officeWarning and cisoEventTrigger == False:
         g "We should go to the CISO's office. I've been told there might be an \"event\" there worth looking at."
         $ cisoEventTrigger = True
     menu:

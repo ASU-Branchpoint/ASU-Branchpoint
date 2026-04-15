@@ -21,20 +21,18 @@ default gameScript = "none"
 default departCaller = ""
 default score = 0
 
-default officeEventToView = False
-default rdEventToView = False
-default deskEventToView = False
-default cyberEventToView = False
-default serverEventToView = False
-default cubicleEventToView = False
-default storageEventToView = False
-default copyEventToView = False
+default eventToView = []
 
 default tutorialMode = False
 
 default fullArrayOfEvents = []
+default followUpDefine = []
 default currentEvents = []
 default completedEvents = []
+default dayEvents = []
+default sideArray = []
+default followUpActive = False
+default endDayValid = False
 
 default dynamicRoomArray = []
 default shortMenu = []
@@ -45,7 +43,9 @@ default tempEvent = {}
 default activePoints = 0
 default activeCeiling = 0
 default scoreTerminate = 0
-default scriptTerminate = 0
+default numDays = 0
+default currentDay = 1
+default dayScore = 0
 
 default mainOfficeHovered = False
 default researchDevHovered = False
@@ -83,6 +83,7 @@ label start:
 
     call screen mainGameplayLoop
 
+
 #Access codes are ordered by rank, 100's slot is EMPLOYEE access, 010's slot is CYBERSEC access, and 001's slot is CISO access.
 #Following numbers are the way departments should be ordered on UI.
 #All eight switches restrict access based on game difficulty, creating artificial ease of access for low difficulties.
@@ -97,7 +98,7 @@ label mainOfficeSwitch:
     if tutorialMode:
         jump tutorialOfficeGeneral
     #Checks the player's selected difficulty and blocks access to the department if difficulty is too low.
-    elif gameScript == "easy" or gameScript == "medium":
+    elif gameScript == "easy" or gameScript == "medium" and defineOffice not in eventToView:
         "The door beeps, and the light blinks red. Your keycard doesn't grant your role access into this department."
         call screen mainGameplayLoop
     #Sets the reference "department" to the corresponding switch, then jumps to the abstract function. See below.
@@ -110,7 +111,7 @@ label mainOfficeSwitch:
 label researchDevSwitch:
     if tutorialMode:
         jump tutorialResDevGeneral
-    elif gameScript == "easy":
+    elif gameScript == "easy" and defineRD not in eventToView:
         "The door beeps, and the light blinks red. Your keycard doesn't grant your role access into this department."
         call screen mainGameplayLoop
     else:
@@ -122,7 +123,7 @@ label researchDevSwitch:
 label cyberSecSwitch:
     if tutorialMode:
         jump tutorialCyberSecGeneral
-    elif gameScript == "easy":
+    elif gameScript == "easy" and defineCyber not in eventToView:
         "The door beeps, and the light blinks red. Your keycard doesn't grant your role access into this department."
         call screen mainGameplayLoop
     else:
@@ -134,7 +135,7 @@ label cyberSecSwitch:
 label serverRoomSwitch:
     if tutorialMode:
         jump tutorialServersGeneral
-    elif gameScript == "easy":
+    elif gameScript == "easy" and defineServer not in eventToView:
         "The door beeps, and the light blinks red. Your keycard doesn't grant your role access into this department."
         call screen mainGameplayLoop
     else:
@@ -146,7 +147,7 @@ label serverRoomSwitch:
 label helpDeskSwitch:
     if tutorialMode:
         jump tutorialHelpDeskGeneral
-    elif gameScript == "easy":
+    elif gameScript == "easy" and defineHelpdesk not in eventToView:
         "The door beeps, and the light blinks red. Your keycard doesn't grant your role access into this department."
         call screen mainGameplayLoop
     else:
@@ -194,12 +195,8 @@ label departmentGeneral:
         #Gets every event in the active event queue that matches the referred department.
         for option in currentEvents:
             if option.get('location') == departCaller:
-                #As the shorthand was in fact, too short, the question's individual difficulty was appended to [V]
-                #   preface the shorthand and make each question slightly more distinct in the menu.
-
-                #TODO: Make a secondary shorthand: one to display in the menu [V]
-                #   and one to display in the resolution notification.
-                out = option.get('question_difficulty') + ": " + option.get('shorthand')
+                #Gets the slightly longer description for the question and writes it to the title.
+                out = option.get('longhand')
                 #For each valid event, add the aforementioned question title to the menu and attach its corresponding event.
                 dynamicRoomArray.append((out, option))
         #Hardcoded bail out button to return to previous menu.
