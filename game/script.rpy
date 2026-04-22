@@ -19,7 +19,7 @@ define n = Character("Norman") #Copier head
 default gameScript = "none"
 
 default departCaller = ""
-default score = 0
+default fullScore = 0
 
 default eventToView = []
 
@@ -33,6 +33,8 @@ default dayEvents = []
 default sideArray = []
 default followUpActive = False
 default endDayValid = False
+default dayMaxPoints = 0
+default sessionMaxPoints = 0
 
 default dynamicRoomArray = []
 default shortMenu = []
@@ -46,6 +48,7 @@ default scoreTerminate = 0
 default numDays = 0
 default currentDay = 1
 default dayScore = 0
+default displayEnd = "dayEvents"
 
 default mainOfficeHovered = False
 default researchDevHovered = False
@@ -62,20 +65,10 @@ default titleScreenHovered = False
 label start:
 
     show bg cityscape
-
-    "The Almighty CEO" "Whoa now, I thought we told you that you didn't start for another few weeks."
-
-    "The Almighty CEO" "I get that you're eager to get started... but we've got a fiscal quarter to round out and we don't have the wiggle room to take chances."
-
-    "The Almighty CEO" "It's nothing personal. Just hang tight for a little bit and we'll welcome you to your new role with open arms."
-
-    #scene bg room
-    
-    #"well, I suppose you've got everything under control, then."
-
-    #"Best of luck!"
     
     call screen role_select
+
+    call defineFull
 
     call defineArray
 
