@@ -101,6 +101,12 @@ screen mainGameplayLoop():
         hovered SetVariable("titleScreenHovered", True)
         unhovered SetVariable("titleScreenHovered", False)
         action [SetVariable("titleScreenHovered", False), MainMenu(),]
+    #Box for displaying what day the user is on
+    frame:
+        xalign 0 yalign 1.0
+        vbox:
+            text "Day [currentDay] of [numDays]"
+
 
     #This entire block basically adds the floor-by-floor glow when a button is hovered over. Also adds fun effects for "return to title".
     if titleScreenHovered == False:
@@ -186,14 +192,14 @@ screen eventViewer(event):
             for option in event['choices']:
                 #Button sets score to add to the response's score, and a dummy variable to the response to allow highlighting.
                 #The default highlighting does not work on menus generated through for loops.
-                textbutton "[option['answerText']]" action [
+                textbutton "[option['answerText']] [option['score']]" action [
                     SetVariable("dynamScore", option['score']), 
                     SetVariable("responseSelected", option)
                     ] selected responseSelected == option
 
             #Hardcoded bailout button to allow user to return to previous screen.
             #Added if block to catch an edge case where tutorial event was unviewable after backing out.
-            textbutton "Let me get back to you with my response." action [
+            textbutton "Return" action [
                 SetVariable("dynamScore", 0),
                 SetVariable("responseSelected", None),
                 Function (renpy.restart_interaction),
@@ -202,31 +208,76 @@ screen eventViewer(event):
             #Blank line to split confirm button from the rest of the text.
             textbutton "-------------------------" action None
 
-            #Checks if a response was clicked, then allows the user to proceed to score evaluation. [V]
-            #   See "eventUpdate" in events.
-            #If responseSelected threw too many false positives and allowed answer submission without clicking an answer.
+            #Checks if a response was clicked, then allows the user to proceed to score evaluation.
+            #See "eventUpdate" in events.
             if not responseSelected == None:
                 textbutton "Confirm selection" action SetVariable("tempEvent", event), Jump("eventUpdate")
         
 screen returnFeedback():
     modal True
+    add "VOID.jpg"
+    #TODO CHANGE!!! This black screen exists to make it easier for me to program in the screens.
     frame:
-        xalign 0.5 yalign 0.5
+        background None
+        xalign 0.075 yalign 0.2
         vbox:
-            if currentDay < numDays:
-                text "Workday Summary"
-                text "score here"
-                text "insert array questions"
-                text "feedback"
-                text "lasciate ogni speranza, voi ch'entrate"
-                #When return button is clicked, set all relevant variables to default states and resume loop.
-                textbutton "Results Acknowledged" action [
-                    SetVariable("dayScore", 0),
-                    SetVariable("dayEvents", []),
-                    SetVariable("currentDay", currentDay + 1),
-                    SetVariable("endDayValid", False),
-                    Notify(currentDay),
-                    Return()]
+            #If end day display, show workday and day's score, otherwise
+            #Show full session's score
+            if displayEnd:
+                text "Workday Summary: Day [currentDay]":
+                    xalign 0.5
+                text "[dayScore] / [dayMaxScore]":
+                    xalign 0.5
             else:
-                #placeholder
-                text "one fish two fish red fish blue fish"
+                text "Work Session Summary: All Days":
+                    xalign 0.5
+                text "[score] / [sessionMaxPoints]":
+                    xalign 0.5
+    frame:
+        #Box to display all events within criteria.
+        area (62, 243, 350, 400)
+        side ("c"):
+            viewport:
+                draggable False
+                mousewheel True
+                scrollbars "vertical"
+                #If end of day display, show all events in end of day array;
+                #Else, display all events from compiled end of day arrays.
+                vbox:
+                    if displayEnd:
+                        for element in dayEvents:
+                            textbutton "[element.get('longhand')]" action [
+                                SetVariable("responseSelected", element) 
+                                ] selected responseSelected == element
+                    else:
+                        for element in completedEvents:
+                            textbutton "[element.get('longhand')]" action [
+                                SetVariable("responseSelected", element)
+                                ] selected responseSelected == element
+    frame:
+        #Box to display feedback, gets feedback to show from above box's selected element.
+        area (427, 80, 500, 570)
+        side("c"):
+            viewport:
+                draggable False
+                if responseSelected:
+                    vbox:
+                        text "[responseSelected.get('feedback')]"
+    frame:
+        #Box for continuing gameplay cycle.
+        xalign 0.93 yalign 0.5
+        vbox:
+            #If day end screen, reset all day-specific variables, increment day, and notify user of what day.
+            #Else, prompt user to return to title screen.
+            if displayEnd:
+                textbutton "Continue to\n   next day": 
+                    action [
+                        SetVariable("dayScore", 0),
+                        SetVariable("dayEvents", []),
+                        SetVariable("currentDay", currentDay + 1),
+                        SetVariable("endDayValid", False),
+                        Notify(f"Entering Day {currentDay + 1}"),
+                        Return()]
+            else:
+                textbutton "Return to Title":
+                    action [MainMenu()]

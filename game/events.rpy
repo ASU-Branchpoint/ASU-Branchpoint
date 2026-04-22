@@ -113,7 +113,6 @@ label addEvents:
         global currentEvents
         global dayEvents
         global scriptTerminate
-        global score
         global scoreTerminate
         global endDayValid
 
@@ -287,18 +286,33 @@ label evUpdateNotif:
 label endDay:
     #End-of-day event closer
     python:
+        for i in range(1, 20):
+            index =len(event_library)
+            rand = renpy.random.randint(1, index)
+            dayEvents.append(event_library[rand])
+        dayMaxScore = 0
         #Clears the current event queue, if it exists.
         if currentEvents:
             for entry in currentEvents:
                 dayEvents.append(entry)
         currentEvents.clear()
+        scores = []
+        for entry in dayEvents:
+            for value in entry.get('choices'):
+                maxed = value.get('score')
+                scores.append(maxed)
+            dayMaxScore += max(scores)
+            scores.clear()
         #Adds the score of completed events to the total.
-        score = score + dayScore
+        fullScore = fullScore + dayScore
         #Adds all completed events to the complete queue.
         #Cleared questions from above will be added to complete but will not be counted towards score.
         #Order matters!
         for entry in dayEvents:
             completedEvents.append(entry)
+        if currentDay == numDays:
+            renpy.call_screen("returnFeedback")
+            displayEnd = "completedEvents"
     #See screens.
     call screen returnFeedback
     #Add new events to queue.
