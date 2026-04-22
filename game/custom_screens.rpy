@@ -192,7 +192,7 @@ screen eventViewer(event):
             for option in event['choices']:
                 #Button sets score to add to the response's score, and a dummy variable to the response to allow highlighting.
                 #The default highlighting does not work on menus generated through for loops.
-                textbutton "[option['answerText']] [option['score']]" action [
+                textbutton "[option['answerText']]" action [
                     SetVariable("dynamScore", option['score']), 
                     SetVariable("responseSelected", option)
                     ] selected responseSelected == option
