@@ -29,6 +29,9 @@ define config.version = "Alpha-1.0"
 ## Text that is placed on the game's about screen. Place the text between the
 ## triple-quotes, and leave a blank line between paragraphs.
 
+#Disable rollback function
+define config.rollback_enabled = False
+
 define gui.about = _p("""
 """)
 
