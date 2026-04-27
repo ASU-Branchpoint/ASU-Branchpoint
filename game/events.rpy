@@ -286,10 +286,6 @@ label evUpdateNotif:
 label endDay:
     #End-of-day event closer
     python:
-        for i in range(1, 20):
-            index =len(event_library)
-            rand = renpy.random.randint(1, index)
-            dayEvents.append(event_library[rand])
         dayMaxScore = 0
         #Clears the current event queue, if it exists.
         if currentEvents:
