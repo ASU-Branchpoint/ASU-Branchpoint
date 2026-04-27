@@ -21,74 +21,76 @@ screen mainGameplayLoop():
     #CISO Office button
     imagebutton idle "loop_hitbox":
         anchor(1.0, 0.5)
-        xpos 1210
-        ypos 75
+        xpos 1265
+        ypos 88
         hovered SetVariable("mainOfficeHovered", True)
         unhovered SetVariable("mainOfficeHovered", False)
         action [SetVariable("mainOfficeHovered", False), Jump ("mainOfficeSwitch")]
     #Research and Development button
     imagebutton idle "loop_hitbox":
         anchor(1.0, 0.5)
-        xpos 1210
-        ypos 134
+        xpos 1265
+        ypos 150
         hovered SetVariable("researchDevHovered", True)
         unhovered SetVariable("researchDevHovered", False)
         action [SetVariable("researchDevHovered", False), Jump ("researchDevSwitch")]
     #Employee Helpdesk button
     imagebutton idle "loop_hitbox":
         anchor(1.0, 0.5)
-        xpos 1210
-        ypos 193
+        xpos 1265
+        ypos 212
         hovered SetVariable("helpDeskHovered", True)
         unhovered SetVariable("helpDeskHovered", False)
         action [SetVariable("helpDeskHovered", False), Jump ("helpDeskSwitch")]
     #Cybersecurity Dept. button
     imagebutton idle "loop_hitbox":
         anchor(1.0, 0.5)
-        xpos 1210
-        ypos 252
+        xpos 1265
+        ypos 274
         hovered SetVariable("cyberSecHovered", True)
         unhovered SetVariable("cyberSecHovered", False)
         action [SetVariable("cyberSecHovered", False), Jump ("cyberSecSwitch")]
     #Server Room button
     imagebutton idle "loop_hitbox":
         anchor(1.0, 0.5)
-        xpos 1210
-        ypos 311
+        xpos 1265
+        ypos 336
         hovered SetVariable("serverRoomHovered", True)
         unhovered SetVariable("serverRoomHovered", False)
         action [SetVariable("serverRoomHovered", False), Jump("serverRoomSwitch")]
     #Cubicles button
     imagebutton idle "loop_hitbox":
         anchor(1.0, 0.5)
-        xpos 1210
-        ypos 370
+        xpos 1265
+        ypos 400
         hovered SetVariable("cubicleHovered", True)
         unhovered SetVariable("cubicleHovered", False)
         action [SetVariable("cubicleHovered", False), Jump ("cubicleSwitch")]
     #Device Storage button
     imagebutton idle "loop_hitbox":
         anchor(1.0, 0.5)
-        xpos 1210
-        ypos 429
+        xpos 1265
+        ypos 462
         hovered SetVariable("deviceStorageHovered", True)
         unhovered SetVariable("deviceStorageHovered", False)
         action [SetVariable("deviceStorageHovered", False), Jump ("deviceStorageSwitch")]
     #Copy Room button
     imagebutton idle "loop_hitbox":
         anchor(1.0, 0.5)
-        xpos 1210
-        ypos 488
+        xpos 1265
+        ypos 523
         hovered SetVariable("copyRoomHovered", True)
         unhovered SetVariable("copyRoomHovered", False)
         action [SetVariable("copyRoomHovered", False), Jump ("copyRoomSwitch")]
     #End workday button
-    imagebutton idle "hitbox_border":
+    imagebutton idle "loop_hitbox":
         anchor (1.0, 0.5)
-        xpos 1210
-        ypos 590
+        xpos 1265
+        ypos 620
         if endDayValid:
-            action Jump ("endDay")
+            hovered SetVariable("endDayHovered", True)
+            unhovered SetVariable("endDayHovered", False)
+            action [SetVariable("endDayHovered", False), Jump ("endDay")]
         elif tutorialComplete:
             action MainMenu()
         else:
@@ -96,7 +98,7 @@ screen mainGameplayLoop():
     #Return to Title button
     imagebutton idle "loop_hitbox":
         anchor (1.0, 0.5)
-        xpos 1210
+        xpos 1265
         ypos 690
         hovered SetVariable("titleScreenHovered", True)
         unhovered SetVariable("titleScreenHovered", False)
@@ -109,74 +111,63 @@ screen mainGameplayLoop():
 
 
     #This entire block basically adds the floor-by-floor glow when a button is hovered over. Also adds fun effects for "return to title".
-    if titleScreenHovered == False:
-        add "titleScreenButton.png"
     if mainOfficeHovered:
-        add "lights/mainOfficeLights.png"
+        add "lights/OfficeLights.png"
     elif researchDevHovered:
-        add "lights/researchDevLights.png"
+        add "lights/RDLights.png"
     elif helpDeskHovered:
-        add "lights/helpDeskLights.png"
+        add "lights/HelpdeskLights.png"
     elif cyberSecHovered:
-        add "lights/cyberSecLights.png"
+        add "lights/CyberLights.png"
     elif serverRoomHovered:
-        add "lights/serverRoomLights.png"
+        add "lights/ServerLights.png"
     elif cubicleHovered:
-        add "lights/cubicleLights.png"
+        add "lights/CubicleLights.png"
     elif deviceStorageHovered:
-        add "lights/deviceStorageLights.png"
+        add "lights/StorageLights.png"
     elif copyRoomHovered:
-        add "lights/copyRoomLights.png"
+        add "lights/CopierLights.png"
     elif titleScreenHovered:
-        add "lights/titleScreenLights.png"
-    if endDayValid:
-        add None
+        add "lights/ReturnToTitleLights.png"
+    elif endDayHovered:
+        add "lights/EndDayLights.png"
+    if endDayValid and not endDayHovered:
+        add "lights/endDayAvail.png"
 
-    #Properly ordered
-    if defineOffice in eventToView:
+    #Blocks add event notifications when events are in departments.
+    if defineOffice in eventToView or cisoEventTrigger:
         add "eventmark.png":
-            xpos 1222
-            ypos 50
+            xpos 924
+            ypos 62
     #Properly ordered
     if defineRD in eventToView:
         add "eventmark.png":
-            xpos 1222
-            ypos 108
-    #When ordered correctly, this becomes cybersecurity.
+            xpos 943
+            ypos 125
     if defineHelpdesk in eventToView:
         add "eventmark.png":
-            xpos 1222
-            ypos 166
-    #When ordered correctly, this becomes server room.
+            xpos 941
+            ypos 187
     if defineCyber in eventToView:
         add "eventmark.png":
-            xpos 1222
-            ypos 224
-    #When ordered correctly, this becomes helpdesk.
+            xpos 890
+            ypos 249
     if defineServer in eventToView:
         add "eventmark.png":
-            xpos 1222
-            ypos 282
-    #When ordered correctly, this becomes device storage.
+            xpos 908
+            ypos 312
     if defineCubicle in eventToView:
         add "eventmark.png":
-            xpos 1222
-            ypos 340
-    #When ordered correctly, this becomes copy room.
+            xpos 902
+            ypos 374
     if defineStorage in eventToView:
         add "eventmark.png":
-            xpos 1222
-            ypos 398
-    #When ordered correctly this becomes cubicles.
+            xpos 879
+            ypos 437
     if defineCopier in eventToView:
         add "eventmark.png":
-            xpos 1222
-            ypos 456
-    
-    if cisoEventTrigger:
-        add "eventmark.png":
-            xpos 1222
-            ypos 50
+            xpos 928
+            ypos 499
 
 #Procedural menu generator that loads options and associated scores when given a valid event.
 screen eventViewer(event):
@@ -192,7 +183,7 @@ screen eventViewer(event):
             for option in event['choices']:
                 #Button sets score to add to the response's score, and a dummy variable to the response to allow highlighting.
                 #The default highlighting does not work on menus generated through for loops.
-                textbutton "[option['answerText']]" action [
+                textbutton "[option['answerText']] [option['score']]" action [
                     SetVariable("dynamScore", option['score']), 
                     SetVariable("responseSelected", option)
                     ] selected responseSelected == option
@@ -219,7 +210,7 @@ screen returnFeedback():
     #TODO CHANGE!!! This black screen exists to make it easier for me to program in the screens.
     frame:
         background None
-        xalign 0.075 yalign 0.2
+        xalign 0.045 yalign 0.2
         vbox:
             #If end day display, show workday and day's score, otherwise
             #Show full session's score
@@ -229,13 +220,13 @@ screen returnFeedback():
                 text "[dayScore] / [dayMaxScore]":
                     xalign 0.5
             else:
-                text "Work Session Summary: All Days":
+                text "Full Work Session Summary:":
                     xalign 0.5
-                text "[score] / [sessionMaxPoints]":
+                text "[fullScore] / [sessionMaxPoints]":
                     xalign 0.5
     frame:
         #Box to display all events within criteria.
-        area (62, 243, 350, 400)
+        area (22, 243, 350, 400)
         side ("c"):
             viewport:
                 draggable False
@@ -256,28 +247,89 @@ screen returnFeedback():
                                 ] selected responseSelected == element
     frame:
         #Box to display feedback, gets feedback to show from above box's selected element.
-        area (427, 80, 500, 570)
+        #Author's note: Good god what on earth is this layering
+        area (381, 80, 613, 570)
         side("c"):
             viewport:
                 draggable False
+                #If a "completed" event is selected, active the below block.
                 if responseSelected:
                     vbox:
+                        python:
+                            #Use two unrelated variables for temp values for efficiency. Will be cleared on exit.
+                            global activePoints
+                            global departCaller
+                            global dynamOption
+                            scores = []
+                            #Find the answer with the highest score for the selected event
+                            #Use the found score to get the associated text for the "best" answer.
+                            for item in responseSelected.get("choices"):
+                                scores.append(item.get("score"))
+                                activePoints = max(scores)
+                            for item in responseSelected.get("choices"):
+                                if item.get("score") == activePoints:
+                                    departCaller = item.get("answerText")
+
+                            #Run this block if end day variant of screen.
+                            if displayEnd:
+                                #Get index of the selected event.
+                                index = dayEvents.index(responseSelected)
+                                #Try Except to catch out of bounds errors caused by skipped events.
+                                try:
+                                    #Use the found index to look up the user's response to the event.
+                                    dynamScore = arrayOfScores[index]
+                                    #Get the user's selected response by reverse looking up the score given.
+                                    for item in responseSelected.get("choices"):
+                                        if item.get("score") == dynamScore:
+                                            dynamOption = item.get("answerText")
+                                #If out of range of responses, no response was given. Thus, tell user as much.
+                                except IndexError:
+                                    dynamOption = "No answer selected."
+
+                            #Run this block if full session display.
+                            #Functionally identical to the above block, but using the "full" arrays instead.
+                            else:
+                                index = completedEvents.index(responseSelected)
+                                try:
+                                    dynamScore = fullArrayOfScores[index]
+                                    for item in responseSelected.get("choices"):
+                                        if item.get("score") == dynamScore:
+                                            dynamOption = item.get("answerText")
+                                except IndexError:
+                                    dynamOption = "No answer selected."
+
+                        text "Correct answer: [departCaller]\n"
+                        text "Selected answer: [dynamOption]\n"
                         text "[responseSelected.get('feedback')]"
     frame:
         #Box for continuing gameplay cycle.
-        xalign 0.93 yalign 0.5
+        xalign 0.96 yalign 0.5
         vbox:
-            #If day end screen, reset all day-specific variables, increment day, and notify user of what day.
-            #Else, prompt user to return to title screen.
+            #If screen is an end of day screen, show 
             if displayEnd:
-                textbutton "Continue to\n   next day": 
-                    action [
-                        SetVariable("dayScore", 0),
-                        SetVariable("dayEvents", []),
-                        SetVariable("currentDay", currentDay + 1),
-                        SetVariable("endDayValid", False),
-                        Notify(f"Entering Day {currentDay + 1}"),
-                        Return()]
+                #Edge case for if final day. Instead of showing "next day" it shows "full session feedback."
+                if currentDay == numDays:
+                    #As the core function calls this screen a second time if the condition is met, return is sufficient to go to full session.
+                    textbutton " Continue to full  \nsession feedback":
+                        action [
+                            Return()
+                        ]
+                else:
+                    #Set all day-specific variables and miscellaneous used variables to default states on day continue.
+                    textbutton "Continue to\n   next day": 
+                        action [
+                            SetVariable("dayScore", 0),
+                            SetVariable("dayEvents", []),
+                            SetVariable("currentDay", currentDay + 1),
+                            SetVariable("endDayValid", False),
+                            SetVariable("arrayOfScores", []),
+                            SetVariable("departCaller", ""),
+                            SetVariable("dynamOption", ""),
+                            SetVariable("dynamScore", 0),
+                            SetVariable("responseSelected", None),
+                            Notify(f"Entering Day {currentDay + 1}"),
+                            Return()]
             else:
+                #If day was the final day, gameplay is complete; prompt user to return to title.
                 textbutton "Return to Title":
                     action [MainMenu()]

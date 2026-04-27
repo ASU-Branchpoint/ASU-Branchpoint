@@ -16,7 +16,7 @@ define p = Character("Peter") #R&D head
 define a = Character("Abigail") #Server head
 define n = Character("Norman") #Copier head
 
-default gameScript = "none"
+default gameScript = ""
 
 default departCaller = ""
 default fullScore = 0
@@ -31,6 +31,8 @@ default currentEvents = []
 default completedEvents = []
 default dayEvents = []
 default sideArray = []
+default arrayOfScores = []
+default fullArrayOfScores = []
 default followUpActive = False
 default endDayValid = False
 default dayMaxPoints = 0
@@ -48,7 +50,7 @@ default scoreTerminate = 0
 default numDays = 0
 default currentDay = 1
 default dayScore = 0
-default displayEnd = "dayEvents"
+default displayEnd = True
 
 default mainOfficeHovered = False
 default researchDevHovered = False
@@ -59,6 +61,8 @@ default cubicleHovered = False
 default deviceStorageHovered = False
 default copyRoomHovered = False
 default titleScreenHovered = False
+default endDayHovered = False
+default endDayAvail = False
 
 # The game starts here.
 

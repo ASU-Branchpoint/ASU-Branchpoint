@@ -215,6 +215,7 @@ label eventUpdate:
     else:
         $ renpy.notify(f"Event resolved: {tempEvent.get('shorthand')}")
     #Clear the finished event from the active event queue.
+    $ arrayOfScores.append(dynamScore)
     $ currentEvents.remove(tempEvent)
     #Add the event to a dummy array of "completed" events.
     $ dayEvents.append(tempEvent)
@@ -299,6 +300,9 @@ label endDay:
                 scores.append(maxed)
             dayMaxScore += max(scores)
             scores.clear()
+        for score in arrayOfScores:
+            fullArrayOfScores.append(score)
+        sessionMaxPoints += dayMaxScore
         #Adds the score of completed events to the total.
         fullScore = fullScore + dayScore
         #Adds all completed events to the complete queue.
@@ -308,7 +312,7 @@ label endDay:
             completedEvents.append(entry)
         if currentDay == numDays:
             renpy.call_screen("returnFeedback")
-            displayEnd = "completedEvents"
+            displayEnd = False
     #See screens.
     call screen returnFeedback
     #Add new events to queue.
