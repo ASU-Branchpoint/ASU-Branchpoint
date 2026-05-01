@@ -97,6 +97,7 @@ label tutorialConclusion:
 #If the name is in the array, skip the introduction on future clicks and prevent the name being added multiple times.
 #If the array is long enough to contain all departments, proceed to the next phase of the tutorial.
 label tutorialOfficeGeneral:
+    scene bg eventfocus with quickDissolve
     if defineOffice in eventToView:
         g "I believe I'll leave you on your own for this. It'd be rude for me to sit in with you."
         c "This is my office, the CISO's office."
@@ -139,10 +140,12 @@ label tutorialOfficeGeneral:
                 $ cubicleEvent = True
             jump tutorialOfficeGeneral
         "Never mind.":
+                scene bg mainloop with quickDissolve
                 call screen mainGameplayLoop
 
 #Tutorial label to handle event trees for R&D Department.
 label tutorialResDevGeneral:
+    scene bg eventfocus with quickDissolve
     if defineRD in eventToView:
         p "Welcome to the R&D department."
         p "We handle a lot of our company's future-facing projects..."
@@ -163,10 +166,12 @@ label tutorialResDevGeneral:
             "However, they should not necessarily be passed up for other departments when time is low."
             jump tutorialResDevGeneral
         "Never mind.":
+                scene bg mainloop with quickDissolve
                 call screen mainGameplayLoop
 
 #Tutorial label to handle event trees for Helpdesk.
 label tutorialHelpDeskGeneral:
+    scene bg eventfocus with quickDissolve
     if defineHelpdesk in eventToView:
         b "Welcome back!"
         b "Guess they've got you walking around like we're animals in a zoo, eh?"
@@ -191,10 +196,12 @@ label tutorialHelpDeskGeneral:
             "If neglected, problems here can escalate to other departments, and bring more pressuring decisions with them."
             jump tutorialHelpDeskGeneral
         "Never mind.":
+                scene bg mainloop with quickDissolve
                 call screen mainGameplayLoop
 
 #Tutorial label to handle event trees for Cybersecurity.
 label tutorialCyberSecGeneral:
+    scene bg eventfocus with quickDissolve
     if defineCyber in eventToView:
         g "Here's my department. I know it ain't all that pretty..."
         g "But, we keep things safe and secure and that's what counts."
@@ -216,10 +223,12 @@ label tutorialCyberSecGeneral:
             "These events can critically affect everything, both short and long-term."
             jump tutorialCyberSecGeneral
         "Never mind.":
+                scene bg mainloop with quickDissolve
                 call screen mainGameplayLoop
 
 #Tutorial label to handle event trees for Server Room.
 label tutorialServersGeneral:
+    scene bg eventfocus with quickDissolve
     if defineServer in eventToView:
         a "Who are you? I don't recall opening access..."
         a "Oh, hey, Giovanni. I assume the intern is with you."
@@ -241,10 +250,12 @@ label tutorialServersGeneral:
             "While minor events can sometimes be resolved on their own, high-tier events can bring every other department to a screeching halt if left unchecked."
             jump tutorialServersGeneral
         "Never mind.":
+                scene bg mainloop with quickDissolve
                 call screen mainGameplayLoop
 
 #Tutorial label to handle event trees for Cubicles.
 label tutorialCubicleGeneral:
+    scene bg eventfocus with quickDissolve
     if defineCubicle in eventToView and not cubicleEvent:
         g "Sounds like they're on their best behavior for the intern."
         g "That's rare."
@@ -283,7 +294,7 @@ label tutorialCubicleGeneral:
         if defineCubicle not in eventToView and not cubicleEvent:
             dynamicRoomArray.append(("Could you repeat the department's function?", "redefine"))
         #If no event is active and there is an event in completed events, allow explanation of how events play out and resolve.
-        if defineCubicle not in eventToView and len(completedEvents) == 1:
+        if defineCubicle not in eventToView and len(dayEvents) == 1:
             dynamicRoomArray.append(("Repeat how the events play out.", "repeat"))
         #Bail out button to just return to main screen.
         dynamicRoomArray.append(("Never mind...", "home"))
@@ -291,6 +302,8 @@ label tutorialCubicleGeneral:
         shortMenu = renpy.display_menu(dynamicRoomArray)
         
         if shortMenu == "home":
+            renpy.show("bg mainloop")
+            renpy.with_statement(quickDissolve)
             renpy.call_screen("mainGameplayLoop")
         elif shortMenu == "redefine":
             renpy.say(None, "Cubicle events are very often low-grade, common threats with easy answers.")
@@ -312,6 +325,7 @@ label tutorialCubicleGeneral:
 
 #Tutorial label to handle event trees for Device Storage.
 label tutorialStorageGeneral:
+    scene bg eventfocus with quickDissolve
     if defineStorage in eventToView:
         m "Look, I've told you already... you lot have run me out of Authenticator Cards, I can't activate more until..."
         m "Ah. You're not one of the Cubicle employees."
@@ -336,10 +350,12 @@ label tutorialStorageGeneral:
             "This can drastically drive down the effectiveness and self-sufficiency of other departments as a result."
             jump tutorialStorageGeneral
         "Never mind.":
+                scene bg mainloop with quickDissolve
                 call screen mainGameplayLoop
 
 #Tutorial label to handle event trees for Copy Room.
 label tutorialCopierGeneral:
+    scene bg eventfocus with quickDissolve
     if defineCopier in eventToView:
         n "The one time the print queue isn't clogged to high heaven..."
         n "Sorry, I've just been monitoring and fixing these things all day."
@@ -366,4 +382,5 @@ label tutorialCopierGeneral:
             "Its importance should not be understated when it comes to keeping the company as a whole afloat."
             jump tutorialCopierGeneral
         "Never mind.":
+                scene bg mainloop with quickDissolve
                 call screen mainGameplayLoop

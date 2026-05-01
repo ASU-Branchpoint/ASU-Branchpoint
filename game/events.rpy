@@ -210,7 +210,9 @@ label sortEvents:
 
 label eventUpdate:
     #Display a notification saying which event was resolved.
-    if dayScore + dynamScore > scoreTerminate:
+    if tutorialMode:
+        $ renpy.notify(f"Event resolved!")
+    elif dayScore + dynamScore > scoreTerminate:
         $ renpy.notify(f"Workday complete!")
     else:
         $ renpy.notify(f"Event resolved: {tempEvent.get('shorthand')}")
