@@ -249,6 +249,7 @@ label eventUpdate:
     #This addEvents call seems irrelevant but it is MISSION CRITICAL!!! Removing it bricks the refresh self-sustain, somehow.
     call addEvents
     call evUpdateNotif
+    scene bg mainloop with dissolve
     call screen mainGameplayLoop
     
 

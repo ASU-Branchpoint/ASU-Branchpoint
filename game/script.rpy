@@ -68,9 +68,11 @@ default endDayAvail = False
 
 label start:
 
-    show bg cityscape
+    show bg cityscape with dissolve
     
     call screen role_select
+
+    scene bg mainloop with dissolve
 
     call defineFull
 
@@ -79,6 +81,7 @@ label start:
     call evUpdateNotif
 
     call screen mainGameplayLoop
+
 
 
 #Access codes are ordered by rank, 100's slot is EMPLOYEE access, 010's slot is CYBERSEC access, and 001's slot is CISO access.
@@ -182,7 +185,8 @@ label cubicleSwitch:
 #The eight departments were originally all their own function, but were abstracted to one function for upkeep and brevity.
 #TODO: Make departments more distinct by calling a sub-function to do a different animation or something on click based on department.
 label departmentGeneral:
-    scene bg eventfocus
+    hide screen mainGameplayLoop
+    scene bg eventfocus with dissolve
     #Clears pre-existing array of menu items for subsequent entries to departments.
     $ dynamicRoomArray.clear()
     python:
@@ -205,6 +209,8 @@ label departmentGeneral:
         #Get response from the displayed menu. If the bailout was clicked, return to previous menu.
         #   Else, view the full event and all relevant information it contains. See "eventViewer" in screens.
         if shortMenu == "home":
+            renpy.show("bg mainloop")
+            renpy.with_statement(dissolve)
             renpy.call_screen("mainGameplayLoop")
         else:
             renpy.call_screen("eventViewer", event=shortMenu)

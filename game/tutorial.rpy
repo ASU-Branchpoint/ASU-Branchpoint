@@ -12,7 +12,7 @@ label tutorial:
 
     $ eventToView = [defineOffice, defineRD, defineCyber, defineServer, defineHelpdesk, defineStorage, defineCopier, defineCubicle]
 
-    scene bg main_hq_hall
+    scene bg main_hq_hall with dissolve
 
     "It's your first day on the job..."
 
@@ -22,7 +22,7 @@ label tutorial:
 
     "The main door to the wing opens, and a somewhat friendly face greets you as you enter."
 
-    scene bg helpdesk_1
+    scene bg helpdesk_1 with dissolve
 
     #show b_happy
 
@@ -69,7 +69,7 @@ label tutorial:
 
     hide g_mad
 
-    scene bg eventfocus
+    scene bg mainloop with dissolve
 
     call screen mainGameplayLoop
 
@@ -89,6 +89,7 @@ label tutorialConclusion:
     $ cubicleEvent = False
     $ tutorialComplete = True
     $ cisoEventTrigger = False
+    scene bg mainloop with dissolve
     call screen mainGameplayLoop
 
 #Tutorial label to handle the event tree for CISO Office.

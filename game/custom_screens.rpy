@@ -13,10 +13,14 @@ screen role_select():
             if gameScript:
                 textbutton "Confirm" action [Return(), Hide("role_select")]
 
+#Defines fade_in transition. -c
+transform fade_in:
+    alpha 0.0
+    linear 0.5 alpha 1.0
+
 #Main hub screen. All departments are handled here as imagebuttons.
 #TODO organize the buttons by importance; add a better office building and text background to make these buttons better.
 screen mainGameplayLoop():
-    add "bg mainloop.png"
     modal True
     #CISO Office button
     imagebutton idle "loop_hitbox":
