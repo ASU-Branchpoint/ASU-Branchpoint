@@ -22,7 +22,7 @@ label tutorial:
 
     "The main door to the wing opens, and a somewhat friendly face greets you as you enter."
 
-    scene bg helpdesk_1 with dissolve
+    scene bg helpdesk_1 with quickDissolve
 
     #show b_happy
 
@@ -89,7 +89,7 @@ label tutorialConclusion:
     $ cubicleEvent = False
     $ tutorialComplete = True
     $ cisoEventTrigger = False
-    scene bg mainloop with dissolve
+    scene bg mainloop with quickDissolve
     call screen mainGameplayLoop
 
 #Tutorial label to handle the event tree for CISO Office.
