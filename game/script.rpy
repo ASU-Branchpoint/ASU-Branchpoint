@@ -15,7 +15,6 @@ define g = Character("Giovanni") #Cybersec head
 define p = Character("Peter") #R&D head
 define a = Character("Abigail") #Server head
 define n = Character("Norman") #Copier head
-
 define quickDissolve = Dissolve(0.25)
 
 default gameScript = ""

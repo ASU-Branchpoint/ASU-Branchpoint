@@ -108,10 +108,11 @@ screen mainGameplayLoop():
         unhovered SetVariable("titleScreenHovered", False)
         action [SetVariable("titleScreenHovered", False), MainMenu(),]
     #Box for displaying what day the user is on
-    frame:
-        xalign 0 yalign 1.0
-        vbox:
-            text "Day [currentDay] of [numDays]"
+    if not tutorialMode:
+        frame:
+            xalign 0 yalign 1.0
+            vbox:
+                text "Day [currentDay] of [numDays]"
 
 
     #This entire block basically adds the floor-by-floor glow when a button is hovered over. Also adds fun effects for "return to title".
