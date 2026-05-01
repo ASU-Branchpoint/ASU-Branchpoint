@@ -16,6 +16,8 @@ define p = Character("Peter") #R&D head
 define a = Character("Abigail") #Server head
 define n = Character("Norman") #Copier head
 
+define quickDissolve = Dissolve(0.25)
+
 default gameScript = ""
 
 default departCaller = ""
@@ -186,7 +188,7 @@ label cubicleSwitch:
 #TODO: Make departments more distinct by calling a sub-function to do a different animation or something on click based on department.
 label departmentGeneral:
     hide screen mainGameplayLoop
-    scene bg eventfocus with dissolve
+    scene bg eventfocus with quickDissolve
     #Clears pre-existing array of menu items for subsequent entries to departments.
     $ dynamicRoomArray.clear()
     python:
@@ -210,7 +212,7 @@ label departmentGeneral:
         #   Else, view the full event and all relevant information it contains. See "eventViewer" in screens.
         if shortMenu == "home":
             renpy.show("bg mainloop")
-            renpy.with_statement(dissolve)
+            renpy.with_statement(quickDissolve)
             renpy.call_screen("mainGameplayLoop")
         else:
             renpy.call_screen("eventViewer", event=shortMenu)
