@@ -14,6 +14,10 @@
 
 define config.name = _("Project Branchpoint")
 
+init python:
+    config.keymap['game_menu'].remove('K_ESCAPE')
+    config.keymap['main_menu'] = ['K_ESCAPE']
+
 
 ## Determines if the title given above is shown on the main menu screen. Set
 ## this to False to hide the title.
@@ -34,6 +38,9 @@ define config.rollback_enabled = False
 
 define gui.about = _p("""
 """)
+
+init python:
+    config.keymap['game_menu'].remove('K_ESCAPE')
 
 
 ## A short name for the game used for executables and directories in the built
