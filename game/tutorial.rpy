@@ -2,6 +2,9 @@ default cubicleEvent = False
 default cisoEventTrigger = False
 default tutorialComplete = False
 default officeWarning = True
+default tutorialSection = 0
+default reviewTerms = False
+default tutorial_event_library = []
 
 #TODO: REWRITE THE DEPARTMENT DEFINITIONS! If the events are as simple as we're making them, we need to change how the departments are 
 #described to be more accurate. For instance, changing the helpdesk department to be about tech troubleshooting questions would be
@@ -9,65 +12,32 @@ default officeWarning = True
 label tutorial:
     #Set opening flag to true to allow catch cases and prevent scenario escape.
     $ tutorialMode = True
-
     $ eventToView = [defineOffice, defineRD, defineCyber, defineServer, defineHelpdesk, defineStorage, defineCopier, defineCubicle]
-
+    $ gameScript = "Tutorial"
     scene bg main_hq_hall with dissolve
-
     "It's your first day on the job..."
-
     "Despite the fact the keycard in your hand is clearly labeled 'Intern', you're determined to do the job right."
-
     "You walk in the front door at 1:00 PM sharp, as instructed, and with the direction of some helpful receptionists, make your way to the IT department."
-
     "The main door to the wing opens, and a somewhat friendly face greets you as you enter."
-
     scene bg helpdesk_1 with quickDissolve
-
-    #show b_happy
-
     b "Welcome in! What is it this time, laptop trouble? Authenticator on the fritz? Access permission issues?"
-
     b "Actually... I don't think I recognize you."
-
     b "Ohh, the green keycard? So you're the intern they were telling me about!"
-
     b "Well, we're glad to have you! I know this place ain't much, but we hope you'll excel and learn some tricks of the trade while you're here!"
-
     b "Actually, I'm a bit tied down behind the desk right now. Someone got locked out of their entire company account! Now it's my job to fix it... I suppose."
+    g "You must be the intern, then."
+    g "Well, seems like you found your way into the building just fine. Better than some, I'll admit."
+    g "Welcome in. As you may or may not know, one of our primary focuses is to keep our customers' information secure. Hence the part of your role: \"Information Security\""
+    g "If you stay with us full time, you'd be handling a lot of sensitive information, payment activity, core systems, and daily interactions with customers."
+    g "Not to mention, the reputation of our business as a whole."
+    g "On that note, as I'm sure you know, our goal at Branchpoint is to protect customers, our coworkers, our assets, and our reputation."
+    g "Very original, I know. If you want to complain, go to someone more important than me."
+    g "Before we get going on our tour of the place, you should know that if you ever find yourself in doubt of what you're doing..."
+    b "You should slow down, follow the defined processes, and report anything you find unusual."
+    g "Glad to see you haven't forgotten, at least."
+    g "Let's set off, then."
 
-    "Brendan picks up a hard-line phone behind the desk and pushes a button."
-    
-    b "Hey, Giovanni? Yeah. The intern's here. No... No, it's YOUR intern. Who else?"
-
-    b "Great. Thanks."
-
-    b "Just sit down over there for a couple minutes."
-    
-    b "Hardly the warm welcome we had planned, but things have a funny way of going wrong precisely when you need them to behave."
-    
-    b "There he is."
-
-    "A man in a surprisingly casual outfit opens the door, calmly walking in."
-
-    g "Pleasure to meet you face-to-face. My apologies for everything that's happened so far."
-
-    #hide b_happy
-    #show g_mad
-
-    g "I'm Giovanni, the head of the Cybersecurity department. Doesn't mean a lot since there's only three of us in the department, but still."
-
-    g "I suppose that makes it easier for you to get to know everyone and how to do the job."
-
-    g "With that said, talking about things only gets you so far."
-
-    g "I'll be accompanying you on your first-day-tour, so you can get the lay of the land and know who your colleagues are."
-
-    g "Let's get moving. Just tell me where you want to go first."
-
-    call defineTutorial
-
-    hide g_mad
+    call defineTutorialSample
 
     scene bg mainloop with dissolve
 
@@ -82,13 +52,39 @@ label tutorialConclusion:
     g "Given that you actually responded with something sensible, it seems like you're a natural at this."
     g "Well, looks like you're really getting the hang of things. I think we'd do well to keep you around even after your time as an intern here is up."
     g "That said... I've still got work to do, and this little \"tour\" of yours has started creeping into my break."
-    g "Come swing by my department if you need a hand."
-    g "Otherwise, I think you're on your own. You'll start actually working tomorrow. Show up at 9 on the dot."
+    g "I'll let someone else run you through some advanced employee filtering."
+    g "Assuming you do well, you'll start actually working tomorrow. In which case, show up at 9 on the dot."
+    "You will now face some simple stylized events."
+    "Good luck!"
+    $ cubicleEvent = False
+    $ eventToView.clear()
+    $ tutorialComplete = True
+    $ cisoEventTrigger = False
+    if not tutorial_event_library:
+        call defineTutorial
+    scene bg mainloop with quickDissolve
+    call screen mainGameplayLoop
+
+label spawnTutorialEvents:
+    if tutorialComplete:
+        python:
+            for entry in tutorial_event_library:
+                if entry.get('spawn_rules').get('section') == tutorialSection:
+                    currentEvents.append(entry)
+        call evUpdateNotif
+    return
+        
+
+    
+label finishTutorial:
+    scene bg eventfocus with quickDissolve
     "You have now completed the tutorial. When you wish to play the full game, return to the title screen."
     $ eventToView.clear()
     $ cubicleEvent = False
     $ tutorialComplete = True
     $ cisoEventTrigger = False
+    $ tutorialComplete = False
+    $ endDayValid = False
     scene bg mainloop with quickDissolve
     call screen mainGameplayLoop
 
@@ -99,24 +95,17 @@ label tutorialConclusion:
 label tutorialOfficeGeneral:
     scene bg eventfocus with quickDissolve
     if defineOffice in eventToView:
-        g "I believe I'll leave you on your own for this. It'd be rude for me to sit in with you."
-        c "This is my office, the CISO's office."
-        c "Easy now... We're a small department. You don't have to be afraid of me."
-        c "People know each other on a first-name basis around here, after all."
-        c "Maybe you'll end up here one day, when my 30 years is up."
-        c "... Assuming no one else steps up to take my place."
-        g "Afternoon, Charlie."
-        c "Ah, perfect. We just finished our introductions."
-        g "We'll be leaving, now."
-        "This is where a large number of managerial decisions happen."
-        "Events in this location are high-priority with high risk to high reward."
-        "Additionally, events in this location tend to be rarer, and persist for longer."
+        c "Welcome to my office, intern. We hope you'll stay a while and consider us as a more permanent employer."
+        "A large number of high-grade managerial decision happen within the CISO's office."
+        "As such, it won't see many events. However, events that show up within the office have high scores for correct responses and dire consequences for incorrect responses."
+        "Handle these events appropriately."
+        c "See you around, then."
         $ eventToView.remove(defineOffice)
     menu:
         "Could you repeat the department's function?":
             "This is where a large number of managerial decisions happen."
             "Events in this location are high-priority with high risk to high reward."
-            "Additionally, events in this location tend to be rarer, and persist for longer."
+            "Additionally, events in this location tend to be rarer."
             jump tutorialOfficeGeneral
         "... An \"event\"\?" if len(eventToView) < 1:
             if tutorialComplete:
@@ -125,13 +114,16 @@ label tutorialOfficeGeneral:
                 "However, to reach new events and progress the game, decisions will have to be made."
             else:
                 g "There's always something to do around here."
-                g "As much as I know ol' Charlie isn't a fan of the system, it makes my job a lot easier."
-                g "Seeing as I'm head of Cybersecurity, I get notifications from R&D, the Servers, the Helpdesk, Storage, the Copy Room, and the Cubicles."
-                g "Our system works by popping up a little mark next to the Department's directory when there's something to do."
-                "There are multiple types of events in this simulator, each represented by an exclamation mark."
-                "Yellow marks are basic, standard events. Orange marks means there's more than one yellow event to view."
-                "Red marks are extreme events. Only one can appear at a time, have a cooldown before another can appear, and put all other event timers on pause when they appear."
-                g "On the topic of the Cubicles, looks like something's going on down there for us to resolve. Let's go have a look."
+                g "We have a patented system that allows us to easily throw up flags for our department when we can't fix something ourselves."
+                g "You've been using it this whole time to find your way around. Just... without the permissions you'd need to see the flags."
+                "An event in a department is denoted by the orange exclamation mark next to its name."
+                "The bottom option will always take you back to the department list, no strings attached."
+                "However, to reach new events and progress the game, decisions will have to be made."
+                "Events can range in difficulty, regardless of the role and difficulty selected during gameplay."
+                "Some events, if mishandled, can force the user into handling an event that would otherwise never happen."
+                "As the day progresses, the number of events to handle will increase, and events left in queue when the day ends will be counted for no points."
+                g "On that note, my dashboard seems to have slid a rather silly proposition my way."
+                g "Let's go investigate the Cubicles."
                 $ officeWarning = False
                 $ cisoEventTrigger = False
                 if tutorial not in currentEvents:
@@ -151,11 +143,9 @@ label tutorialResDevGeneral:
         p "We handle a lot of our company's future-facing projects..."
         p "..."
         p "Uh... I forgot the rest of my spiel."
-        p "Well, just stick around a while and watch us work. I prefer action over words, anyway."
-        g "He's not good with words, but he's a great boss."
-        g "Notably, I don't think any of his employees hate working under him."
+        p "Just let us do our thing and you'll be pleasantly surprised. I prefer action over words, anyway."
         "The R&D department hosts events that will have less short-term impacts and more long-term impacts."
-        "However, they should not necessarily be passed up for other departments when time is low."
+        "These will often feature critical operations that could shape the company's future."
         $ eventToView.remove(defineRD)
     if len(eventToView) < 1 and officeWarning and cisoEventTrigger == False:
         g "We should go to the CISO's office. I've been told there might be an \"event\" there worth looking at."
@@ -163,7 +153,7 @@ label tutorialResDevGeneral:
     menu:
         "Could you repeat the department's function?":
             "The R&D department hosts events that will have less short-term impacts and more long-term impacts."
-            "However, they should not necessarily be passed up for other departments when time is low."
+            "These will often feature critical operations that could shape the company's future."
             jump tutorialResDevGeneral
         "Never mind.":
                 scene bg mainloop with quickDissolve
@@ -176,14 +166,8 @@ label tutorialHelpDeskGeneral:
         b "Welcome back!"
         b "Guess they've got you walking around like we're animals in a zoo, eh?"
         b "Well, this is the Help Desk. You've got a problem, we're the first people you turn to."
-        b "Like, for instance... This! Big hunk of crap here. And..."
-        "..."
-        g "He's someone with a lot to say. Don't mind him, he does his job and does it well."
-        g "Let's get a move on."
         "The Help Desk will be critical in keeping day-to-day functions in tip-top shape."
-        "This serves as a middle ground between the Cubicles, the Device Storage, and the Cybersecurity departments."
-        "Events here can often be handled easily, but may be overwhelming in comparison to other departments."
-        "If neglected, problems here can escalate to other departments, and bring more pressuring decisions with them."
+        "Events in this location will frequently feature employee-side problems unrelated to public-facing operations."
         $ eventToView.remove(defineHelpdesk)
     if len(eventToView) < 1 and officeWarning and cisoEventTrigger == False:
         g "We should go to the CISO's office. I've been told there might be an \"event\" there worth looking at."
@@ -191,9 +175,7 @@ label tutorialHelpDeskGeneral:
     menu:
         "Could you repeat the department's function?":
             "The Help Desk will be critical in keeping day-to-day functions in tip-top shape."
-            "This serves as a middle ground between the Cubicles, the Device Storage, and the Cybersecurity departments."
-            "Events here can often be handled easily, but may be overwhelming in comparison to other departments."
-            "If neglected, problems here can escalate to other departments, and bring more pressuring decisions with them."
+            "Events in this location will frequently feature employee-side problems unrelated to public-facing operations."
             jump tutorialHelpDeskGeneral
         "Never mind.":
                 scene bg mainloop with quickDissolve
@@ -205,12 +187,8 @@ label tutorialCyberSecGeneral:
     if defineCyber in eventToView:
         g "Here's my department. I know it ain't all that pretty..."
         g "But, we keep things safe and secure and that's what counts."
-        g "Also, don't touch the light switch."
-        g "No, you don't want to find out what happens if you do. Trust me."
-        g "Ahem... Regardless, do what we say and there won't be problems between you, me, or the company as a whole."
-        "The Cybersecurity Department tends to be extremely self-sufficient, and won't raise issues all that often."
-        "When they happen, Cybersecurity events often are high caliber threats."
-        "These events can critically affect everything, both short and long-term."
+        "The Cybersecurity department frequently features events that relate to external threats."
+        "Mishandling these events will often have dire consequences, but handling them correctly will almost always net you a large sum of points."
         g "Let's keep moving."
         $ eventToView.remove(defineCyber)
     if len(eventToView) < 1 and officeWarning and cisoEventTrigger == False:
@@ -218,9 +196,8 @@ label tutorialCyberSecGeneral:
         $ cisoEventTrigger = True
     menu:
         "Could you repeat the department's function?":
-            "The Cybersecurity Department tends to be extremely self-sufficient, and won't raise issues all that often."
-            "When they happen, Cybersecurity events often are high caliber threats."
-            "These events can critically affect everything, both short and long-term."
+            "The Cybersecurity department frequently features events that relate to external threats."
+            "Mishandling these events will often have dire consequences, but handling them correctly will almost always net you a large sum of points."
             jump tutorialCyberSecGeneral
         "Never mind.":
                 scene bg mainloop with quickDissolve
@@ -230,24 +207,19 @@ label tutorialCyberSecGeneral:
 label tutorialServersGeneral:
     scene bg eventfocus with quickDissolve
     if defineServer in eventToView:
-        a "Who are you? I don't recall opening access..."
-        a "Oh, hey, Giovanni. I assume the intern is with you."
-        g "Didn't mean to surprise you."
-        a "It's just not often that I get visitors while I'm tinkering around back here."
-        a "This is the Server Room, obviously. It's a room, full of servers. What more do I need to say."
-        a "Oh, yeah. It also holds everything we need to function, documents, employee information, customer data, the whole nine yards."
-        a "I tend to forget that, with how much these things give me headaches and throw fits."
-        "The Server Room is a mission-critical department with a wide breadth of event severity."
-        "While minor events can sometimes be resolved on their own, high-tier events can bring every other department to a screeching halt if left unchecked."
-        g "I'll let you get back to it, then. We'll be taking our leave."
+        a "Well, you're a new face."
+        a "Hope you don't mind the background noise. These servers get pretty noisy when things get going."
+        "Server room events usually focus on customer-facing problems relating to web servers and web sites."
+        "While they are not mission critical, these events should not be ignored."
+        a "See you around, rookie."
         $ eventToView.remove(defineServer)
     if len(eventToView) < 1 and officeWarning and cisoEventTrigger == False:
         g "We should go to the CISO's office. I've been told there might be an \"event\" there worth looking at."
         $ cisoEventTrigger = True
     menu:
         "Could you repeat the department's function?":
-            "The Server Room is a mission-critical department with a wide breadth of event severity."
-            "While minor events can sometimes be resolved on their own, high-tier events can bring every other department to a screeching halt if left unchecked."
+            "Server room events usually focus on customer-facing problems relating to web servers and web sites."
+            "While they are not mission critical, these events should not be ignored."
             jump tutorialServersGeneral
         "Never mind.":
                 scene bg mainloop with quickDissolve
@@ -257,19 +229,12 @@ label tutorialServersGeneral:
 label tutorialCubicleGeneral:
     scene bg eventfocus with quickDissolve
     if defineCubicle in eventToView and not cubicleEvent:
-        g "Sounds like they're on their best behavior for the intern."
-        g "That's rare."
         e "You look a little lost. I'm assuming you're new here?"
         e "Green card... It's been a few weeks since we last had an intern."
-        e "Welcome to our lovely little office area. This is where the bulk of our workforce is, and they all report back to me."
-        e "I'm always one to welcome new ideas, and letting those ideas flourish and make our department better is always so lovely to watch."
-        g "More of an \"if\" than a \"when\". Remember when someone found out a way to circumvent the BYOD ban?"
-        e "We don't talk about that."
-        "Cubicle events are very often low-grade, common threats with easy answers."
-        "They accumulate quickly and can be an easy way to raise your score if nothing else is plausible."
-        "If neglected, they can find their own way to resolve their issues, for better or for worse."
-        g "Best not get involved in the political environment down here."
-        g "Eleanor props it up to be real nice, but it's a warzone when things get going."
+        e "Well, welcome to our cubicles. Majority of where the grunt work gets done."
+        "Cubicle events are very often events that happen employee-to-employee, or employee-to-customer."
+        "These will be the majority of the easy events, although they are the most numerous."
+        e "See you around."
         $ eventToView.remove(defineCubicle)
         #Fascinatingly, this is the only department to require manual hiding of the text box following the introduction.
         #Probably something to do with the python code lurking below, but as it's a non-issue and fixed bug it's not of much note.
@@ -306,9 +271,8 @@ label tutorialCubicleGeneral:
             renpy.with_statement(quickDissolve)
             renpy.call_screen("mainGameplayLoop")
         elif shortMenu == "redefine":
-            renpy.say(None, "Cubicle events are very often low-grade, common threats with easy answers.")
-            renpy.say(None, "They accumulate quickly and can be an easy way to raise your score if nothing else is plausible.")
-            renpy.say(None, "If neglected, they can find their own way to resolve their issues, for better or for worse.")
+            renpy.say(None, "Cubicle events are very often events that happen employee-to-employee, or employee-to-customer.")
+            renpy.say(None, "These will be the majority of the easy events, although they are the most numerous.")
             renpy.jump("tutorialCubicleGeneral")
         elif shortMenu == "repeat":
             renpy.say(None, "When handling an event, a list of 2 to 5 options will appear. What response you choose can and will affect your score at the end of the game, and may even end your game early.")
@@ -327,27 +291,17 @@ label tutorialCubicleGeneral:
 label tutorialStorageGeneral:
     scene bg eventfocus with quickDissolve
     if defineStorage in eventToView:
-        m "Look, I've told you already... you lot have run me out of Authenticator Cards, I can't activate more until..."
-        m "Ah. You're not one of the Cubicle employees."
-        m "I apologize for my outburst, those idiots lose those cards like their pockets have holes in them."
-        g "And I'm the one who has to keep track of them all once they leave your hands."
-        m "Yep. Thanks again, by the way."
-        m "Welcome to our humble Device Storage locker. Loaner laptops, dummy ID lanyards, company phones, and once the week rolls over, Authenticator Cards."
-        m "And some other, less common things in that closet there."
-        m "Now that BYOD is done and gone, if you need something given to you for company use, you're going through us."
-        "The Device Storage department is typically extremely self-sufficient, given how few devices need to be handed out in a stable staff."
-        "If an event here occurs, it typically means that something is running short."
-        "This can drastically drive down the effectiveness and self-sufficiency of other departments as a result."
-        g "Unfortunately, I don't think we'll be any help here."
+        m "Oh, look at you with your fancy green keycard."
+        m "Stick around long enough, you'll get upgraded to a yellow one like the rest of us."
+        "Device Storage events typically relate to employee devices and company property."
+        m "Peace out."
         $ eventToView.remove(defineStorage)
     if len(eventToView) < 1 and officeWarning and cisoEventTrigger == False:
         g "We should go to the CISO's office. I've been told there might be an \"event\" there worth looking at."
         $ cisoEventTrigger = True
     menu:
         "Could you repeat the department's function?":
-            "The Device Storage department is typically extremely self-sufficient, given how few devices need to be handed out in a stable staff."
-            "If an event here occurs, it typically means that something is running short."
-            "This can drastically drive down the effectiveness and self-sufficiency of other departments as a result."
+            "Device Storage events typically relate to employee devices and company property."
             jump tutorialStorageGeneral
         "Never mind.":
                 scene bg mainloop with quickDissolve
@@ -357,29 +311,20 @@ label tutorialStorageGeneral:
 label tutorialCopierGeneral:
     scene bg eventfocus with quickDissolve
     if defineCopier in eventToView:
-        n "The one time the print queue isn't clogged to high heaven..."
-        n "Sorry, I've just been monitoring and fixing these things all day."
-        n "You'd be astounded how often these things clog up and need things unblocked."
-        n "Welcome to the Copy Room. All our paperwork originates here, is duplicated here, and often ultimately meets its end here."
-        n "We've got black and white printers, color printers, copiers, shredders, everything in between."
-        g "And a cybersecurity black box that even I struggle to wrap my head around."
-        n "Yep. For both our sakes, I wish we could have this place run simpler."
-        "The Copy Room functions quite simply. The more the other departments operate, the harder it has to work."
-        "Events from this department focus primarily on security, and between cybersecurity loopholes that can't be closed..."
-        "And paperwork finding its way into trash cans without being properly shredded and disposed of..."
-        "Its importance should not be understated when it comes to keeping the company as a whole afloat."
-        g "Alright, Norm. I'll be back in a couple days to get that new photocopier set up."
-        g "With or without my trusty intern here."
+        n "You aren't here to color print anything, are ya?"
+        n "Ah, intern. Welcome to the copy room... Not counting color printing."
+        "Copy room issues will typically involve employe permission issues and internal networking."
+        "Additionally, unattended internal documents will be a pervasive issue."
+        n "Go warn the rest of the departments for me, they don't seem to see what I'm saying."
+        
         $ eventToView.remove(defineCopier)
     if len(eventToView) < 1 and officeWarning and cisoEventTrigger == False:
         g "We should go to the CISO's office. I've been told there might be an \"event\" there worth looking at."
         $ cisoEventTrigger = True
     menu:
         "Could you repeat the department's function?":
-            "The Copy Room functions quite simply. The more the other departments operate, the harder it has to work."
-            "Events from this department focus primarily on security, and between cybersecurity loopholes that can't be closed..."
-            "And paperwork finding its way into trash cans without being properly shredded and disposed of..."
-            "Its importance should not be understated when it comes to keeping the company as a whole afloat."
+            "Copy room issues will typically involve employe permission issues and internal networking."
+            "Additionally, unattended internal documents will be a pervasive issue."
             jump tutorialCopierGeneral
         "Never mind.":
                 scene bg mainloop with quickDissolve

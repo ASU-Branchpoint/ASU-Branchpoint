@@ -1,5 +1,6 @@
 #Split from screens.rpy for ease of merging.
 screen role_select():
+    key "K_ESCAPE" action MainMenu()
     modal True
     frame:
         xalign 0.5 yalign 0.5
@@ -21,6 +22,7 @@ transform fade_in:
 #Main hub screen. All departments are handled here as imagebuttons.
 #TODO organize the buttons by importance; add a better office building and text background to make these buttons better.
 screen mainGameplayLoop():
+    key "K_ESCAPE" action MainMenu()
     modal True
     #CISO Office button
     imagebutton idle "loop_hitbox":
@@ -176,6 +178,7 @@ screen mainGameplayLoop():
 
 #Procedural menu generator that loads options and associated scores when given a valid event.
 screen eventViewer(event):
+    key "K_ESCAPE" action MainMenu()
     modal True
     frame:
         #Centers the event box
@@ -210,6 +213,7 @@ screen eventViewer(event):
                 textbutton "Confirm selection" action SetVariable("tempEvent", event), Jump("eventUpdate")
         
 screen returnFeedback():
+    key "K_ESCAPE" action MainMenu()
     modal True
     add "VOID.jpg"
     #TODO CHANGE!!! This black screen exists to make it easier for me to program in the screens.
@@ -219,7 +223,12 @@ screen returnFeedback():
         vbox:
             #If end day display, show workday and day's score, otherwise
             #Show full session's score
-            if displayEnd:
+            if tutorialMode:
+                text "Summary of Events:":
+                    xalign 0.5
+                text "[dayScore] / [dayMaxScore]":
+                    xalign 0.5
+            elif displayEnd:
                 text "Workday Summary: Day [currentDay]":
                     xalign 0.5
                 text "[dayScore] / [dayMaxScore]":
@@ -308,17 +317,41 @@ screen returnFeedback():
                         text "[responseSelected.get('feedback')]"
     frame:
         #Box for continuing gameplay cycle.
-        xalign 0.96 yalign 0.5
+        xalign 0.97 yalign 0.5
         vbox:
             #If screen is an end of day screen, show 
             if displayEnd:
                 #Edge case for if final day. Instead of showing "next day" it shows "full session feedback."
-                if currentDay == numDays:
+                if currentDay == numDays or tutorialSection == 3:
                     #As the core function calls this screen a second time if the condition is met, return is sufficient to go to full session.
                     textbutton " Continue to full  \nsession feedback":
                         action [
                             Return()
                         ]
+
+                elif tutorialMode and tutorialSection < 3:
+                    textbutton "Continue to \n next section":
+                        action [ 
+                            SetVariable("dayScore", 0),
+                            SetVariable("dayEvents", []),
+                            SetVariable("endDayValid", False),
+                            SetVariable("arrayOfScores", []),
+                            SetVariable("departCaller", ""),
+                            SetVariable("dynamOption", ""),
+                            SetVariable("dynamScore", 0),
+                            SetVariable("responseSelected", None),
+                            SetVariable("tutorialSection", tutorialSection + 1),
+                            SetVariable("tutorialComplete", True),
+                            SetVariable("reviewTerms", False),
+                            Return()
+                        ]
+                    if reviewTerms:
+                        textbutton "Review functions":
+                            action [
+                                SetVariable("tutorialComplete", False),
+                                Return()
+                            ]            
+
                 else:
                     #Set all day-specific variables and miscellaneous used variables to default states on day continue.
                     textbutton "Continue to\n   next day": 
@@ -335,6 +368,10 @@ screen returnFeedback():
                             Notify(f"Entering Day {currentDay + 1}"),
                             Return()]
             else:
+                if tutorialMode:
+                    textbutton "Conclude \n Tutorial":
+                        action Jump("finishTutorial")
                 #If day was the final day, gameplay is complete; prompt user to return to title.
-                textbutton "Return to Title":
-                    action [MainMenu()]
+                else:
+                    textbutton "Return to Title":
+                        action [MainMenu()]

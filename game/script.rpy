@@ -96,7 +96,7 @@ label mainOfficeSwitch:
     #If the game is in tutorial mode, send the player to the equivalent tutorial department.
     #This split was done to keep the departments from getting too messy at the time, and now matters substantially [V]
     #   as the actual gameplay departments were abstracted to one function, which could not be done for tutorial.
-    if tutorialMode:
+    if tutorialMode and not tutorialComplete:
         jump tutorialOfficeGeneral
     #Checks the player's selected difficulty and blocks access to the department if difficulty is too low.
     elif gameScript == "easy" or gameScript == "medium" and defineOffice not in eventToView:
@@ -110,7 +110,7 @@ label mainOfficeSwitch:
 #011
 #2
 label researchDevSwitch:
-    if tutorialMode:
+    if tutorialMode and not tutorialComplete:
         jump tutorialResDevGeneral
     elif gameScript == "easy" and defineRD not in eventToView:
         "The door beeps, and the light blinks red. Your keycard doesn't grant your role access into this department."
@@ -122,7 +122,7 @@ label researchDevSwitch:
 #011
 #3
 label cyberSecSwitch:
-    if tutorialMode:
+    if tutorialMode and not tutorialComplete:
         jump tutorialCyberSecGeneral
     elif gameScript == "easy" and defineCyber not in eventToView:
         "The door beeps, and the light blinks red. Your keycard doesn't grant your role access into this department."
@@ -134,7 +134,7 @@ label cyberSecSwitch:
 #011
 #4
 label serverRoomSwitch:
-    if tutorialMode:
+    if tutorialMode and not tutorialComplete:
         jump tutorialServersGeneral
     elif gameScript == "easy" and defineServer not in eventToView:
         "The door beeps, and the light blinks red. Your keycard doesn't grant your role access into this department."
@@ -146,7 +146,7 @@ label serverRoomSwitch:
 #011
 #5
 label helpDeskSwitch:
-    if tutorialMode:
+    if tutorialMode and not tutorialComplete:
         jump tutorialHelpDeskGeneral
     elif gameScript == "easy" and defineHelpdesk not in eventToView:
         "The door beeps, and the light blinks red. Your keycard doesn't grant your role access into this department."
@@ -158,7 +158,7 @@ label helpDeskSwitch:
 #111
 #6
 label deviceStorageSwitch:
-    if tutorialMode:
+    if tutorialMode and not tutorialComplete:
         jump tutorialStorageGeneral
     else:
         $ departCaller = defineStorage
@@ -167,7 +167,7 @@ label deviceStorageSwitch:
 #111
 #7
 label copyRoomSwitch:
-    if tutorialMode:
+    if tutorialMode and not tutorialComplete:
         jump tutorialCopierGeneral
     else:
         $ departCaller = defineCopier
@@ -176,7 +176,7 @@ label copyRoomSwitch:
 #111
 #8
 label cubicleSwitch:
-    if tutorialMode:
+    if tutorialMode and not tutorialComplete:
         jump tutorialCubicleGeneral
     else:
         $ departCaller = defineCubicle

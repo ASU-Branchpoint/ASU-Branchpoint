@@ -239,20 +239,18 @@ screen quick_menu():
     ## Ensure this appears on top of other screens.
     zorder 100
 
-    if quick_menu:
+    if quick_menu and tutorialMode:
 
-        hbox:
-            style_prefix "quick"
-            style "quick_menu"
+        frame:
+            xalign 0.5
+            yalign 0
+            background Frame("#111111", 10, 10)
+            hbox:
+                style_prefix "quick"
 
-            textbutton _("Back") action Rollback()
-            textbutton _("History") action ShowMenu('history')
-            textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True)
-            textbutton _("Auto") action Preference("auto-forward", "toggle")
-            textbutton _("Save") action ShowMenu('save')
-            textbutton _("Q.Save") action QuickSave()
-            textbutton _("Q.Load") action QuickLoad()
-            textbutton _("Prefs") action ShowMenu('preferences')
+                textbutton _("Skip Text") action Skip() alternate Skip(fast=True, confirm=True)
+                textbutton _("Auto") action Preference("auto-forward", "toggle")
+                textbutton _("History") action ShowMenu('history')
 
 
 ## This code ensures that the quick_menu screen is displayed in-game, whenever
@@ -260,21 +258,18 @@ screen quick_menu():
 init python:
     config.overlay_screens.append("quick_menu")
 
-default quick_menu = True
+default quick_menu = True    
 
 style quick_menu is hbox
 style quick_button is default
 style quick_button_text is button_text
-
-style quick_menu:
-    xalign 0.5
-    yalign 1.0
 
 style quick_button:
     properties gui.button_properties("quick_button")
 
 style quick_button_text:
     properties gui.text_properties("quick_button")
+    size 25
 
 
 ################################################################################
@@ -291,7 +286,10 @@ screen navigation():
     vbox:
         style_prefix "navigation"
 
-        xalign 0.5
+        if tutorialMode:
+            xalign 0.06
+        else:
+            xalign 0.5
         yalign 0.5
         yoffset 48
 
@@ -308,8 +306,6 @@ screen navigation():
             textbutton _("History") action ShowMenu("history")
 
             textbutton _("Save") action ShowMenu("save")
-
-        textbutton _("Load") action ShowMenu("load")
 
         textbutton _("Preferences") action ShowMenu("preferences")
 

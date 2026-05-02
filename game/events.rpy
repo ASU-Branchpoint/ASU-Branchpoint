@@ -11,7 +11,8 @@ define defineCubicle = "cubicle"
 define defineCopier = "copier" 
 default eventLibrary = []
 
-label defineTutorial:
+label defineTutorialSample:
+    #christ
     #Leave this as it is, it makes it much easier to debug and work on when the single event it needs to load is hardcoded in.
     #It's also completely gutted outside of the essentials, given that it doesn't need half the keys of a regular event in this limited format.
     init python:
@@ -36,7 +37,9 @@ label defineTutorial:
                     "score": 1
                 }
             ],
+            "feedback": "This is the feedback screen. Here, you'll see all the events given to you for the day in a list, where you can review each question and its 'best' answer."
             }
+    $ renpy.random.shuffle(tutorial.get('choices'))
     $ fullArrayOfEvents.append(tutorial)
     return
 
@@ -56,8 +59,8 @@ label defineArray:
         $ scriptTerminate = 25
         $ numDays = 5
     elif gameScript == "hard":
-        $ activeCeiling = 150
-        $ scoreTerminate = 180
+        $ activeCeiling = 125
+        $ scoreTerminate = 160
         $ scriptTerminate = 25
         $ numDays = 7
     else:
@@ -126,9 +129,9 @@ label addEvents:
         if gameScript == "easy":
             currentMultiplier = 0.2 * multCounter * (currentDay ** 0.4)
         elif gameScript == "medium":
-            currentMultiplier = 0.3 * multCounter * (currentDay ** 0.6)
+            currentMultiplier = 0.3 * multCounter * (currentDay ** 0.48)
         elif gameScript == "hard":
-            currentMultiplier = 0.25 * multCounter**1.2 * (currentDay * 0.5)
+            currentMultiplier = 0.25 * multCounter * (currentDay**(0.005*multCounter))
         else:
             currentMultiplier = 1
 
@@ -210,8 +213,10 @@ label sortEvents:
 
 label eventUpdate:
     #Display a notification saying which event was resolved.
-    if tutorialMode:
+    if tutorialMode and not tutorialComplete:
         $ renpy.notify(f"Event resolved!")
+    elif tutorialComplete:
+        $ renpy.notify(f"Event resolved: {tempEvent.get('shorthand')}")
     elif dayScore + dynamScore > scoreTerminate:
         $ renpy.notify(f"Workday complete!")
     else:
@@ -223,33 +228,42 @@ label eventUpdate:
     $ dayEvents.append(tempEvent)
     #Add the response's score to the total score
     #Edge case for calling from the tutorial cycle, prevents escape and allows the tutorial to complete as intended. Tutorial no longer completely boned!
-    if tempEvent.get('id') == "tutorial":
-        $ dayScore += dynamScore
-        call tutorialConclusion
     python:
-        if followUpActive:
-            for entry in sideArray:
-                currentEvents.append(entry)
-            sideArray.clear()
-            followUpActive = False
-        if tempEvent.get('followup_event').get('allowed') and dynamScore < tempEvent.get('followup_event').get('score_cutoff'):
-            for entry in currentEvents:
-                sideArray.append(entry)
-            currentEvents.clear()
-            followUpActive = True
-            getEntry = tempEvent.get('followup_event').get('event_id')
-            for entry in followUpDefine:
-                if entry.get('id') == getEntry:
+        if not tutorialMode:
+            if followUpActive:
+                for entry in sideArray:
                     currentEvents.append(entry)
+                sideArray.clear()
+                followUpActive = False
+            if tempEvent.get('followup_event').get('allowed') and dynamScore < tempEvent.get('followup_event').get('score_cutoff'):
+                for entry in currentEvents:
+                    sideArray.append(entry)
+                currentEvents.clear()
+                followUpActive = True
+                getEntry = tempEvent.get('followup_event').get('event_id')
+                for entry in followUpDefine:
+                    if entry.get('id') == getEntry:
+                        currentEvents.append(entry)
     #TODO: Refactor according to proper scoring system. This is temp and for debug.
     $ dayScore += dynamScore
+    if tempEvent.get('id') == "tutorial":
+        $ reviewTerms = True
+        $ endDayValid = True
+        $ tutorialComplete = True
+        scene bg eventfocus with quickDissolve
+        call tutorialConclusion
+        call evUpdateNotif
     #Clears the temporary variable, effectively removing all copies of the event from active memory except in the above completed events.
     $ tempEvent = {}
     #Menu items created through a for loop have disastrous selection highlighting, this variable exists solely to remedy it.
     $ responseSelected = None
     #Calls below cycle to update notification marks on the main screen.
     #This addEvents call seems irrelevant but it is MISSION CRITICAL!!! Removing it bricks the refresh self-sustain, somehow.
-    call addEvents
+    if not tutorialMode:
+        call addEvents
+    else:
+        if len(currentEvents) == 0 and tutorialMode and tutorialComplete:
+            $ endDayValid = True
     call evUpdateNotif
     scene bg mainloop with dissolve
     call screen mainGameplayLoop
@@ -290,6 +304,7 @@ label evUpdateNotif:
 label endDay:
     #End-of-day event closer
     python:
+        responseSelected = None
         dayMaxScore = 0
         #Clears the current event queue, if it exists.
         if currentEvents:
@@ -313,13 +328,16 @@ label endDay:
         #Order matters!
         for entry in dayEvents:
             completedEvents.append(entry)
-        if currentDay == numDays:
+        if currentDay == numDays or tutorialSection == 3:
             renpy.call_screen("returnFeedback")
             displayEnd = False
     #See screens.
     call screen returnFeedback
     #Add new events to queue.
-    call addEvents
+    if tutorialMode:
+        call spawnTutorialEvents
+    else:
+        call addEvents
     #Updates notifs
     call evUpdateNotif
     #Resumes normal gameplay, plus one day.
