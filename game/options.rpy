@@ -17,6 +17,7 @@ define config.name = _("Project Branchpoint")
 init python:
     config.keymap['game_menu'].remove('K_ESCAPE')
     config.keymap['main_menu'] = ['K_ESCAPE']
+    preferences.skip_unseen = True
 
 
 ## Determines if the title given above is shown on the main menu screen. Set
