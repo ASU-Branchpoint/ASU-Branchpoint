@@ -14,6 +14,8 @@
 
 define config.name = _("Project Branchpoint")
 
+define config.minimum_presplash_time = 2.0
+
 init python:
     config.keymap['game_menu'].remove('K_ESCAPE')
     config.keymap['main_menu'] = ['K_ESCAPE']
